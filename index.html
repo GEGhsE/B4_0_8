@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <!--
+  ============================================================
   © 2026 GEG 화성(깊이 e끌림). All rights reserved.
-  본 저작물은 「저작권법」에 따라 보호받으며, 저작권자의 허락 없는 복제·배포·수정을 금합니다.
-  문의: bacusiki777@gmail.com, for2102@jimj.kr
-  BUILD: GEGHS-DEEPE-2026
+
+  본 코드는 「저작권법」상 보호받는 저작물입니다.
+  - 복제권(제16조)·공중송신권(제18조)·배포권(제20조)은
+    저작권자에게 있습니다.
+  - 정식 경로로 받은 이용자라도 코드의 무단 복제·재배포·
+    재판매·리브랜딩은 허용되지 않습니다.
+  - 무단 이용 시 「저작권법」 제136조(5년 이하 징역 또는
+    5천만 원 이하 벌금) 및 제125조(손해배상) 적용 대상이
+    될 수 있습니다.
+  - 이용 문의: bacusiki777@gmail.com, for2102@jimj.kr
+  ============================================================
+  타자 원정대 (Typing Expedition)
+  이 프로그램은 학교 수업용으로 만들었습니다.
+  ============================================================
 -->
 <html lang="ko">
 
 <head>
+  <base target="_top">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>타자 원정대</title>
-  <meta name="description" content="한글 타자를 자리 익히기부터 검정까지 단계별로 배우는 학습 앱">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>타자 원정대 🗺️</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700;800&family=Noto+Sans+KR:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@700;800&family=Noto+Sans+KR:wght@700&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -31,11 +41,7 @@
       --success: #2ecc71;
       --success-dark: #27ae60;
       --special: #f1c40f;
-      --teacher: #6366F1;
-      --teacher-dark: #4338CA;
     }
-
-    * { box-sizing: border-box; }
 
     body {
       font-family: 'Jua', 'Noto Sans KR', sans-serif;
@@ -50,8 +56,6 @@
       overflow-x: hidden;
     }
 
-    .hidden { display: none !important; }
-
     /* 플로팅 배경 요소 (장식용) */
     .bg-decoration {
       position: fixed;
@@ -59,18 +63,49 @@
       opacity: 0.15;
       z-index: -1;
       animation: float 8s ease-in-out infinite;
-      pointer-events: none;
     }
 
-    .bg-1 { top: 15%; left: 8%; animation-delay: 0s; }
-    .bg-2 { top: 70%; left: 10%; animation-delay: 2s; font-size: 7rem; }
-    .bg-3 { top: 15%; right: 10%; animation-delay: 1s; font-size: 6rem; }
-    .bg-4 { top: 75%; right: 15%; animation-delay: 3s; }
+    .bg-1 {
+      top: 15%;
+      left: 8%;
+      animation-delay: 0s;
+    }
+
+    .bg-2 {
+      top: 70%;
+      left: 10%;
+      animation-delay: 2s;
+      font-size: 7rem;
+    }
+
+    .bg-3 {
+      top: 15%;
+      right: 10%;
+      animation-delay: 1s;
+      font-size: 6rem;
+    }
+
+    .bg-4 {
+      top: 75%;
+      right: 15%;
+      animation-delay: 3s;
+    }
 
     @keyframes float {
-      0% { transform: translateY(0px) rotate(-5deg); filter: blur(2px); }
-      50% { transform: translateY(-30px) rotate(10deg); filter: blur(0px); }
-      100% { transform: translateY(0px) rotate(-5deg); filter: blur(2px); }
+      0% {
+        transform: translateY(0px) rotate(-5deg);
+        filter: blur(2px);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(10deg);
+        filter: blur(0px);
+      }
+
+      100% {
+        transform: translateY(0px) rotate(-5deg);
+        filter: blur(2px);
+      }
     }
 
     /* 상단 헤더 */
@@ -90,48 +125,31 @@
 
     header h1 {
       margin: 0;
-      font-size: 3rem;
+      font-size: 3.5rem;
       letter-spacing: 2px;
       text-shadow: 0 4px 0 #5f27cd, 0 8px 10px rgba(0, 0, 0, 0.3);
       animation: titleBounce 2s infinite;
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-top: 12px;
+      font-size: 1.3rem;
+      margin-top: 15px;
       margin-bottom: 0;
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: bold;
     }
 
     @keyframes titleBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
 
-    /* 연결 상태 칩 */
-    .conn-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.25);
-      color: #fff;
-      margin-top: 10px;
-      backdrop-filter: blur(4px);
-    }
+      0%,
+      100% {
+        transform: translateY(0);
+      }
 
-    .conn-chip .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #ffffff;
+      50% {
+        transform: translateY(-8px);
+      }
     }
-
-    .conn-chip.connected .dot { background: #34d399; box-shadow: 0 0 8px #34d399; }
-    .conn-chip.demo .dot { background: #fbbf24; box-shadow: 0 0 8px #fbbf24; }
 
     /* ================================= */
     /* 1. 로그인 전용 웅장한 로비 화면   */
@@ -145,59 +163,73 @@
       width: 100%;
       margin-top: 20px;
       margin-bottom: 40px;
-      padding: 0 16px;
     }
 
     .splash-card {
       background: white;
-      padding: 44px 32px;
-      border-radius: 32px;
+      padding: 50px 40px;
+      border-radius: 35px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(116, 185, 255, 0.3);
       border: 5px solid var(--primary);
       text-align: center;
-      width: 100%;
+      width: 90%;
       max-width: 500px;
       position: relative;
       animation: cardPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @keyframes cardPop {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .splash-icon {
-      font-size: 5.5rem;
+      font-size: 6rem;
       animation: floatIcon 3s ease-in-out infinite;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
       display: inline-block;
     }
 
     @keyframes floatIcon {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.1); filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-15px) scale(1.1);
+        filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
+      }
     }
 
     .splash-card h2 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: var(--dark);
-      margin: 6px 0 8px 0;
+      margin: 0 0 10px 0;
     }
 
     .splash-card p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #7f8c8d;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
       font-weight: bold;
     }
 
     .mega-select {
       width: 100%;
-      padding: 18px;
-      font-size: 1.5rem;
-      border-radius: 18px;
+      padding: 20px;
+      font-size: 1.6rem;
+      border-radius: 20px;
       border: 4px solid #bdc3c7;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
       font-family: 'Jua', sans-serif;
       color: var(--dark);
       cursor: pointer;
@@ -217,11 +249,11 @@
       width: 100%;
       background: var(--secondary);
       color: white;
-      font-size: 1.8rem;
+      font-size: 2rem;
       border: none;
       border-bottom: 8px solid var(--secondary-dark);
-      padding: 18px;
-      border-radius: 18px;
+      padding: 20px;
+      border-radius: 20px;
       cursor: pointer;
       font-family: 'Jua', sans-serif;
       transition: all 0.1s;
@@ -235,60 +267,6 @@
       margin-bottom: 8px;
     }
 
-    /* 시작하기 버튼 바로 아래: 선생님 설정 진입 버튼 */
-    .teacher-entry {
-      margin-top: 16px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-teacher {
-      background: #ffffff;
-      color: var(--teacher-dark);
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: 2px solid var(--teacher);
-      border-radius: 14px;
-      padding: 10px 18px;
-      cursor: pointer;
-      transition: all 0.15s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-teacher:hover {
-      background: #EEF2FF;
-      transform: translateY(-1px);
-    }
-
-    .teacher-entry .demo-note {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.82rem;
-      color: #9ca3af;
-      margin-top: 8px;
-      flex-basis: 100%;
-    }
-
-    /* 체험 모드 안내 배너 */
-    .demo-banner {
-      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-      color: #92400E;
-      padding: 10px 16px;
-      border-radius: 12px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-      border: 2px dashed #F59E0B;
-      text-align: center;
-      line-height: 1.5;
-    }
-  </style>
-  <style>
     /* ================================= */
     /* 2. 메인 대시보드 (로그인 후 화면) */
     /* ================================= */
@@ -304,12 +282,21 @@
     }
 
     @media (max-width: 900px) {
-      #dashboard-container { grid-template-columns: 1fr; }
+      #dashboard-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .panel {
@@ -330,6 +317,7 @@
       margin-bottom: 20px;
     }
 
+    /* 사용자 정보 카드 블럭 */
     .user-info-card {
       background: #f8fbff;
       border: 3px solid #e1e9f4;
@@ -342,7 +330,6 @@
       gap: 12px;
       box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
       animation: fadeIn 0.5s ease-out;
-      flex-wrap: wrap;
     }
 
     .user-info-card .user-tag {
@@ -355,30 +342,31 @@
     }
 
     .user-info-card .user-name-box {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--dark);
       font-weight: bold;
     }
 
+    /* 사용자 프로필 배지 */
     .profile-badge {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       background: linear-gradient(180deg, #f0f8ff, #e6f2ff);
-      padding: 22px 18px;
-      border-radius: 22px;
+      padding: 25px 20px;
+      border-radius: 24px;
       margin-bottom: 20px;
       border: 3px dashed #a2c8f0;
       position: relative;
     }
 
     .grade-icon {
-      font-size: 4.5rem;
-      margin-bottom: 8px;
+      font-size: 5rem;
+      margin-bottom: 10px;
       background: #fff;
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -388,7 +376,7 @@
     }
 
     .grade-name {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--primary);
       margin-bottom: 10px;
       text-shadow: 1px 1px 0 #fff;
@@ -396,9 +384,9 @@
 
     .stat-box {
       font-family: 'Noto Sans KR', sans-serif;
-      font-size: 1rem;
+      font-size: 1.1rem;
       background: #fff;
-      padding: 10px 18px;
+      padding: 10px 20px;
       border-radius: 12px;
       width: 85%;
       margin: 6px 0;
@@ -413,12 +401,12 @@
       width: 100%;
       background: #95a5a6;
       color: white;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-family: 'Jua', sans-serif;
       border: none;
       border-bottom: 5px solid #7f8c8d;
-      border-radius: 14px;
-      padding: 14px;
+      border-radius: 15px;
+      padding: 15px;
       cursor: pointer;
       transition: all 0.1s;
     }
@@ -428,6 +416,52 @@
       transform: translateY(5px);
     }
 
+    /* 기록 폼 */
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .record-input {
+      flex: 1;
+      padding: 15px;
+      border: 3px solid var(--gray);
+      border-radius: 15px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-align: center;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .record-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(77, 173, 226, 0.2);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      font-size: 1.8rem;
+      border: none;
+      border-bottom: 7px solid var(--accent-dark);
+      padding: 18px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-family: 'Jua', sans-serif;
+      transition: all 0.1s;
+      letter-spacing: 1px;
+    }
+
+    .btn-submit:active {
+      border-bottom: 0px;
+      transform: translateY(7px);
+      margin-bottom: 7px;
+    }
+
     /* 키보드 자판 지도 */
     .keyboard-container {
       display: flex;
@@ -435,7 +469,7 @@
       gap: 12px;
       align-items: center;
       margin: 10px 0;
-      padding: 24px;
+      padding: 30px;
       background: #dfebf5;
       border-radius: 20px;
       box-shadow: inset 0 8px 15px rgba(0, 0, 0, 0.08);
@@ -444,32 +478,24 @@
 
     .keyboard-row {
       display: flex;
-      gap: 8px;
-      flex-wrap: nowrap;
+      gap: 10px;
     }
 
     .key {
-      width: 52px;
-      height: 52px;
+      width: 58px;
+      height: 58px;
       background: #f1f2f6;
       border-radius: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Jua', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: #a4b0be;
       border: 2px solid #ced6e0;
       box-shadow: 0 6px 0 #ced6e0, 0 8px 5px rgba(0, 0, 0, 0.1);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 520px) {
-      .key { width: 38px; height: 38px; font-size: 1rem; }
-      .keyboard-row { gap: 5px; }
-      .keyboard-container { padding: 14px; }
     }
 
     .key.special.unlocked {
@@ -493,18 +519,36 @@
     }
 
     @keyframes popBounce {
-      0% { transform: scale(1) translateY(0); }
-      40% { transform: scale(1.3) translateY(-15px) rotate(10deg); }
-      70% { transform: scale(1.1) translateY(0) rotate(-5deg); }
-      100% { transform: scale(1) translateY(0) rotate(0deg); }
+      0% {
+        transform: scale(1) translateY(0);
+      }
+
+      40% {
+        transform: scale(1.3) translateY(-15px) rotate(10deg);
+      }
+
+      70% {
+        transform: scale(1.1) translateY(0) rotate(-5deg);
+      }
+
+      100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+      }
     }
 
     @keyframes shinyUnlocked {
-      0% { filter: brightness(1); transform: translateY(0); }
-      100% { filter: brightness(1.2); transform: translateY(-3px); }
+      0% {
+        filter: brightness(1);
+        transform: translateY(0);
+      }
+
+      100% {
+        filter: brightness(1.2);
+        transform: translateY(-3px);
+      }
     }
 
-    /* 랭킹 */
+    /* 랭킹 뱃지 및 리스트 */
     .ranking-list {
       list-style: none;
       padding: 0;
@@ -514,10 +558,10 @@
     .ranking-item {
       display: flex;
       justify-content: space-between;
-      padding: 14px;
+      padding: 15px;
       background: #f8f9fa;
-      border-radius: 14px;
-      margin-bottom: 10px;
+      border-radius: 15px;
+      margin-bottom: 12px;
       align-items: center;
       transition: transform 0.2s;
       border-left: 6px solid var(--gray);
@@ -525,16 +569,28 @@
     }
 
     .ranking-item:hover {
-      transform: translateX(6px);
+      transform: translateX(8px);
       background: #fdfdfd;
     }
 
-    .rank-1 { border-left-color: #ffd700; background: #fffdf0; }
-    .rank-2 { border-left-color: #c0c0c0; background: #fdfdfd; }
-    .rank-3 { border-left-color: #cd7f32; background: #fffaf5; }
+    .rank-1 {
+      border-left-color: #ffd700;
+      background: #fffdf0;
+    }
+
+    .rank-2 {
+      border-left-color: #c0c0c0;
+      background: #fdfdfd;
+    }
+
+    .rank-3 {
+      border-left-color: #cd7f32;
+      background: #fffaf5;
+    }
 
     .rank-badge {
-      width: 34px; height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: var(--gray);
       color: var(--dark);
@@ -542,47 +598,87 @@
       justify-content: center;
       align-items: center;
       font-family: 'Jua', sans-serif;
-      font-size: 1.3rem;
-      margin-right: 12px;
+      font-size: 1.4rem;
+      margin-right: 15px;
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
     }
 
-    .rank-1 .rank-badge, .rank-2 .rank-badge, .rank-3 .rank-badge {
-      background: transparent; box-shadow: none; font-size: 2rem;
+    .rank-1 .rank-badge {
+      background: transparent;
+      box-shadow: none;
+      font-size: 2.2rem;
+    }
+
+    .rank-2 .rank-badge {
+      background: transparent;
+      box-shadow: none;
+      font-size: 2.2rem;
+    }
+
+    .rank-3 .rank-badge {
+      background: transparent;
+      box-shadow: none;
+      font-size: 2.2rem;
     }
 
     .label-badge {
       background: var(--accent);
       color: white;
       padding: 6px 12px;
-      border-radius: 18px;
-      font-size: 0.85rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: bold;
       margin-left: auto;
       box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
     }
 
-    /* 모달 */
+    #loading {
+      display: none;
+      text-align: center;
+      color: var(--primary-dark);
+      font-family: 'Jua', sans-serif;
+      font-size: 1.3rem;
+      margin-top: 15px;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    /* 가이드 모달 */
     .modal-overlay {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.6);
       z-index: 1000;
       display: flex;
       justify-content: center;
       align-items: center;
       backdrop-filter: blur(5px);
-      padding: 16px;
     }
 
     .modal-content {
       background: white;
       border-radius: 20px;
-      padding: 28px;
-      width: 100%;
-      max-width: 540px;
-      max-height: 86vh;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
       overflow-y: auto;
       position: relative;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -591,28 +687,41 @@
     }
 
     @keyframes modalPop {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .close-btn {
       position: absolute;
-      top: 12px; right: 16px;
-      font-size: 1.4rem;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
       background: none;
       border: none;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    .close-btn:hover { transform: scale(1.2); }
+    .close-btn:hover {
+      transform: scale(1.2);
+    }
 
-    .guide-section { margin-bottom: 24px; }
+    .guide-section {
+      margin-bottom: 25px;
+    }
+
     .guide-section h3 {
       color: var(--primary-dark);
       border-bottom: 2px dashed var(--gray);
       padding-bottom: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
       margin-top: 0;
     }
 
@@ -620,10 +729,11 @@
       width: 100%;
       border-collapse: collapse;
       font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
     }
 
-    .guide-table th, .guide-table td {
+    .guide-table th,
+    .guide-table td {
       padding: 8px;
       text-align: center;
       border: 1px solid #dfe6e9;
@@ -633,21 +743,24 @@
       background: var(--primary);
       color: white;
       font-family: 'Jua', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      font-weight: normal;
     }
 
-    .guide-table tr:nth-child(even) { background: #f8f9fa; }
+    .guide-table tr:nth-child(even) {
+      background: #f8f9fa;
+    }
 
     .btn-guide {
       background: #f1c40f;
       color: #d35400;
       font-family: 'Jua', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       border: none;
       border-bottom: 4px solid #d35400;
-      border-radius: 14px;
+      border-radius: 15px;
       padding: 10px 20px;
-      margin-top: 14px;
+      margin-top: 15px;
       cursor: pointer;
       transition: all 0.1s;
       letter-spacing: 1px;
@@ -659,669 +772,201 @@
       margin-bottom: 4px;
     }
 
-    /* 차트 캔버스 (Chart.js 미사용 — 직접 그리기) */
-    .chart-wrap {
-      position: relative;
-      width: 100%;
-      height: 230px;
+    .hidden {
+      display: none !important;
     }
-
-    .chart-canvas { width: 100%; height: 100%; display: block; }
-
-    .chart-empty {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      line-height: 1.5;
+    /* ===== 성장 이야기 카드 + 그래프 뷰 전환 ===== */
+    .chart-view-tabs {
+      display: flex; gap: 6px; margin-bottom: 12px;
+      justify-content: center; flex-wrap: wrap;
     }
-  </style>
-  <style>
-    /* ===================================================== */
-    /* Phase 1 · 학습 모드 — 디바이스 안전망·사이드바          */
-    /* ===================================================== */
-    :root {
-      --hdr: clamp(56px, 7vh, 80px);
-      --pane-r-w: clamp(320px, 28vw, 460px);
-      --gap: clamp(10px, 1.4vw, 18px);
-      --fs-body: clamp(15px, 1.4vw, 20px);
-      --fs-title: clamp(22px, 2.4vw, 32px);
-      --learn-bg: #f3f7fb;
-      --ink: #2c3e50;
-      --line: #e3e9f0;
-      --hi: #ff9f43;
-      --hi-dark: #e67e22;
-      --ok: #16a085;
+    .cvt-btn {
+      border: 2px solid #dfe6e9; background: white; color: #7f8c8d;
+      font-family: 'Jua', sans-serif; font-size: 0.9rem; padding: 7px 16px;
+      border-radius: 20px; cursor: pointer; transition: all 0.15s;
     }
-
-    /* 가로 회전 안내 오버레이 */
-    #rotate-overlay {
-      position: fixed; inset: 0; z-index: 5000;
-      display: none;
-      flex-direction: column;
-      align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #74b9ff, #a29bfe);
-      color: #fff;
-      text-align: center;
-      font-family: 'Jua', sans-serif;
-      padding: 24px;
+    .cvt-btn:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .cvt-btn.on {
+      background: var(--primary); color: white; border-color: var(--primary);
+      box-shadow: 0 3px 0 var(--primary-dark);
     }
-    #rotate-overlay .rot-icon { font-size: 5rem; animation: rotateHint 1.6s ease-in-out infinite; }
-    #rotate-overlay p { font-size: clamp(20px, 4vw, 30px); margin-top: 18px; line-height: 1.5; }
-    @keyframes rotateHint { 0%,100%{transform:rotate(0)} 50%{transform:rotate(90deg)} }
-    @media (orientation: portrait) and (max-width: 900px) {
-      body.learn-active #rotate-overlay { display: flex; }
+    .growth-story {
+      background: linear-gradient(135deg, #fff9e6, #fff2d6);
+      border: 3px dashed #f0b86e; border-radius: 18px;
+      padding: 16px 20px; margin-bottom: 16px;
+      font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
     }
-
-    /* 학습 풀스크린 화면 */
-    #learn-screen {
-      position: fixed; inset: 0; z-index: 1500;
-      display: none;
-      flex-direction: column;
-      height: 100dvh;
-      background: var(--learn-bg);
-      font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
-      font-weight: 700;
-      color: var(--ink);
-      overflow: hidden;
+    .gs-baa {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 10px; align-items: center; margin-bottom: 12px;
     }
-    #learn-screen.show { display: flex; }
-
-    .learn-topbar {
-      flex: 0 0 auto;
-      height: var(--hdr);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--gap);
-      background: linear-gradient(135deg, #74b9ff, #a29bfe);
-      color: #fff;
+    .gs-card {
+      background: white; border-radius: 14px; padding: 10px 12px;
+      text-align: center; box-shadow: 0 3px 0 rgba(0,0,0,0.06);
     }
-    .learn-topbar .lt-title { font-family: 'Jua', sans-serif; font-size: clamp(18px, 2.2vw, 30px); }
-    .learn-topbar button {
-      font-family: 'Jua', sans-serif;
-      font-size: clamp(13px, 1.3vw, 18px);
-      min-height: 44px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.22);
-      color: #fff;
-      cursor: pointer;
-      border-bottom: 3px solid rgba(0,0,0,0.15);
+    .gs-card.start { border-top: 4px solid #95a5a6; }
+    .gs-card.now { border-top: 4px solid #ff9f43; }
+    .gs-emoji { font-size: 1.8rem; line-height: 1; }
+    .gs-value { font-family: 'Jua', sans-serif; font-size: 1.5rem; color: #2c3e50; margin: 2px 0; }
+    .gs-value small { font-size: 0.7rem; color: #7f8c8d; margin-left: 2px; }
+    .gs-date { font-size: 0.72rem; color: #7f8c8d; }
+    .gs-arrow {
+      font-family: 'Jua', sans-serif; font-size: 1.5rem;
+      text-align: center; line-height: 1.15;
     }
-
-    .learn-body {
-      flex: 1 1 0;
-      min-height: 0;
-      display: flex;
-      gap: var(--gap);
-      padding: var(--gap);
-      overflow: hidden;
-    }
-
-    .learn-main {
-      flex: 1 1 0;
-      min-width: 0;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--gap);
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 8px 0 rgba(0,0,0,0.05);
-      padding: var(--gap);
-      overflow: auto;
-    }
-    .lm-prompt { font-size: var(--fs-body); color: #7f8c8d; text-align:center; }
-    .lm-target {
-      font-family: 'Jua', sans-serif;
-      font-size: clamp(50px, 11vw, 140px);
-      line-height: 1;
-      color: var(--hi-dark);
-      text-shadow: 0 4px 0 rgba(0,0,0,0.06);
-    }
-    .lm-text-target {
-      font-size: clamp(20px, 3.2vw, 42px);
-      letter-spacing: 1px;
-      line-height: 1.5;
-      text-align: center;
-      max-width: 92%;
-      word-break: keep-all;
-    }
-    .lm-text-target .done { color: var(--ok); }
-    .lm-text-target .wrong { color: #DC2626; background: #fde8e8; border-radius: 4px; }
-    .lm-text-target .cursor { border-bottom: 5px solid var(--hi); }
-    .lm-input {
-      width: min(90%, 760px);
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 800;
-      font-size: clamp(18px, 2.6vw, 32px);
-      padding: 14px 18px;
-      border: 3px solid var(--line);
-      border-radius: 16px;
-      text-align: center;
-      outline: none;
-    }
-    .lm-input:focus { border-color: var(--hi); }
-
-    /* 손가락 가이드 키보드 */
-    .kb {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 0.7vh, 9px);
-      width: 100%;
-      max-width: 760px;
-    }
-    .kb-row { display: flex; gap: clamp(4px, 0.7vw, 9px); justify-content: center; }
-    .kb-key {
-      flex: 1 1 0;
-      min-width: 0;
-      aspect-ratio: 1 / 1;
-      max-width: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Jua', sans-serif;
-      font-size: clamp(13px, 1.8vw, 26px);
-      border-radius: 10px;
-      background: #eef2f6;
-      color: #9aa6b2;
-      border-bottom: 4px solid #d7dee6;
-      transition: transform .12s, background .12s, color .12s;
-    }
-    .kb-key.active {
-      background: var(--ok);
-      color: #fff;
-      border-bottom-color: #0e7c66;
-    }
-    .kb-key.next {
-      background: var(--hi);
-      color: #fff;
-      border-bottom-color: var(--hi-dark);
-      animation: keyPulse 0.9s ease-in-out infinite;
-    }
-    .kb-key.hit { animation: keyHit 0.25s ease; }
-    .kb-key .fin { font-size: 0.5em; opacity: 0.7; display: block; margin-top: 2px; }
-    @keyframes keyPulse { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px) scale(1.06)} }
-    @keyframes keyHit { 0%{transform:scale(1)} 50%{transform:scale(1.18)} 100%{transform:scale(1)} }
-
-    /* 사이드바 */
-    .learn-side {
-      flex: 0 0 auto;
-      width: var(--pane-r-w);
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap);
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 8px 0 rgba(0,0,0,0.05);
-      padding: var(--gap);
-      overflow: hidden;
-    }
-    .side-card { flex: 0 0 auto; }
-    .side-id {
-      display: flex; align-items: center; gap: 12px;
-      padding-bottom: var(--gap);
-      border-bottom: 2px solid var(--line);
-    }
-    .side-id .badge { font-size: clamp(28px, 3vw, 40px); }
-    .side-id .who { font-family: 'Jua', sans-serif; font-size: clamp(16px, 1.8vw, 24px); }
-    .side-id .grade { font-size: var(--fs-body); color: var(--ok); }
-    .side-id .relogin {
-      margin-left: auto; font-size: 12px; min-height: 36px; padding: 4px 10px;
-      border: 1px solid var(--line); background: #fafbfc; border-radius: 10px; cursor: pointer;
+    .gs-arrow b { display: block; font-size: 1.2rem; margin-top: 2px; }
+    .gs-arrow small {
+      display: block; font-size: 0.72rem; margin-top: 3px;
       color: #7f8c8d; font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
     }
-
-    .side-progress .pg-now { font-family:'Jua',sans-serif; font-size: clamp(16px,1.8vw,24px); color: var(--hi-dark); }
-    .pg-bar { height: 14px; background: var(--line); border-radius: 8px; overflow: hidden; margin: 8px 0; }
-    .pg-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--hi), var(--hi-dark)); transition: width .3s; }
-    .pg-pips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .pg-pip {
-      min-width: 38px; min-height: 38px; padding: 4px 8px; border-radius: 10px;
-      display: inline-flex; align-items: center; justify-content: center; gap: 4px;
-      font-size: 12px; font-family:'Nanum Gothic',sans-serif; font-weight: 800; cursor: pointer;
-      background: #f1f3f5; color: #aab2bb; border: 2px solid transparent;
+    .gs-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gs-fact {
+      background: rgba(255,255,255,0.75); border-radius: 12px;
+      padding: 10px 14px; font-size: 0.9rem; color: #34495e;
+      display: flex; align-items: center; gap: 8px;
     }
-    .pg-pip.done { background: #e7f6f1; color: var(--ok); }
-    .pg-pip.current { background: #fff2e3; color: var(--hi-dark); border-color: var(--hi); animation: keyPulse 1.2s ease-in-out infinite; }
-    .pg-pip.locked { opacity: 0.6; }
-
-    .side-guide {
-      flex: 1 1 0;
-      min-height: 0;
-      overflow-y: auto;
-      padding: 12px;
-      background: #f8fafc;
-      border-radius: 14px;
-      font-size: var(--fs-body);
-      line-height: 1.6;
+    .gs-fact b { font-family: 'Jua', sans-serif; font-size: 1.1rem; color: #2c3e50; }
+    .gs-goal {
+      margin-top: 10px; background: rgba(116,185,255,0.15);
+      border: 2px dashed #74b9ff; border-radius: 12px;
+      padding: 11px 14px; text-align: center;
+      font-size: 0.92rem; color: #2c3e50;
     }
-    .side-guide h4 { font-family:'Jua',sans-serif; color: var(--hi-dark); margin: 0 0 8px 0; font-size: clamp(16px,1.8vw,24px); }
-    .side-guide .tip { margin-top: 10px; padding: 10px; background:#fff8e1; border-radius: 10px; border:2px dashed #ffc77a; }
-
-    .side-achieve {
-      display: flex; gap: 10px; text-align: center;
-      padding: 10px; background:#f8fafc; border-radius: 14px;
+    .gs-goal b { font-family: 'Jua', sans-serif; }
+    .growth-loading, .growth-empty {
+      text-align: center; padding: 20px; color: #7f8c8d;
+      font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
     }
-    .side-achieve .ac { flex: 1; }
-    .side-achieve .ac b { display:block; font-family:'Jua',sans-serif; font-size: clamp(18px,2vw,28px); color: var(--ink); }
-    .side-achieve .ac span { font-size: 12px; color:#7f8c8d; }
-
-    .side-actions { display: flex; gap: 8px; }
-    .side-actions button {
-      flex: 1; min-height: 48px; border: none; border-radius: 14px; cursor: pointer;
-      font-family:'Jua',sans-serif; font-size: clamp(14px,1.5vw,20px); color:#fff;
-      border-bottom: 4px solid rgba(0,0,0,0.18);
-    }
-    .btn-next { background: var(--ok); }
-    .btn-prev { background: #95a5a6; flex: 0 0 auto; min-width: 64px; }
-    .btn-redo { background: var(--hi); flex: 0 0 auto; min-width: 64px; }
-    .side-actions button:disabled { background:#dfe4ea; color:#aab2bb; cursor:not-allowed; border-bottom-color:#cfd6dd; }
-
-    /* 단계 안내 모달 */
-    .stage-modal-overlay {
-      position: fixed; inset: 0; z-index: 3000; display: none;
-      align-items: center; justify-content: center;
-      background: rgba(20,30,50,0.55); padding: 20px;
-    }
-    .stage-modal-overlay.show { display: flex; }
-    .stage-modal {
-      background:#fff; border-radius: 22px; padding: 28px; max-width: 500px; width: 92%;
-      text-align: center; font-family:'Nanum Gothic',sans-serif; font-weight:700;
-      animation: cardPop 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-    }
-    .stage-modal .sm-icon { font-size: 3.6rem; }
-    .stage-modal h2 { font-family:'Jua',sans-serif; color: var(--hi-dark); font-size: clamp(22px,3vw,32px); margin: 8px 0; }
-    .stage-modal p { font-size: var(--fs-body); line-height: 1.6; color: #34495e; }
-    .stage-modal .sm-go {
-      margin-top: 18px; min-height: 50px; width: 80%; border: none; border-radius: 16px;
-      background: var(--ok); color:#fff; font-family:'Jua',sans-serif; font-size: 1.3rem;
-      cursor: pointer; border-bottom: 5px solid #0e7c66;
-    }
-    .stage-modal .sm-hint { margin-top: 10px; font-size: 12px; color:#95a5a6; }
-
-    /* 대시보드 상단 학습 진입 버튼 */
-    .enter-learn-bar {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, #ffe0b2, #ffcc80);
-      border: 4px solid #fff;
-      border-radius: 20px;
-      padding: 16px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 14px;
-      box-shadow: 0 8px 0 rgba(0,0,0,0.06);
-      flex-wrap: wrap;
-    }
-    .enter-learn-bar .elb-txt { font-family:'Jua',sans-serif; font-size: clamp(16px,2vw,24px); color:#a8540a; }
-    .enter-learn-bar .elb-txt small { display:block; font-family:'Nanum Gothic',sans-serif; font-size: 0.7em; color:#b9722e; font-weight:700; line-height:1.4; }
-    .elb-btns { display:flex; gap:10px; flex-wrap:wrap; }
-    .enter-learn-bar button {
-      min-height: 50px; padding: 12px 22px; border:none; border-radius: 16px; cursor:pointer;
-      font-family:'Jua',sans-serif; font-size: clamp(16px,1.8vw,22px); color:#fff;
-      background: var(--secondary-dark); border-bottom: 5px solid #b9610c;
-    }
-    .elb-btns .btn-cert { background:#f1c40f; border-bottom-color:#d4ac0d; color:#7a5c00; }
-
-    @media (max-width: 1024px) {
-      .learn-side { width: clamp(280px, 34vw, 360px); }
+    @media (max-width: 500px) {
+      .gs-baa { grid-template-columns: 1fr; gap: 6px; }
+      .gs-arrow { padding: 4px 0; }
+      .gs-facts { grid-template-columns: 1fr; }
     }
 
-    /* ===================================================== */
-    /* Phase 2 · 검정 모드                                     */
-    /* ===================================================== */
-    #cert-screen {
-      position: fixed; inset: 0; z-index: 1500; display: none;
-      flex-direction: column; height: 100dvh; background: #fbf7ee;
+  /* ===== 성장 이야기 카드 + 그래프 뷰 전환 ===== */
+    .chart-view-tabs {
+      display: flex; gap: 6px; margin-bottom: 12px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .cvt-btn {
+      border: 2px solid #dfe6e9; background: white; color: #7f8c8d;
+      font-family: 'Jua', sans-serif; font-size: 0.9rem; padding: 7px 16px;
+      border-radius: 20px; cursor: pointer; transition: all 0.15s;
+    }
+    .cvt-btn:hover { border-color: #ff9f43; color: #e67e22; }
+    .cvt-btn.on {
+      background: #ff9f43; color: white; border-color: #ff9f43;
+      box-shadow: 0 3px 0 #e67e22;
+    }
+    .growth-story {
+      background: linear-gradient(135deg, #fff9e6, #fff2d6);
+      border: 3px dashed #f0b86e; border-radius: 18px;
+      padding: 16px 20px; margin-bottom: 16px;
+      font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
+    }
+    .gs-baa {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 10px; align-items: center; margin-bottom: 12px;
+    }
+    .gs-card {
+      background: white; border-radius: 14px; padding: 10px 12px;
+      text-align: center; box-shadow: 0 3px 0 rgba(0,0,0,0.06);
+    }
+    .gs-card.start { border-top: 4px solid #95a5a6; }
+    .gs-card.now { border-top: 4px solid #ff9f43; }
+    .gs-emoji { font-size: 1.8rem; line-height: 1; }
+    .gs-value { font-family: 'Jua', sans-serif; font-size: 1.5rem; color: #2c3e50; margin: 2px 0; }
+    .gs-value small { font-size: 0.7rem; color: #7f8c8d; margin-left: 2px; }
+    .gs-date { font-size: 0.72rem; color: #7f8c8d; }
+    .gs-arrow {
+      font-family: 'Jua', sans-serif; font-size: 1.5rem;
+      text-align: center; line-height: 1.15;
+    }
+    .gs-arrow b { display: block; font-size: 1.2rem; margin-top: 2px; }
+    .gs-arrow small {
+      display: block; font-size: 0.72rem; margin-top: 3px;
+      color: #7f8c8d; font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
+    }
+    .gs-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gs-fact {
+      background: rgba(255,255,255,0.75); border-radius: 12px;
+      padding: 10px 14px; font-size: 0.9rem; color: #34495e;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .gs-fact b { font-family: 'Jua', sans-serif; font-size: 1.1rem; color: #2c3e50; }
+    .gs-goal {
+      margin-top: 10px; background: rgba(116,185,255,0.15);
+      border: 2px dashed #74b9ff; border-radius: 12px;
+      padding: 11px 14px; text-align: center;
+      font-size: 0.92rem; color: #2c3e50;
+    }
+    .gs-goal b { font-family: 'Jua', sans-serif; }
+    .growth-loading, .growth-empty {
+      text-align: center; padding: 20px; color: #7f8c8d;
+      font-family: 'Nanum Gothic', sans-serif; font-weight: 700;
+    }
+    @media (max-width: 500px) {
+      .gs-baa { grid-template-columns: 1fr; gap: 6px; }
+      .gs-arrow { padding: 4px 0; }
+      .gs-facts { grid-template-columns: 1fr; }
+    }
+
+    /* ===== 선생님 메뉴 (시작 화면 전용) ===== */
+    .tz { margin-top: 14px; text-align: center; }
+    .tz-toggle {
+      background: #f4f7fa; color: #7f8c8d;
+      font-family: 'Jua', sans-serif; font-weight: normal; font-size: 1rem;
+      border: 2px solid #dfe6e9; border-radius: 14px;
+      padding: 10px 18px; cursor: pointer; transition: all 0.15s;
+    }
+    .tz-toggle:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .tz-panel {
+      display: none; margin-top: 12px; padding: 16px;
+      background: #f8fbff; border: 2px dashed #cbdced; border-radius: 16px;
+      text-align: left;
+    }
+    .tz-panel.open { display: block; }
+    .tz-label {
       font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif; font-weight: 700;
-      color: var(--ink); overflow: hidden;
+      font-size: 0.86rem; color: #7f8c8d; margin-bottom: 6px;
     }
-    #cert-screen.show { display: flex; }
-    #cert-screen .learn-topbar { background: linear-gradient(135deg, #f6c343, #f0932b); }
-    .cert-timer { font-family:'Jua',sans-serif; font-size: clamp(20px,2.4vw,32px); color: var(--hi-dark); }
-    .cert-go {
-      min-height: 50px; padding: 12px 24px; border:none; border-radius: 16px; cursor:pointer;
-      font-family:'Jua',sans-serif; font-size: 1.2rem; color:#fff;
-      background: #f1c40f; border-bottom: 5px solid #d4ac0d;
+    .tz-input {
+      width: 100%; box-sizing: border-box; padding: 11px 12px;
+      border: 2px solid #dfe6e9; border-radius: 12px; outline: none;
+      font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif; font-weight: 700;
+      font-size: 0.9rem; color: var(--dark); background: #fff;
     }
-  </style>
-  <style>
-    /* ===================================================== */
-    /* 선생님 설정 — 설정 모달                                 */
-    /* ===================================================== */
-    .teacher-modal {
-      max-width: 580px;
-      border-color: var(--teacher) !important;
+    .tz-input:focus { border-color: var(--primary); }
+    .tz-row { display: flex; gap: 8px; margin-top: 10px; }
+    .tz-btn {
+      flex: 1; padding: 11px 12px; border: none; border-radius: 12px; cursor: pointer;
+      background: var(--primary); color: #fff; border-bottom: 4px solid var(--primary-dark);
+      font-family: 'Jua', sans-serif; font-weight: normal; font-size: 1rem;
     }
-
-    .teacher-modal h2 {
-      color: var(--teacher-dark);
-      margin: 0 0 8px 0;
-      font-family: 'Jua', sans-serif;
-      font-size: 1.6rem;
-      text-align: center;
+    .tz-btn:active { border-bottom: 0; transform: translateY(4px); }
+    .tz-btn-sub { background: #b2bec3; border-bottom-color: #8d9899; flex: 0 0 auto; min-width: 96px; }
+    .tz-msg {
+      margin-top: 10px; font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif; font-weight: 700;
+      font-size: 0.86rem; color: #16a085; line-height: 1.5; word-break: break-all;
     }
-
-    .teacher-modal .sub {
-      color: #6B7280;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.9rem;
-      text-align: center;
-      margin: 0 0 18px 0;
-      font-weight: 700;
+    .tz-msg.warn { color: #c0392b; }
+    .tz-link-box { display: none; margin-top: 14px; padding-top: 12px; border-top: 2px dashed #cbdced; }
+    .tz-link-box.open { display: block; }
+    .tz-link {
+      background: #fff; border: 2px solid #dfe6e9; border-radius: 12px;
+      padding: 10px 12px; font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
+      font-weight: 700; font-size: 0.82rem; color: #34495e;
+      word-break: break-all; line-height: 1.5;
     }
-
-    .teacher-section {
-      background: #F9FAFB;
-      border-radius: 14px;
-      padding: 16px;
-      margin-bottom: 14px;
-      border: 2px solid #E5E7EB;
-    }
-
-    .teacher-section h3 {
-      margin: 0 0 8px 0;
-      color: var(--teacher-dark);
-      font-family: 'Jua', sans-serif;
-      font-size: 1.1rem;
-      border: none;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .teacher-section .desc {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.85rem;
-      color: #6B7280;
-      line-height: 1.55;
-      margin: 0 0 10px 0;
-      font-weight: 700;
-    }
-
-    .teacher-input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 2px solid #D1D5DB;
-      border-radius: 12px;
-      font-family: 'JetBrains Mono', 'Noto Sans KR', monospace;
-      font-size: 0.92rem;
-      outline: none;
-      transition: border-color 0.15s;
-      background: #fff;
-    }
-
-    .teacher-input:focus {
-      border-color: var(--teacher);
-      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
-    }
-
-    .teacher-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    .teacher-btn {
-      flex: 1;
-      min-width: 110px;
-      padding: 12px;
-      border: none;
-      border-radius: 12px;
-      font-family: 'Jua', sans-serif;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.1s;
-      letter-spacing: 0.5px;
-    }
-
-    .teacher-btn.primary {
-      background: var(--teacher);
-      color: #fff;
-      border-bottom: 4px solid var(--teacher-dark);
-    }
-
-    .teacher-btn.primary:active {
-      border-bottom-width: 0;
-      transform: translateY(4px);
-    }
-
-    .teacher-btn.danger {
-      background: #fff;
-      color: #DC2626;
-      border: 2px solid #FECACA;
-    }
-
-    .teacher-btn.danger:hover { background: #FEF2F2; }
-
-    .teacher-btn.ghost {
-      background: #fff;
-      color: #4B5563;
-      border: 2px solid #E5E7EB;
-    }
-
-    .teacher-btn.ghost:hover { background: #F3F4F6; }
-
-    .student-link-box {
-      margin-top: 12px;
-      padding: 10px 12px;
-      background: #fff;
-      border: 2px dashed #C7D2FE;
-      border-radius: 12px;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .student-link-box.show { display: flex; }
-
-    .student-link-url {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: #1F2937;
-      background: #F3F4F6;
-      padding: 8px 10px;
-      border-radius: 8px;
-      word-break: break-all;
-      max-height: 80px;
-      overflow-y: auto;
-    }
-
-    .status-line {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-top: 8px;
-      padding: 8px 10px;
-      border-radius: 8px;
-      display: none;
-    }
-
-    .status-line.show { display: block; }
-    .status-line.ok { background: #ECFDF5; color: #065F46; border-left: 4px solid #10B981; }
-    .status-line.err { background: #FEF2F2; color: #991B1B; border-left: 4px solid #EF4444; }
-    .status-line.info { background: #EEF2FF; color: #3730A3; border-left: 4px solid #6366F1; }
-
-    /* 토스트 알림 */
-    .toast-stack {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 5500;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      pointer-events: none;
-    }
-
-    .toast {
-      background: #1F2937;
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      animation: toastIn 0.25s ease;
-      max-width: 90vw;
-      text-align: center;
-    }
-    .toast.info { background: #4338CA; }
-    .toast.ok { background: #047857; }
-    .toast.warn { background: #B45309; }
-    .toast.err { background: #B91C1C; }
-
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes toastOut {
-      to { opacity: 0; transform: translateY(10px); }
-    }
-
-    /* 콘페티 캔버스 (라이브러리 미사용) */
-    #confetti-canvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 4500;
-    }
+    .tz-link-box .tz-btn { margin-top: 8px; width: 100%; }
+    body.has-demo-bar #login-screen { margin-bottom: 90px; }
+    body.has-demo-bar #dashboard-container { margin-bottom: 100px; }
   </style>
 </head>
+
 <body>
 
-  <!-- 가로 회전 안내 -->
-  <div id="rotate-overlay">
-    <div class="rot-icon">📱</div>
-    <p>기기를 가로로 돌려 주세요!</p>
-  </div>
-
-  <!-- 콘페티 캔버스 -->
-  <canvas id="confetti-canvas"></canvas>
-
-  <!-- 토스트 알림 영역 -->
-  <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
-
-  <!-- ============================================== -->
-  <!-- 학습 모드                                       -->
-  <!-- ============================================== -->
-  <div id="learn-screen">
-    <div id="stage-modal" class="stage-modal-overlay">
-      <div class="stage-modal">
-        <div class="sm-icon" id="sm-icon">🧭</div>
-        <h2 id="sm-title">단계 제목</h2>
-        <p id="sm-desc">설명</p>
-        <button class="sm-go" id="sm-go-btn">시작하기!</button>
-        <div class="sm-hint">Enter 또는 Space 키로도 시작할 수 있어요</div>
-      </div>
-    </div>
-
-    <div class="learn-topbar">
-      <span class="lt-title">📚 한글 타자 배움터</span>
-      <button id="learn-exit-btn">← 내 기록으로</button>
-    </div>
-
-    <div class="learn-body">
-      <div class="learn-main" id="learn-main"></div>
-
-      <aside class="learn-side">
-        <div class="side-card side-id">
-          <span class="badge" id="ls-badge">🐣</span>
-          <div>
-            <div class="who" id="ls-who">학생</div>
-            <div class="grade" id="ls-grade">아기용</div>
-          </div>
-          <button class="relogin" id="learn-relogin-btn">다른 학생</button>
-        </div>
-
-        <div class="side-card side-progress">
-          <div class="pg-now" id="ls-stage-name">단계</div>
-          <div class="pg-bar"><div class="pg-fill" id="ls-fill"></div></div>
-          <div class="pg-pips" id="ls-pips"></div>
-        </div>
-
-        <div class="side-guide" id="ls-guide">
-          <h4 id="ls-guide-title">이 단계는?</h4>
-          <div id="ls-guide-body"></div>
-        </div>
-
-        <div class="side-card side-achieve">
-          <div class="ac"><b id="ls-acc">-</b><span>정확도</span></div>
-          <div class="ac"><b id="ls-cpm">-</b><span>타/분</span></div>
-          <div class="ac"><b id="ls-streak">0</b><span>연속 정답</span></div>
-        </div>
-
-        <div class="side-card side-actions">
-          <button class="btn-prev" id="ls-prev">이전</button>
-          <button class="btn-redo" id="ls-redo">다시</button>
-          <button class="btn-next" id="ls-next">다음 →</button>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- ============================================== -->
-  <!-- 검정 모드                                       -->
-  <!-- ============================================== -->
-  <div id="cert-screen">
-    <div class="learn-topbar">
-      <span class="lt-title">🏅 타자 검정</span>
-      <button id="cert-exit-btn">← 나가기</button>
-    </div>
-
-    <div class="learn-body">
-      <div class="learn-main" id="cert-main"></div>
-
-      <aside class="learn-side">
-        <div class="side-card side-id">
-          <span class="badge" id="ct-badge">🐣</span>
-          <div>
-            <div class="who" id="ct-who">학생</div>
-            <div class="grade" id="ct-grade">아기용</div>
-          </div>
-        </div>
-
-        <div class="side-card side-progress">
-          <div class="pg-now" id="ct-prog">0 / 0 글자</div>
-          <div class="pg-bar"><div class="pg-fill" id="ct-fill"></div></div>
-        </div>
-
-        <div class="side-guide">
-          <h4>📋 검정 안내</h4>
-          <div>화면의 글을 <b>처음부터 끝까지 똑같이</b> 입력하세요.<br>정확도 <b>90% 이상</b>이면 타수와 칭호가 <b>자동으로 저장</b>돼요.<br>속도보다 <b>정확함</b>이 먼저예요!
-            <div class="tip">시간이 끝나도 멈추지 않아요. 끝까지 차분하게 도전!</div>
-          </div>
-        </div>
-
-        <div class="side-card side-achieve">
-          <div class="ac"><b class="cert-timer" id="ct-time">0:00</b><span>경과 시간</span></div>
-          <div class="ac"><b id="ct-cpm">0</b><span>타/분</span></div>
-          <div class="ac"><b id="ct-acc">100%</b><span>정확도</span></div>
-        </div>
-
-        <div class="side-card side-actions">
-          <button class="btn-redo" id="ct-redo">다시</button>
-          <button class="btn-next" id="ct-submit">제출하기 ✅</button>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- 장식 -->
+  <!-- 구름, 로켓, 키보드 장식 -->
   <div class="bg-decoration bg-1">☁️</div>
   <div class="bg-decoration bg-2">🛡️</div>
   <div class="bg-decoration bg-3">🏰</div>
@@ -1330,109 +975,132 @@
   <header>
     <h1>⌨️ 위대한 타자 원정대</h1>
     <p>회색 자판에 색과 마법을 불어넣어 줄 영웅을 찾습니다!</p>
-    <div id="conn-chip" class="conn-chip demo">
-      <span class="dot"></span>
-      <span id="conn-chip-text">연결 상태 확인 중...</span>
-    </div>
-    <div>
-      <button class="btn-guide" id="open-guide-btn">📖 시스템 안내 (가이드북)</button>
-    </div>
+    <button class="btn-guide" onclick="openGuide()">📖 시스템 안내 (가이드북)</button>
   </header>
 
+  <!-- 원정 가이드 모달 -->
+  <div id="guide-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeGuide()">❌</button>
+      <h2 style="text-align: center; color: var(--primary); margin-top: 0; font-size: 2rem;">📖 시스템 안내 가이드북</h2>
+
+      <div class="guide-section">
+        <h3>👑 타수별 칭호 안내</h3>
+        <table class="guide-table">
+          <tr>
+            <th>타수 기준</th>
+            <th>획득 칭호</th>
+          </tr>
+          <tr>
+            <td>50타 미만</td>
+            <td>🐣 아기용</td>
+          </tr>
+          <tr>
+            <td>50타 이상</td>
+            <td>🔮 견습마법사</td>
+          </tr>
+          <tr>
+            <td>100타 이상</td>
+            <td>🗺️ 초보모험가</td>
+          </tr>
+          <tr>
+            <td>150타 이상</td>
+            <td>⚔️ 강철기사</td>
+          </tr>
+          <tr>
+            <td>200타 이상</td>
+            <td>🏹 번개궁수</td>
+          </tr>
+          <tr>
+            <td>250타 이상</td>
+            <td>🌪️ 폭풍소환사</td>
+          </tr>
+          <tr>
+            <td>300타 이상</td>
+            <td>🐉 드래곤라이더</td>
+          </tr>
+          <tr>
+            <td>350타 이상</td>
+            <td>🏰 대륙수호자</td>
+          </tr>
+          <tr>
+            <td>400타 이상</td>
+            <td>⚡ 타자 신</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="guide-section">
+        <h3>🗺️ 자판 컬렉션 해금 조건</h3>
+        <div
+          style="font-family: 'Noto Sans KR', sans-serif; font-size: 0.95rem; color: #34495e; padding: 12px; background: #e8f4f8; border-radius: 10px;">
+          <ul style="padding-left: 20px; line-height: 1.8; margin: 0;">
+            <li><strong style="color:var(--primary-dark)">1단계 (자음 수집):</strong><br> <strong>10타</strong>부터 시작하여
+              <strong>20타마다 1개씩</strong> 자음이 모입니다!
+            </li>
+            <li><strong style="color:var(--success-dark)">2단계 (모음 성장):</strong><br> <strong>290타</strong>부터 시작하여
+              <strong>10타마다 1개씩</strong> 모음이 모입니다!
+            </li>
+            <li><strong style="color:#d35400">3단계 (특수키 황금 각성 ✨):</strong><br> <strong>400타 달성 시</strong> 숫자와 쌍자음 키가
+              <strong>황금빛</strong>으로 일괄 해방됩니다!
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="guide-section">
+        <h3>⌨️ 어떻게 연습하나요?</h3>
+        <div
+          style="font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif; font-weight:700; font-size: 0.98rem; color: #34495e; padding: 14px; background: linear-gradient(135deg, #e8f8f3, #d6f0e8); border-radius: 10px; border: 2px dashed #16a085; line-height:1.7;">
+          <p style="margin: 0;">
+            ⌨️ 먼저 <strong>한컴타자</strong> 같은 곳에서 타자 연습을 해요.<br>
+            🏅 연습이 끝나면 <strong>타수와 정확도</strong>를 적고 기록 단추를 눌러요.<br>
+            정확도 <strong>90% 이상</strong>이면 칭호와 자판이 자동으로 해금돼요!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 결과 알림 모달 -->
+  <div id="result-modal" class="modal-overlay hidden" style="z-index: 2000;">
+    <div class="modal-content" style="text-align: center; width: 85%; max-width: 400px; padding: 40px 30px;">
+      <div id="result-icon" style="font-size: 5rem; margin-bottom: 15px; display: inline-block;">🎉</div>
+      <h2 id="result-title" style="color: var(--primary-dark); margin-top: 0; font-size: 2.2rem; margin-bottom: 15px;">
+        저장 완료!</h2>
+      <p id="result-message"
+        style="font-size: 1.2rem; color: #34495e; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; margin-bottom: 30px; line-height: 1.5;">
+      </p>
+      <button onclick="closeResultModal()" class="btn-mega"
+        style="font-size: 1.5rem; padding: 15px; border-radius: 15px; width: 80%;">확인</button>
+    </div>
+  </div>
+
+
   <!-- ============================================== -->
-  <!-- 로비 (Lobby)                                   -->
+  <!-- 1. 입장 전 로비 (Lobby Screen)                 -->
   <!-- ============================================== -->
   <div id="login-screen">
     <div class="splash-card">
-      <div id="demo-banner" class="demo-banner" style="display:none"></div>
-
       <div class="splash-icon">🚀</div>
       <h2>탐험 준비</h2>
       <p>명단에서 자신의 이름을 찾아 모험을 시작하세요!</p>
 
       <select id="user-select" class="mega-select">
-        <option value="">명단을 불러오는 중...</option>
+        <option value="">명단을 불러오는 중... ⏳</option>
       </select>
 
-      <button id="login-btn" class="btn-mega">원정 시작하기! ⚔️</button>
-
-      <!-- 선생님 설정 진입: data-teacher-only (학생 링크에서는 DOM에서 제거됨) -->
-      <div class="teacher-entry" data-teacher-only>
-        <button id="open-teacher-btn" class="btn-teacher">
-          ⚙️ 선생님 설정
-        </button>
-        <div class="demo-note" id="login-teacher-hint">
-          처음 사용하시는 선생님은 여기서 구글 시트를 연결하세요.
-        </div>
-      </div>
+      <button onclick="login()" class="btn-mega">원정 시작하기! ⚔️</button>
+      <!-- 선생님 메뉴는 학생용 링크로 들어오면 화면에 만들지 않습니다. -->
     </div>
   </div>
 
   <!-- ============================================== -->
-  <!-- 선생님 설정 모달 (data-teacher-only)            -->
-  <!-- ============================================== -->
-  <div id="teacher-modal" class="modal-overlay hidden" data-teacher-only>
-    <div class="modal-content teacher-modal">
-      <button class="close-btn" id="teacher-close-btn" aria-label="닫기">❌</button>
-      <h2>선생님 설정</h2>
-      <p class="sub">우리 반 구글 시트에 연결하면 학급 단위로 기록이 쌓여요.</p>
-
-      <div class="teacher-section">
-        <h3>1. 웹앱 주소 연결</h3>
-        <p class="desc">
-          구글 시트에서 확장 프로그램 &gt; Apps Script &gt; 배포 &gt; 새 배포로 만든
-          <b>웹앱 URL</b>을 아래에 붙여넣어 주세요.
-        </p>
-        <input type="url" id="exec-url-input" class="teacher-input"
-               placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off" spellcheck="false">
-        <div class="teacher-actions">
-          <button class="teacher-btn primary" id="connect-btn">연결하기</button>
-          <button class="teacher-btn danger" id="disconnect-btn">연결 해제</button>
-        </div>
-        <div id="connect-status" class="status-line"></div>
-      </div>
-
-      <div class="teacher-section">
-        <h3>2. 학생용 입장 주소</h3>
-        <p class="desc">
-          연결이 완료되면 학생용 입장 주소가 자동으로 만들어집니다.
-          학급 게시판이나 채팅방에 공유해 주세요. 학생은 별도 설정 없이 바로 들어옵니다.
-        </p>
-        <div id="student-link-box" class="student-link-box">
-          <div id="student-link-url" class="student-link-url"></div>
-          <div class="teacher-actions">
-            <button class="teacher-btn primary" id="copy-link-btn">학생용 주소 복사</button>
-            <button class="teacher-btn ghost" id="open-link-btn">새 탭에서 열기</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="teacher-section">
-        <h3>3. 작동 확인</h3>
-        <p class="desc">
-          연결한 시트의 학생 명단이 잘 불러와지는지 빠르게 확인해 보세요.
-        </p>
-        <div class="teacher-actions">
-          <button class="teacher-btn ghost" id="ping-btn">서버 응답 확인</button>
-          <button class="teacher-btn ghost" id="roster-check-btn">학생 명단 미리보기</button>
-        </div>
-        <div id="ping-status" class="status-line"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================== -->
-  <!-- 대시보드                                        -->
+  <!-- 2. 메인 대시보드 (Dashboard)                   -->
   <!-- ============================================== -->
   <div id="dashboard-container" class="hidden">
-    <div class="enter-learn-bar">
-      <div class="elb-txt">📚 한글 타자 배움터<small>자리 익히기부터 차근차근 배우고, 검정으로 칭호를 받아요!</small></div>
-      <div class="elb-btns">
-        <button id="enter-learn-btn">학습 시작하기 ▶</button>
-        <button class="btn-cert" id="enter-cert-btn">🏅 검정 도전</button>
-      </div>
-    </div>
-
+    
+    <!-- Left Column: User Profile & Rankings -->
     <div class="left-col">
       <div class="panel" id="profile-panel">
         <h3>👑 나의 칭호와 전리품</h3>
@@ -1445,1988 +1113,1248 @@
           <div class="grade-name" id="d-grade-name">불러오는 중...</div>
           <div class="stat-box">
             <span>나의 최고 스피드</span>
-            <strong id="d-best-wpm" style="color:var(--secondary-dark); font-size:1.25rem; font-family:'Jua';">0타</strong>
+            <strong id="d-best-wpm"
+              style="color:var(--secondary-dark); font-size:1.3rem; font-family:'Jua';">0타</strong>
           </div>
           <div class="stat-box">
             <span>마법 부여 자판</span>
-            <strong id="d-unlocked-count" style="color:var(--success-dark); font-size:1.25rem; font-family:'Jua';">0개</strong>
+            <strong id="d-unlocked-count"
+              style="color:var(--success-dark); font-size:1.3rem; font-family:'Jua';">0개</strong>
           </div>
         </div>
-        <button id="logout-btn" class="btn-logout">문 밖으로 나가기 🚪 (로그아웃)</button>
+        <button onclick="logout()" class="btn-logout">문 밖으로 나가기 🚪 (로그아웃)</button>
       </div>
 
-      <div class="panel" id="learn-progress-panel">
-        <h3>📚 나의 학습 진도</h3>
-        <div class="pg-bar" style="height:16px;margin-bottom:12px;"><div class="pg-fill" id="dash-fill"></div></div>
-        <div class="pg-pips" id="dash-pips"></div>
-        <p id="dash-progress-text" style="text-align:center;color:#7f8c8d;font-family:'Nanum Gothic','Noto Sans KR',sans-serif;font-weight:700;font-size:0.95rem;margin:14px 0 0;line-height:1.5;">불러오는 중...</p>
-      </div>
-
+      
       <div class="panel">
         <h3>🏆 대륙의 전설들 (명예의 전당)</h3>
         <div style="display: flex; gap: 10px; margin-bottom: 12px;">
-          <button id="rank-typing-btn"
-            style="flex: 1; padding: 12px; font-size: 1.2rem; background: var(--primary); border:none; border-bottom: 5px solid var(--primary-dark); color:white; border-radius: 12px; cursor:pointer;font-family:'Jua',sans-serif;">🥇 타자왕</button>
-          <button id="rank-imprv-btn"
-            style="flex: 1; padding: 12px; font-size: 1.2rem; background: var(--accent); border:none; border-bottom: 5px solid var(--accent-dark); color:white; border-radius: 12px; cursor:pointer;font-family:'Jua',sans-serif;">🔥 향상왕</button>
+          <button onclick="showRanking('typing')"
+            style="flex: 1; padding: 12px; font-size: 1.3rem; background: var(--primary); border:none; border-bottom: 5px solid var(--primary-dark); color:white; border-radius: 12px; cursor:pointer;">🥇
+            타자왕</button>
+          <button onclick="showRanking('imprv')"
+            style="flex: 1; padding: 12px; font-size: 1.3rem; background: var(--accent); border:none; border-bottom: 5px solid var(--accent-dark); color:white; border-radius: 12px; cursor:pointer;">🔥
+            향상왕</button>
         </div>
         <div id="ranking-desc"
-          style="text-align: center; font-size: 0.88rem; color: #34495e; font-family: 'Noto Sans KR', sans-serif; margin-bottom: 14px; padding: 10px; border-radius: 10px; background: #f1f2f6; word-break: keep-all; line-height: 1.4;">
+          style="text-align: center; font-size: 0.9rem; color: #34495e; font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px; padding: 10px; border-radius: 10px; background: #f1f2f6; word-break: keep-all; line-height: 1.4;">
           기준 안내를 불러오는 중입니다...
         </div>
         <div id="ranking-container">
-          <p style="text-align:center; color:#888; font-family:'Noto Sans KR',sans-serif;">데이터를 불러오는 중입니다...</p>
+          <p style="text-align:center; color:#888; font-family:'Noto Sans KR',sans-serif;">데이터를 불러오는 중입니다... ⏳</p>
         </div>
       </div>
     </div>
 
+    <!-- Right Column: Record Form, Chart & Keyboard Map -->
     <div class="right-col">
-      <div class="panel">
-        <h3>🏅 타수 기록은 검정으로!</h3>
-        <p style="color:#34495e; font-family:'Nanum Gothic','Noto Sans KR',sans-serif; font-weight:700; margin-top:-6px; margin-bottom:16px; font-size:0.95rem; line-height:1.6;">
-          이제 타수는 <strong>앱 안의 검정</strong>에서 자동으로 측정·기록돼요.<br>
-          정확도 <strong>90% 이상</strong>이면 칭호와 자판이 자동으로 해금됩니다!
+
+      <!-- Record Panel -->
+      <div class="panel" id="record-panel">
+        <h3>⚔️ 새로운 타자 전투 기록하기</h3>
+        <p
+          style="text-align: center; color: #7f8c8d; margin-top: -10px; margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-size: 0.95rem; font-weight: bold;">
+          ※ 정확도 <strong style="color:var(--accent-dark)">90% 이상</strong>인 훈련의 결과만 인정받을 수 있습니다!
         </p>
-        <button id="enter-cert-btn-2" class="btn-mega" style="background:#f1c40f; border-bottom:7px solid #d4ac0d; color:#7a5c00; text-shadow:none; font-size:1.4rem;">🏅 지금 검정 도전하기</button>
-        <p style="text-align:center; color:#95a5a6; font-family:'Nanum Gothic',sans-serif; font-weight:700; font-size:0.88rem; margin-top:12px;">
-          아직 자신 없다면? 위쪽 <strong>학습 시작하기</strong>로 차근차근 연습해요
-        </p>
+        <div class="input-group">
+          <input type="number" id="input-wpm" class="record-input" placeholder="타수 (예: 150)" min="0">
+          <input type="number" id="input-acc" class="record-input" placeholder="정확도 (%)" min="0" max="100">
+        </div>
+        <button onclick="submitRecord()" class="btn-submit">기록 외치고 보상받기! 🎁</button>
+        <div id="loading">기록을 마법서에 새기는 중... ✍️</div>
+        <div
+          style="margin-top: 18px; padding: 14px; border: 3px dashed var(--secondary); border-radius: 15px; background: #fff8ec; text-align: center;">
+          <p
+            style="margin: 0 0 10px 0; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; color: #7f8c8d; font-size: 0.95rem;">
+            🎯 아직 기록할 타수가 없나요?</p>
+          <a href="https://www.hancomtaja.com/ko" target="_blank" rel="noopener"
+            style="display: inline-block; background: var(--secondary); color: white; font-family: 'Jua', sans-serif; font-size: 1.1rem; padding: 10px 20px; border-radius: 12px; border-bottom: 4px solid var(--secondary-dark); text-decoration: none;">⌨️ 한컴타자에서 연습하러 가기 🚀</a>
+        </div>
       </div>
 
+     <!-- Chart Panel -->
       <div class="panel" id="chart-panel">
-        <h3>📈 나의 성장 여정</h3>
-        <div class="chart-wrap">
-          <canvas id="growth-chart" class="chart-canvas"></canvas>
-          <div id="chart-empty-info" class="chart-empty hidden">
-            아직 전투 기록이 없습니다.<br>첫 번째 기록을 기다리고 있어요!
-          </div>
+        <h3>📖 나의 성장 이야기</h3>
+        
+        <!-- 스토리 카드 (자동 생성) -->
+        <div id="growth-story" class="growth-story">
+          <div class="growth-loading">이야기를 만들고 있어요... ⏳</div>
+        </div>
+        
+        <!-- 뷰 전환: 최근 2주 vs 전체 -->
+        <div class="chart-view-tabs">
+          <button class="cvt-btn on" data-view="recent" onclick="switchChartView('recent')">📅 최근 2주</button>
+          <button class="cvt-btn" data-view="all" onclick="switchChartView('all')">🗓️ 전체 기간</button>
+        </div>
+        
+        <div style="width: 100%; height: 240px; position: relative;">
+          <canvas id="growthChart"></canvas>
         </div>
       </div>
 
       <div class="panel">
         <h3>🗺️ 타자 원정지도 (자판 컬렉션)</h3>
-        <p style="text-align: center; color: #7f8c8d; margin-top: -10px; font-family: 'Noto Sans KR', sans-serif; font-size: 0.92rem; font-weight: bold;">
+        <p
+          style="text-align: center; color: #7f8c8d; margin-top: -10px; font-family: 'Noto Sans KR', sans-serif; font-size: 0.95rem; font-weight: bold;">
           빠르게 타자를 칠수록 회색 석판이 빛나는 보석으로 변합니다! <br>
           <span style="color:#f39c12">전설의 400타 달성 시, 특수키가 황금빛으로 해방됩니다 ✨</span>
         </p>
-        <div class="keyboard-container" id="keyboard-map"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 시스템 안내 가이드북 모달 -->
-  <div id="guide-modal" class="modal-overlay hidden">
-    <div class="modal-content">
-      <button class="close-btn" id="guide-close-btn" aria-label="닫기">❌</button>
-      <h2 style="text-align: center; color: var(--primary); margin-top: 0; font-size: 1.8rem;">📖 시스템 안내 가이드북</h2>
-
-      <div class="guide-section">
-        <h3>👑 타수별 칭호 안내</h3>
-        <table class="guide-table">
-          <tr><th>타수 기준</th><th>획득 칭호</th></tr>
-          <tr><td>50타 미만</td><td>🐣 아기용</td></tr>
-          <tr><td>50타 이상</td><td>🔮 견습마법사</td></tr>
-          <tr><td>100타 이상</td><td>🗺️ 초보모험가</td></tr>
-          <tr><td>150타 이상</td><td>⚔️ 강철기사</td></tr>
-          <tr><td>200타 이상</td><td>🏹 번개궁수</td></tr>
-          <tr><td>250타 이상</td><td>🌪️ 폭풍소환사</td></tr>
-          <tr><td>300타 이상</td><td>🐉 드래곤라이더</td></tr>
-          <tr><td>350타 이상</td><td>🏰 대륙수호자</td></tr>
-          <tr><td>400타 이상</td><td>⚡ 타자 신</td></tr>
-        </table>
-      </div>
-
-      <div class="guide-section">
-        <h3>🗺️ 자판 컬렉션 해금 조건</h3>
-        <div style="font-family: 'Noto Sans KR', sans-serif; font-size: 0.93rem; color: #34495e; padding: 12px; background: #e8f4f8; border-radius: 10px;">
-          <ul style="padding-left: 20px; line-height: 1.8; margin: 0;">
-            <li><strong style="color:var(--primary-dark)">1단계 (자음 수집):</strong><br> 10타부터 시작하여 20타마다 1개씩 자음이 모입니다!</li>
-            <li><strong style="color:var(--success-dark)">2단계 (모음 성장):</strong><br> 290타부터 시작하여 10타마다 1개씩 모음이 모입니다!</li>
-            <li><strong style="color:#d35400">3단계 (특수키 황금 각성 ✨):</strong><br> 400타 달성 시 숫자와 쌍자음 키가 황금빛으로 일괄 해방됩니다!</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="guide-section">
-        <h3>⌨️ 어떻게 연습하나요?</h3>
-        <div style="font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif; font-weight:700; font-size: 0.95rem; color: #34495e; padding: 14px; background: linear-gradient(135deg, #e8f8f3, #d6f0e8); border-radius: 10px; border: 2px dashed #16a085; line-height:1.7;">
-          <p style="margin: 0;">
-            📚 <strong>학습 시작하기</strong>에서 손 위치 → 자리 → 낱말 → 글 순서로 차근차근 배워요.<br>
-            🏅 <strong>검정 도전</strong>에서 글을 입력하면 <strong>타수와 정확도가 자동으로 측정·기록</strong>됩니다.<br>
-            정확도 <strong>90% 이상</strong>이면 칭호와 자판이 자동으로 해금돼요!
-          </p>
+        <div class="keyboard-container" id="keyboard-map">
+          <!-- Rendered via JS -->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 결과 알림 모달 -->
-  <div id="result-modal" class="modal-overlay hidden" style="z-index: 2000;">
-    <div class="modal-content" style="text-align: center; max-width: 400px; padding: 36px 28px;">
-      <div id="result-icon" style="font-size: 4.5rem; margin-bottom: 12px; display: inline-block;">🎉</div>
-      <h2 id="result-title" style="color: var(--primary-dark); margin-top: 0; font-size: 2rem; margin-bottom: 12px;">저장 완료!</h2>
-      <p id="result-message" style="font-size: 1.1rem; color: #34495e; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; margin-bottom: 26px; line-height: 1.5;"></p>
-      <button id="result-close-btn" class="btn-mega" style="font-size: 1.4rem; padding: 14px; border-radius: 14px; width: 80%;">확인</button>
-    </div>
-  </div>
-
-
   <script>
-  // ===========================================================
-  // 타자 원정대 · 클라이언트 셸 — 모드 감지 / 네임스페이스 / 연결 칩
-  // ===========================================================
-  'use strict';
+    // State
+    let currentUser = null;
 
-  // ----- 모듈 네임스페이스 (단일 객체로 묶어 전역 오염 최소화) -----
-  window.TJA = window.TJA || {};
-  var TJA = window.TJA;
+    // Logic
+    const kbdLayout = [
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+      ['ㅂ', 'ㅈ', 'ㄷ', 'ㄱ', 'ㅅ', 'ㅛ', 'ㅕ', 'ㅑ', 'ㅐ', 'ㅔ'],
+      ['ㅁ', 'ㄴ', 'ㅇ', 'ㄹ', 'ㅎ', 'ㅗ', 'ㅓ', 'ㅏ', 'ㅣ'],
+      ['ㅋ', 'ㅌ', 'ㅊ', 'ㅍ', 'ㅠ', 'ㅜ', 'ㅡ']
+    ];
+    const specialMap = { 'ㅂ': 'ㅃ', 'ㅈ': 'ㅉ', 'ㄷ': 'ㄸ', 'ㄱ': 'ㄲ', 'ㅅ': 'ㅆ' };
+    const numSpecialKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ㄲ', 'ㄸ', 'ㅃ', 'ㅆ', 'ㅉ'];
 
-  TJA.NS = 'tjawnjdeo_';                // localStorage 키 접두사
-  TJA.EXEC_URL_KEY  = TJA.NS + 'execUrl';
-  TJA.PROGRESS_KEY  = function(name){ return 'progress:타자원정대:' + name; };
-  TJA.BUILD_SIG     = 'GEGHS-DEEPE-2026';
+    // ===================================================== //
+    // 접속 방식 판별 (학생은 아무것도 입력하지 않습니다)      //
+    // ===================================================== //
+    const APP_ID = 'typing-expedition';
+    const EXEC_STORAGE_KEY = 'typingExpedition_execUrl';
 
-  // ----- 모드 감지 -----
-  // 1) #c=<encodedExecUrl>  → 학생 모드 (이 한 URL만 공유하면 바로 입장)
-  // 2) localStorage.execUrl → 교사 모드 (선생님이 자기 기기에 저장해 둠)
-  // 3) 둘 다 없음           → 체험 모드 (로컬에만 저장)
-  TJA.detectMode = function() {
-    var hash = String(location.hash || '');
-    var m = hash.match(/[#&]c=([^&]+)/);
-    if (m && m[1]) {
-      try {
-        var decoded = decodeURIComponent(m[1]);
-        if (/^https:\/\/script\.google\.com\/macros\/s\/[^\/]+\/exec/.test(decoded)) {
-          TJA.execUrl = decoded;
-          TJA.mode = 'student';
-          return 'student';
-        }
-      } catch (e) { /* 무시하고 다음 단계로 */ }
+    let SERVER_URL = '';        // 선생님 시트 주소
+    let IS_STUDENT_LINK = false; // 학생용 링크로 들어왔는지
+    let IS_DEMO = true;          // 시트 미연동(체험) 상태인지
+
+    function readExecFromHash() {
+      const m = (location.hash || '').match(/[#&]c=([^&]+)/);
+      if (!m) return '';
+      try { return decodeURIComponent(m[1]).trim(); } catch (e) { return m[1].trim(); }
     }
-    var saved = '';
-    try { saved = localStorage.getItem(TJA.EXEC_URL_KEY) || ''; } catch (e) {}
-    if (saved && /^https:\/\/script\.google\.com\/macros\/s\/[^\/]+\/exec/.test(saved)) {
-      TJA.execUrl = saved;
-      TJA.mode = 'teacher';
-      return 'teacher';
+
+    function readSavedExec() {
+      try { return (localStorage.getItem(EXEC_STORAGE_KEY) || '').trim(); } catch (e) { return ''; }
     }
-    TJA.execUrl = '';
-    TJA.mode = 'demo';
-    return 'demo';
-  };
 
-  TJA.getExecUrl = function() { return TJA.execUrl || ''; };
-
-  TJA.setExecUrl = function(url) {
-    TJA.execUrl = url || '';
-    try {
-      if (url) localStorage.setItem(TJA.EXEC_URL_KEY, url);
-      else localStorage.removeItem(TJA.EXEC_URL_KEY);
-    } catch (e) {}
-    TJA.mode = url ? 'teacher' : 'demo';
-    TJA.refreshConnChip();
-  };
-
-  // ----- 학생 모드일 때 선생님 전용 요소 DOM에서 완전 제거 -----
-  TJA.stripTeacherOnly = function() {
-    var nodes = document.querySelectorAll('[data-teacher-only]');
-    for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
-      if (n && n.parentNode) n.parentNode.removeChild(n);
-    }
-  };
-
-  // ----- 연결 상태 칩 갱신 -----
-  TJA.refreshConnChip = function() {
-    var chip = document.getElementById('conn-chip');
-    var txt  = document.getElementById('conn-chip-text');
-    if (!chip || !txt) return;
-    if (TJA.mode === 'student') {
-      chip.className = 'conn-chip ok';
-      txt.innerText = '학급 시트 연결됨';
-    } else if (TJA.mode === 'teacher') {
-      chip.className = 'conn-chip ok';
-      txt.innerText = '시트 연결됨 · 선생님 모드';
-    } else {
-      chip.className = 'conn-chip demo';
-      txt.innerText = '체험 모드 (시트 미연결)';
-    }
-  };
-
-  // ----- 작은 토스트 알림 -----
-  TJA.toast = function(msg, kind, ms) {
-    kind = kind || 'info';
-    ms = ms || 2400;
-    var stack = document.getElementById('toast-stack');
-    if (!stack) { console.log('[toast]', kind, msg); return; }
-    var t = document.createElement('div');
-    t.className = 'toast ' + kind;
-    t.innerHTML = msg;
-    stack.appendChild(t);
-    setTimeout(function() {
-      t.style.opacity = '0';
-      t.style.transform = 'translateY(-6px)';
-      setTimeout(function(){ if (t.parentNode) t.parentNode.removeChild(t); }, 300);
-    }, ms);
-  };
-
-  // ----- 체험 모드 배너 -----
-  TJA.showDemoBannerIfNeeded = function() {
-    var b = document.getElementById('demo-banner');
-    if (!b) return;
-    if (TJA.mode === 'demo') b.classList.remove('hidden');
-    else b.classList.add('hidden');
-  };
-
-  </script>
-
-  <script>
-  // ===========================================================
-  // 서버 호출 (학생/교사 모드) — 동적 스크립트 태그 + 명명 콜백
-  // ===========================================================
-
-  TJA.__serverCallSeq = 0;
-  TJA.__pending = {};
-
-  function _tjaCleanup(id) {
-    var p = TJA.__pending[id];
-    if (!p) return;
-    if (p.timer) clearTimeout(p.timer);
-    if (p.script && p.script.parentNode) p.script.parentNode.removeChild(p.script);
-    try { delete window[p.cbName]; } catch (e) { window[p.cbName] = undefined; }
-    delete TJA.__pending[id];
-  }
-
-  TJA.serverCall = function(action, args, callback, errorback) {
-    var execUrl = TJA.getExecUrl();
-    if (!execUrl) {
-      if (errorback) errorback(new Error('서버 주소가 없어요. 선생님 설정에서 학급 시트를 먼저 연결해 주세요.'));
-      return;
-    }
-    TJA.__serverCallSeq = (TJA.__serverCallSeq + 1) % 100000;
-    var seq = TJA.__serverCallSeq;
-    var id  = 'sc_' + Date.now() + '_' + seq;
-    var cbName = '__sc_' + Date.now() + '_' + seq;
-
-    window[cbName] = function(envelope) {
-      var p = TJA.__pending[id];
-      _tjaCleanup(id);
-      if (!p) return;
-      try {
-        if (envelope && envelope.ok) {
-          if (callback) callback(envelope.data);
-        } else {
-          var msg = (envelope && envelope.error) ? envelope.error : '서버 응답이 비어 있어요.';
-          if (errorback) errorback(new Error(msg));
-          else console.warn('serverCall error:', msg);
-        }
-      } catch (e) {
-        if (errorback) errorback(e);
+    function detectMode() {
+      const fromHash = readExecFromHash();
+      if (fromHash) {
+        SERVER_URL = fromHash; IS_STUDENT_LINK = true; IS_DEMO = false; return;
       }
-    };
-
-    var sep = execUrl.indexOf('?') >= 0 ? '&' : '?';
-    var url = execUrl + sep + 'action=' + encodeURIComponent(action) +
-              '&callback=' + encodeURIComponent(cbName) +
-              '&payload=' + encodeURIComponent(JSON.stringify(args || {}));
-
-    var script = document.createElement('script');
-    script.src = url;
-    script.async = true;
-    script.onerror = function() {
-      var p = TJA.__pending[id];
-      _tjaCleanup(id);
-      if (p && errorback) errorback(new Error('서버에 닿지 못했어요. 인터넷 연결과 웹앱 주소를 확인해 주세요.'));
-    };
-
-    var timer = setTimeout(function() {
-      var p = TJA.__pending[id];
-      _tjaCleanup(id);
-      if (p && errorback) errorback(new Error('서버 응답이 늦어요. 잠시 후 다시 시도해 주세요.'));
-    }, 12000);
-
-    TJA.__pending[id] = { script: script, timer: timer, cbName: cbName };
-    document.body.appendChild(script);
-  };
-
-  </script>
-
-  <script>
-  // ===========================================================
-  // 체험 모드 데이터 레이어 + 통합 디스패처
-  // ===========================================================
-
-  // 학생 자판 해금 로직 (서버 getUnlockedKeys 클라이언트 미러)
-  TJA.CONSONANTS = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
-  TJA.VOWELS     = ['ㅏ','ㅑ','ㅓ','ㅕ','ㅗ','ㅛ','ㅜ','ㅠ','ㅡ','ㅣ','ㅐ','ㅔ'];
-  TJA.SPECIALS   = ['ㄲ','ㄸ','ㅃ','ㅆ','ㅉ','1','2','3','4','5','6','7','8','9','0'];
-
-  TJA.computeUnlockedKeys = function(wpm) {
-    var out = [];
-    for (var i = 0; i < TJA.CONSONANTS.length; i++) {
-      if (wpm >= 10 + i * 20) out.push(TJA.CONSONANTS[i]);
+      const saved = readSavedExec();
+      if (saved) {
+        SERVER_URL = saved; IS_STUDENT_LINK = false; IS_DEMO = false; return;
+      }
+      SERVER_URL = ''; IS_STUDENT_LINK = false; IS_DEMO = true;
     }
-    for (var j = 0; j < TJA.VOWELS.length; j++) {
-      if (wpm >= 290 + j * 10) out.push(TJA.VOWELS[j]);
+
+    // ===================================================== //
+    // 서버(시트)와 데이터 주고받기                            //
+    // ===================================================== //
+    let __cbSeq = 0;
+
+    function callServer(action, args, onSuccess, onFailure) {
+      const ok = onSuccess || function () { };
+      const fail = onFailure || function () { };
+
+      if (IS_DEMO) {
+        setTimeout(function () { demoCall(action, args || [], ok, fail); }, 10);
+        return;
+      }
+
+      if (!SERVER_URL) {
+        // 구글 시트 안에서 바로 열린 경우
+        if (window.google && google.script && google.script.run) {
+          const runner = google.script.run.withSuccessHandler(ok).withFailureHandler(fail);
+          runner[action].apply(runner, args || []);
+          return;
+        }
+        fail(new Error('연결된 시트 주소가 없어요.'));
+        return;
+      }
+
+      const cbName = '__tjcb' + (++__cbSeq) + '_' + Date.now();
+      const script = document.createElement('script');
+      let done = false;
+
+      function cleanup() {
+        clearTimeout(timer);
+        try { delete window[cbName]; } catch (e) { window[cbName] = undefined; }
+        if (script.parentNode) script.parentNode.removeChild(script);
+      }
+      const timer = setTimeout(function () {
+        if (done) return;
+        done = true; cleanup();
+        fail(new Error('응답이 늦어요. 잠시 뒤 다시 시도해 주세요.'));
+      }, 25000);
+
+      window[cbName] = function (res) {
+        if (done) return;
+        done = true; cleanup();
+        if (res && res.ok) ok(res.data);
+        else fail(new Error((res && res.message) ? res.message : '요청을 처리하지 못했어요.'));
+      };
+
+      script.onerror = function () {
+        if (done) return;
+        done = true; cleanup();
+        fail(new Error('시트에 연결하지 못했어요. 주소를 확인해 주세요.'));
+      };
+
+      script.src = SERVER_URL + (SERVER_URL.indexOf('?') >= 0 ? '&' : '?') +
+        'action=' + encodeURIComponent(action) +
+        '&callback=' + encodeURIComponent(cbName) +
+        '&args=' + encodeURIComponent(JSON.stringify(args || [])) +
+        '&t=' + Date.now();
+      document.head.appendChild(script);
     }
-    if (wpm >= 400) {
-      for (var k = 0; k < TJA.SPECIALS.length; k++) out.push(TJA.SPECIALS[k]);
+
+    // ===================================================== //
+    // 체험(미연동) 모드 — 이 기기에만 저장하고 이어하기        //
+    // ===================================================== //
+    const DEMO_CONSONANTS = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+    const DEMO_VOWELS     = ['ㅏ','ㅑ','ㅓ','ㅕ','ㅗ','ㅛ','ㅜ','ㅠ','ㅡ','ㅣ','ㅐ','ㅔ'];
+    const DEMO_SPECIAL    = ['ㄲ','ㄸ','ㅃ','ㅆ','ㅉ','1','2','3','4','5','6','7','8','9','0'];
+
+    function unlockedKeysLocal(wpm) {
+      const out = [];
+      for (let i = 0; i < DEMO_CONSONANTS.length; i++) if (wpm >= 10 + i * 20) out.push(DEMO_CONSONANTS[i]);
+      for (let j = 0; j < DEMO_VOWELS.length; j++) if (wpm >= 290 + j * 10) out.push(DEMO_VOWELS[j]);
+      if (wpm >= 400) DEMO_SPECIAL.forEach(k => out.push(k));
+      return out;
     }
-    return out;
-  };
 
-  TJA.computeGrade = function(wpm) {
-    if (wpm >= 400) return { name:'타자 신', icon:'⚡', color:'#FFD700', rank:9 };
-    if (wpm >= 350) return { name:'대륙수호자', icon:'🏰', color:'#9B59B6', rank:8 };
-    if (wpm >= 300) return { name:'드래곤라이더', icon:'🐉', color:'#E74C3C', rank:7 };
-    if (wpm >= 250) return { name:'폭풍소환사', icon:'🌪️', color:'#3498DB', rank:6 };
-    if (wpm >= 200) return { name:'번개궁수', icon:'🏹', color:'#2ECC71', rank:5 };
-    if (wpm >= 150) return { name:'강철기사', icon:'⚔️', color:'#95A5A6', rank:4 };
-    if (wpm >= 100) return { name:'초보모험가', icon:'🗺️', color:'#E67E22', rank:3 };
-    if (wpm >= 50)  return { name:'견습마법사', icon:'🔮', color:'#8E44AD', rank:2 };
-    return            { name:'아기용', icon:'🐣', color:'#F39C12', rank:1 };
-  };
+    // 체험 명단: 학생1 ~ 학생30 (칸 이름은 연동 모드와 똑같이 num, name)
+    function demoStudents() {
+      const list = [];
+      for (let i = 1; i <= 30; i++) list.push({ num: String(i), name: '학생' + i });
+      return list;
+    }
 
-  // ----- 체험 모드 영속 저장 (localStorage) -----
-  TJA.loadProgress = function(studentName) {
-    try {
-      var raw = localStorage.getItem(TJA.PROGRESS_KEY(studentName));
-      if (!raw) return null;
-      return JSON.parse(raw);
-    } catch (e) { return null; }
-  };
+    function demoKey(num) { return 'progress:' + APP_ID + ':' + num; }
 
-  TJA.saveProgress = function(studentName, p) {
-    try { localStorage.setItem(TJA.PROGRESS_KEY(studentName), JSON.stringify(p)); }
-    catch (e) {}
-  };
+    function demoLoad(num) {
+      try {
+        const raw = localStorage.getItem(demoKey(num));
+        if (!raw) return null;
+        const obj = JSON.parse(raw);
+        if (!obj || !(obj.logs instanceof Array)) return null;
+        return obj;
+      } catch (e) { return null; }
+    }
 
-  TJA.clearProgress = function(studentName) {
-    try { localStorage.removeItem(TJA.PROGRESS_KEY(studentName)); } catch (e) {}
-  };
+    function demoStore(num, state) {
+      try { localStorage.setItem(demoKey(num), JSON.stringify(state)); return true; }
+      catch (e) { return false; }
+    }
 
-  // ----- 데모 학생 명단 (학생1 ~ 학생30) -----
-  TJA.demoStudentList = function() {
-    var arr = [];
-    for (var i = 1; i <= 30; i++) arr.push({ num: i, name: '학생' + i });
-    return arr;
-  };
+    function demoAll() {
+      const out = [];
+      try {
+        const prefix = 'progress:' + APP_ID + ':';
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i) || '';
+          if (k.indexOf(prefix) !== 0) continue;
+          try {
+            const o = JSON.parse(localStorage.getItem(k));
+            if (o && o.logs instanceof Array && o.logs.length) out.push(o);
+          } catch (e) { }
+        }
+      } catch (e) { }
+      return out;
+    }
 
-  // ----- 데모용 액션 핸들러 -----
-  TJA.demoCall = function(action, args, callback) {
-    args = args || {};
-    setTimeout(function() {
+    function pad2(n) { return (n < 10 ? '0' : '') + n; }
+    function shortDate(ts) { const d = new Date(ts); return pad2(d.getMonth() + 1) + '/' + pad2(d.getDate()); }
+    function longDate(ts) {
+      const d = new Date(ts);
+      return pad2(d.getMonth() + 1) + '/' + pad2(d.getDate()) + ' ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+    }
+    function bestOf(logs) { return logs.reduce((m, l) => Math.max(m, Number(l.wpm) || 0), 0); }
+
+    function demoCall(action, args, ok, fail) {
       try {
         switch (action) {
-          case 'ping':
-            callback({ ok: true, sig: TJA.BUILD_SIG, mode: 'demo' });
-            break;
-
-          case 'getBuildInfo':
-            callback({ sig: TJA.BUILD_SIG, mode: 'demo' });
-            break;
-
-          case 'getStudentList':
-            callback(TJA.demoStudentList());
-            break;
-
-          case 'getUserData': {
-            var name = String(args.name || '학생' + args.num);
-            var p = TJA.loadProgress(name);
-            if (!p || !p.bestWpm) {
-              callback({
-                found: true, num: args.num, name: name,
-                bestWpm: 0, unlockedCount: 0, unlockedKeys: [],
-                gradeInfo: TJA.computeGrade(0)
-              });
-            } else {
-              var keys = TJA.computeUnlockedKeys(p.bestWpm);
-              callback({
-                found: true, num: args.num, name: name,
-                bestWpm: p.bestWpm, unlockedCount: keys.length, unlockedKeys: keys,
-                gradeInfo: TJA.computeGrade(p.bestWpm)
-              });
-            }
-            break;
-          }
-
-          case 'getRankingData':
-            // 체험 모드: 학급 데이터 없음 (본인만)
-            callback({ typingKing: [], improvementKing: [], monthlyStats: {}, userProfiles: {} });
-            break;
-
-          case 'getMonthlyStatsForUser': {
-            var name2 = String(args.name || '학생' + args.num);
-            var p2 = TJA.loadProgress(name2);
-            callback((p2 && p2.monthly) ? p2.monthly : {});
-            break;
-          }
-
-          case 'processRecord': {
-            // 데모 저장: bestWpm 갱신 + 오늘 일자 기록 + unlockedKeys
-            var name3 = String(args.name || '학생' + args.num);
-            var wpm = Number(args.wpm) || 0;
-            var acc = Number(args.acc) || 0;
-            if (acc < 90) {
-              callback({ success: false, message: '정확도 90% 이상만 기록됩니다. 더 정확하게 쳐보세요! 💪' });
-              break;
-            }
-            var p3 = TJA.loadProgress(name3) || { bestWpm: 0, attempts: 0, monthly: {}, learn: { maxCleared: -1, stageRecords: {} } };
-            var newBest = Math.max(p3.bestWpm || 0, wpm);
-            p3.bestWpm = newBest;
-            p3.attempts = (p3.attempts || 0) + 1;
-            // 오늘 일자(MM/dd) 최고 갱신
-            var now = new Date();
-            var mm = ('0' + (now.getMonth() + 1)).slice(-2);
-            var dd = ('0' + now.getDate()).slice(-2);
-            var dKey = mm + '/' + dd;
-            p3.monthly = p3.monthly || {};
-            if (!p3.monthly[dKey] || wpm > p3.monthly[dKey]) p3.monthly[dKey] = wpm;
-            TJA.saveProgress(name3, p3);
-
-            var keys = TJA.computeUnlockedKeys(newBest);
-            var g = TJA.computeGrade(newBest);
-            callback({
-              success: true, wpm: wpm, bestWpm: newBest, acc: acc, grade: g,
-              unlockedKeys: keys, unlockedCount: keys.length,
-              message: '기록이 이 기기에만 저장됐어요. 선생님이 학급 시트를 연결하면 함께 쌓여요!'
-            });
-            break;
-          }
-
-          case 'getLearnProgress': {
-            var name4 = String(args.name || '학생' + args.num);
-            var p4 = TJA.loadProgress(name4);
-            if (p4 && p4.learn) callback({ found: true, maxCleared: Number(p4.learn.maxCleared), stageRecords: p4.learn.stageRecords || {} });
-            else callback({ found: false, maxCleared: -1, stageRecords: {} });
-            break;
-          }
-
-          case 'saveLearnProgress': {
-            var name5 = String(args.name || '학생' + args.num);
-            var stageId = Number(args.stageId);
-            var accL = Number(args.acc) || 0;
-            var cpmL = Number(args.cpm) || 0;
-            var p5 = TJA.loadProgress(name5) || { bestWpm: 0, attempts: 0, monthly: {}, learn: { maxCleared: -1, stageRecords: {} } };
-            p5.learn = p5.learn || { maxCleared: -1, stageRecords: {} };
-            var rec = p5.learn.stageRecords || {};
-            var prev = rec[stageId] || { acc: 0, cpm: 0 };
-            rec[stageId] = {
-              acc: Math.max(prev.acc || 0, accL),
-              cpm: Math.max(prev.cpm || 0, cpmL),
-              ts: new Date().toISOString()
-            };
-            // 연속 통과한 최고 단계
-            var maxC = -1, s = 0;
-            while (rec[s] && rec[s].acc >= 90) { maxC = s; s++; }
-            p5.learn.maxCleared = maxC;
-            p5.learn.stageRecords = rec;
-            TJA.saveProgress(name5, p5);
-
-            // 9단계(0~8) 모두 통과 → 데모 진도 리셋 (학생의 다음 입장은 처음부터)
-            if (maxC >= 8) {
-              setTimeout(function() { TJA.clearProgress(name5); }, 800);
-            }
-
-            callback({
-              success: true, passed: accL >= 90, stageId: stageId, acc: accL, cpm: cpmL,
-              maxCleared: maxC, stageRecords: rec
-            });
-            break;
-          }
-
-          case 'getQuestionBank':
-            // 데모는 빈 응답 → 클라이언트는 코드에 박힌 기본 콘텐츠를 사용
-            callback({ certPassages: [], words: [], shortSentences: [], longSentences: [] });
-            break;
-
-          default:
-            callback(null);
+          case 'getStudentList': ok(demoStudents()); return;
+          case 'getUserData': ok(demoUserData(args[0])); return;
+          case 'getRankingData': ok(demoRanking()); return;
+          case 'getGrowthChartData': ok(demoGrowth(args[0])); return;
+          case 'getMonthlyStatsForUser': ok({}); return;
+          case 'processRecord':
+            ok(demoRecord(args[0], args[1], Number(args[4]), Number(args[5])));
+            return;
+          default: ok(null); return;
         }
-      } catch (e) {
-        callback(null);
-      }
-    }, 30);
-  };
-
-  // ----- 통합 디스패처 -----
-  TJA.callServer = function(action, args, success, failure) {
-    if (TJA.mode === 'demo') {
-      TJA.demoCall(action, args, function(data) {
-        if (data === null && failure) failure(new Error('데모 응답 실패'));
-        else if (success) success(data);
-      });
-      return;
+      } catch (e) { fail(e); }
     }
-    TJA.serverCall(action, args, success, failure);
-  };
 
-  </script>
-
-  <script>
-  // ===========================================================
-  // 선생님 설정 — 웹앱 주소 연결 / 학생용 입장 주소 공유 / 작동 확인
-  // ===========================================================
-
-  TJA.openTeacher = function() {
-    var modal = document.getElementById('teacher-modal');
-    if (!modal) return;
-    // 현재 저장된 주소 채워 넣기
-    var input = document.getElementById('exec-url-input');
-    if (input) input.value = TJA.getExecUrl();
-    TJA.renderStudentLinkBox();
-    modal.classList.remove('hidden');
-  };
-
-  TJA.closeTeacher = function() {
-    var modal = document.getElementById('teacher-modal');
-    if (modal) modal.classList.add('hidden');
-  };
-
-  TJA.setConnectStatus = function(msg, kind) {
-    var el = document.getElementById('connect-status');
-    if (!el) return;
-    el.className = 'status-line ' + (kind || 'info');
-    el.innerHTML = msg || '';
-  };
-
-  TJA.setPingStatus = function(msg, kind) {
-    var el = document.getElementById('ping-status');
-    if (!el) return;
-    el.className = 'status-line ' + (kind || 'info');
-    el.innerHTML = msg || '';
-  };
-
-  TJA.renderStudentLinkBox = function() {
-    var box = document.getElementById('student-link-box');
-    var url = document.getElementById('student-link-url');
-    if (!box || !url) return;
-    var exec = TJA.getExecUrl();
-    if (!exec) {
-      box.classList.add('disabled');
-      url.innerText = '아직 연결 전이에요.';
-      return;
+    function demoUserData(num) {
+      const st = demoLoad(num);
+      if (!st || !st.logs.length) return { found: false };
+      const best = bestOf(st.logs);
+      const keys = unlockedKeysLocal(best);
+      return {
+        found: true, num: String(num), name: st.name || '',
+        bestWpm: best, unlockedCount: keys.length, unlockedKeys: keys,
+        gradeInfo: getGradeClient(best)
+      };
     }
-    box.classList.remove('disabled');
-    url.innerText = TJA.buildStudentShareUrl(exec);
-  };
 
-  TJA.buildStudentShareUrl = function(execUrl) {
-    var base = location.origin + location.pathname;
-    return base + '#c=' + encodeURIComponent(execUrl);
-  };
-
-  // ----- 연결하기 -----
-  TJA.handleConnect = function() {
-    var input = document.getElementById('exec-url-input');
-    if (!input) return;
-    var url = String(input.value || '').trim();
-    if (!/^https:\/\/script\.google\.com\/macros\/s\/[^\/]+\/exec/.test(url)) {
-      TJA.setConnectStatus('주소 형식이 달라요. 배포 화면에 나온 <b>https://script.google.com/macros/s/.../exec</b> 형태여야 해요.', 'err');
-      return;
+    function demoRecord(num, name, wpm, acc) {
+      if (acc < 90) return { success: false, message: '정확도 90% 이상만 기록됩니다. 더 정확하게 쳐보세요! 💪' };
+      const st = demoLoad(num) || { num: String(num), name: name, logs: [] };
+      st.name = name;
+      st.logs.push({ ts: Date.now(), wpm: wpm, acc: acc });
+      if (st.logs.length > 300) st.logs = st.logs.slice(-300);
+      const saved = demoStore(num, st);
+      const best = bestOf(st.logs);
+      const keys = unlockedKeysLocal(best);
+      const g = getGradeClient(wpm);
+      return {
+        success: true, wpm: wpm, bestWpm: best, acc: acc,
+        grade: g, unlockedKeys: keys, unlockedCount: keys.length,
+        message: '기록 저장 완료! ' + g.icon + ' ' + g.name,
+        demo: true, savedLocal: saved
+      };
     }
-    TJA.setConnectStatus('서버에 연결을 확인하고 있어요...', 'info');
-    // 임시로 execUrl 적용해서 ping 확인
-    var prevUrl = TJA.execUrl;
-    var prevMode = TJA.mode;
-    TJA.execUrl = url;
-    TJA.mode = 'teacher';
-    TJA.serverCall('ping', {}, function(data) {
-      // 성공 — 영구 저장
-      TJA.setExecUrl(url);
-      TJA.setConnectStatus('연결 성공! 학생용 입장 주소가 아래에 만들어졌어요.', 'ok');
-      TJA.renderStudentLinkBox();
-      TJA.showDemoBannerIfNeeded();
-      // 명단 즉시 다시 불러오기 (새로고침 없이)
-      if (typeof loadStudentList === 'function') loadStudentList();
-      TJA.toast('학급 시트에 연결되었어요 ✅', 'ok');
-    }, function(err) {
-      // 실패 — 원래대로 되돌림
-      TJA.execUrl = prevUrl;
-      TJA.mode = prevMode;
-      TJA.setConnectStatus('연결에 실패했어요: ' + (err && err.message ? err.message : '알 수 없는 문제') +
-                           '<br>웹앱이 <b>모든 사용자에게 액세스 허용</b>으로 배포되었는지 확인해 주세요.', 'err');
-    });
-  };
 
-  // ----- 연결 해제 -----
-  TJA.handleDisconnect = function() {
-    if (!TJA.getExecUrl()) {
-      TJA.setConnectStatus('이미 연결된 주소가 없어요.', 'info');
-      return;
+    function demoGrowth(num) {
+      const st = demoLoad(num);
+      if (!st) return [];
+      return st.logs.slice()
+        .sort((a, b) => a.ts - b.ts)
+        .map(l => ({ ts: l.ts, date: longDate(l.ts), dateShort: shortDate(l.ts), wpm: l.wpm, acc: l.acc }));
     }
-    TJA.setExecUrl('');
-    TJA.setConnectStatus('연결이 해제되었어요. 이제 체험 모드로 동작해요.', 'info');
-    TJA.renderStudentLinkBox();
-    TJA.showDemoBannerIfNeeded();
-    if (typeof loadStudentList === 'function') loadStudentList();
-    TJA.toast('연결을 해제했어요', 'info');
-  };
 
-  // ----- 학생용 주소 복사 -----
-  TJA.handleCopyLink = function() {
-    var exec = TJA.getExecUrl();
-    if (!exec) { TJA.toast('먼저 학급 시트를 연결해 주세요.', 'warn'); return; }
-    var share = TJA.buildStudentShareUrl(exec);
-    var ok = false;
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(share).then(function(){
-          TJA.toast('학생용 입장 주소를 복사했어요! 학급에 공유하세요 📋', 'ok');
-        }, function(){
-          TJA._fallbackCopy(share);
+    function demoRanking() {
+      const states = demoAll();
+      const now = new Date();
+      const day = now.getDay();
+      const monday = new Date(now);
+      monday.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
+      monday.setHours(0, 0, 0, 0);
+      const mondayTs = monday.getTime();
+
+      const kings = [], improves = [], profiles = {};
+
+      states.forEach(st => {
+        const good = st.logs.filter(l => Number(l.acc) >= 90);
+        if (!good.length) return;
+        const best = bestOf(good);
+        kings.push({ num: st.num, name: st.name, wpm: best, acc: 0 });
+
+        let pastBest = 0, currBest = 0, firstThisWeek = null;
+        good.slice().sort((a, b) => a.ts - b.ts).forEach(l => {
+          const w = Number(l.wpm) || 0;
+          if (l.ts < mondayTs) { if (w > pastBest) pastBest = w; }
+          else {
+            if (firstThisWeek === null) firstThisWeek = w;
+            if (w > currBest) currBest = w;
+          }
         });
-        return;
-      }
-    } catch (e) {}
-    TJA._fallbackCopy(share);
-  };
+        if (currBest > 0) {
+          const baseline = pastBest > 0 ? pastBest : firstThisWeek;
+          const gap = currBest - baseline;
+          if (gap > 0) improves.push({ num: st.num, name: st.name, currBest: currBest, improvement: gap });
+        }
 
-  TJA._fallbackCopy = function(text) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); TJA.toast('학생용 주소를 복사했어요 📋', 'ok'); }
-    catch (e) { TJA.toast('복사가 안 되네요. 주소를 직접 선택해 복사해 주세요.', 'warn'); }
-    document.body.removeChild(ta);
-  };
-
-  // ----- 새 탭에서 열기 -----
-  TJA.handleOpenLink = function() {
-    var exec = TJA.getExecUrl();
-    if (!exec) { TJA.toast('먼저 학급 시트를 연결해 주세요.', 'warn'); return; }
-    window.open(TJA.buildStudentShareUrl(exec), '_blank');
-  };
-
-  // ----- 서버 응답 확인 (ping) -----
-  TJA.handlePing = function() {
-    if (!TJA.getExecUrl()) { TJA.setPingStatus('연결된 주소가 없어요. 먼저 위에서 연결해 주세요.', 'warn'); return; }
-    TJA.setPingStatus('확인 중...', 'info');
-    TJA.serverCall('ping', {}, function(data) {
-      if (data && data.sig) {
-        TJA.setPingStatus('응답 OK · 빌드 서명: <code>' + data.sig + '</code>', 'ok');
-      } else {
-        TJA.setPingStatus('응답은 왔지만 형식이 다르네요. 스크립트 버전을 확인해 주세요.', 'warn');
-      }
-    }, function(err) {
-      TJA.setPingStatus('응답 실패: ' + (err && err.message ? err.message : '알 수 없는 문제'), 'err');
-    });
-  };
-
-  // ----- 학생 명단 미리보기 -----
-  TJA.handleRosterCheck = function() {
-    if (!TJA.getExecUrl()) { TJA.setPingStatus('연결된 주소가 없어요. 먼저 연결해 주세요.', 'warn'); return; }
-    TJA.setPingStatus('학생 명단을 불러오는 중...', 'info');
-    TJA.serverCall('getStudentList', {}, function(list) {
-      if (!list || !list.length) {
-        TJA.setPingStatus('명단이 비어 있어요. 학급 시트의 <b>학생명부</b> 탭에 번호·이름을 입력해 주세요.', 'warn');
-        return;
-      }
-      var preview = list.slice(0, 5).map(function(s){ return s.num + '번 ' + s.name; }).join(', ');
-      if (list.length > 5) preview += ' …';
-      TJA.setPingStatus('명단 ' + list.length + '명 확인됐어요: ' + preview, 'ok');
-    }, function(err) {
-      TJA.setPingStatus('명단을 불러오지 못했어요: ' + (err && err.message ? err.message : ''), 'err');
-    });
-  };
-
-  </script>
-
-  <script>
-  // ===========================================================
-  // 자체 라인 차트 (Canvas 2D) + 자체 콘페티 — CDN 미사용
-  // ===========================================================
-
-  // ----- 성장 그래프 -----
-  TJA.renderGrowthChart = function(canvas, data) {
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var DPR = window.devicePixelRatio || 1;
-    var cssW = canvas.clientWidth || 600;
-    var cssH = canvas.clientHeight || 250;
-    canvas.width = Math.floor(cssW * DPR);
-    canvas.height = Math.floor(cssH * DPR);
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    ctx.clearRect(0, 0, cssW, cssH);
-
-    var dates = Object.keys(data || {}).sort();
-    var vals = dates.map(function(d) { return Number(data[d]) || 0; });
-
-    var padL = 44, padR = 18, padT = 22, padB = 38;
-    var plotW = cssW - padL - padR;
-    var plotH = cssH - padT - padB;
-
-    // 배경
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, cssW, cssH);
-
-    if (dates.length === 0) {
-      ctx.fillStyle = '#95a5a6';
-      ctx.font = "bold 14px 'Noto Sans KR', sans-serif";
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('🛡️ 아직 전투 기록이 없습니다.', cssW / 2, cssH / 2 - 10);
-      ctx.fillText('첫 번째 기록을 기다리고 있어요!', cssW / 2, cssH / 2 + 12);
-      return;
-    }
-
-    // y축 범위
-    var maxV = Math.max.apply(null, vals);
-    var yMax = Math.max(50, Math.ceil((maxV * 1.15) / 50) * 50);
-    var yTicks = 5;
-
-    // 격자 + y축 라벨
-    ctx.strokeStyle = '#ecf0f1';
-    ctx.lineWidth = 1;
-    ctx.fillStyle = '#7f8c8d';
-    ctx.font = "12px 'JetBrains Mono', monospace";
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'middle';
-    for (var t = 0; t <= yTicks; t++) {
-      var y = padT + plotH * (1 - t / yTicks);
-      ctx.beginPath();
-      ctx.setLineDash([4, 4]);
-      ctx.moveTo(padL, y);
-      ctx.lineTo(cssW - padR, y);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      var label = Math.round(yMax * t / yTicks);
-      ctx.fillText(String(label), padL - 6, y);
-    }
-
-    // x축
-    ctx.strokeStyle = '#bdc3c7';
-    ctx.beginPath();
-    ctx.moveTo(padL, padT + plotH);
-    ctx.lineTo(cssW - padR, padT + plotH);
-    ctx.stroke();
-
-    // 데이터 좌표 계산
-    var n = dates.length;
-    var xOf = function(i) { return padL + (n === 1 ? plotW / 2 : (plotW * i / (n - 1))); };
-    var yOf = function(v) { return padT + plotH * (1 - v / yMax); };
-
-    // 영역 채우기 (선 아래)
-    ctx.fillStyle = 'rgba(255, 159, 67, 0.22)';
-    ctx.beginPath();
-    ctx.moveTo(xOf(0), padT + plotH);
-    for (var i = 0; i < n; i++) ctx.lineTo(xOf(i), yOf(vals[i]));
-    ctx.lineTo(xOf(n - 1), padT + plotH);
-    ctx.closePath();
-    ctx.fill();
-
-    // 라인
-    ctx.strokeStyle = '#ff9f43';
-    ctx.lineWidth = 3;
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    for (var i2 = 0; i2 < n; i2++) {
-      var px = xOf(i2), py = yOf(vals[i2]);
-      if (i2 === 0) ctx.moveTo(px, py);
-      else ctx.lineTo(px, py);
-    }
-    ctx.stroke();
-
-    // 점
-    for (var i3 = 0; i3 < n; i3++) {
-      var cx = xOf(i3), cy = yOf(vals[i3]);
-      ctx.fillStyle = '#fff';
-      ctx.strokeStyle = '#ff6b6b';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.arc(cx, cy, 5, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-    }
-
-    // x축 라벨 (간격 조정)
-    ctx.fillStyle = '#7f8c8d';
-    ctx.font = "12px 'JetBrains Mono', monospace";
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    var step = Math.max(1, Math.ceil(n / 6));
-    for (var k = 0; k < n; k++) {
-      if (k % step !== 0 && k !== n - 1) continue;
-      ctx.fillText(dates[k], xOf(k), padT + plotH + 8);
-    }
-
-    // 범례
-    ctx.fillStyle = '#2c3e50';
-    ctx.font = "bold 13px 'Noto Sans KR', sans-serif";
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-    ctx.fillText('나의 최고 타수 기록 📈', padL, 4);
-  };
-
-  // ----- 자체 콘페티 -----
-  TJA._confettiActive = false;
-  TJA._confettiParticles = [];
-
-  TJA.fireConfetti = function(opts) {
-    opts = opts || {};
-    var duration = opts.duration || 2400;
-    var canvas = document.getElementById('confetti-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var W = canvas.width = window.innerWidth;
-    var H = canvas.height = window.innerHeight;
-    canvas.style.display = 'block';
-
-    var colors = ['#4dade2','#ff9f43','#ff6b6b','#2ecc71','#f1c40f','#9b59b6','#3498db'];
-    var pieces = [];
-    var count = opts.count || 90;
-    for (var i = 0; i < count; i++) {
-      var fromLeft = i % 2 === 0;
-      pieces.push({
-        x: fromLeft ? 0 : W,
-        y: H * (0.5 + Math.random() * 0.4),
-        vx: (fromLeft ? 1 : -1) * (6 + Math.random() * 5),
-        vy: -(7 + Math.random() * 7),
-        g: 0.22,
-        size: 6 + Math.random() * 6,
-        rot: Math.random() * Math.PI * 2,
-        vr: (Math.random() - 0.5) * 0.3,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        life: 1
+        const keys = unlockedKeysLocal(best);
+        profiles[String(st.num)] = {
+          num: st.num, name: st.name, bestWpm: best,
+          unlockedCount: keys.length, unlockedKeys: keys, gradeInfo: getGradeClient(best)
+        };
       });
+
+      const typingKing = kings.sort((a, b) => b.wpm - a.wpm).slice(0, 5)
+        .map((u, i) => { u.rank = i + 1; u.gradeInfo = getGradeClient(u.wpm); return u; });
+      const improvementKing = improves.sort((a, b) => b.improvement - a.improvement).slice(0, 5)
+        .map((u, i) => { u.rank = i + 1; u.gradeInfo = getGradeClient(u.currBest); return u; });
+
+      return { typingKing: typingKing, improvementKing: improvementKing, monthlyStats: {}, userProfiles: profiles };
     }
-    TJA._confettiParticles = TJA._confettiParticles.concat(pieces);
 
-    if (TJA._confettiActive) return;
-    TJA._confettiActive = true;
-    var endAt = Date.now() + duration;
+    // ===================================================== //
+    // 선생님 메뉴 (시작 버튼 바로 아래)                       //
+    // ===================================================== //
+    function buildTeacherMenu() {
+      // 학생용 링크로 들어온 화면에는 아예 만들지 않습니다.
+      if (IS_STUDENT_LINK) return;
+      const card = document.querySelector('#login-screen .splash-card');
+      if (!card) return;
 
-    function tick() {
-      if (canvas.width !== window.innerWidth) canvas.width = window.innerWidth;
-      if (canvas.height !== window.innerHeight) canvas.height = window.innerHeight;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const zone = document.createElement('div');
+      zone.className = 'tz';
+      zone.innerHTML =
+        '<button type="button" class="tz-toggle" id="tz-toggle">⚙️ 선생님 메뉴</button>' +
+        '<div class="tz-panel" id="tz-panel">' +
+          '<div class="tz-label">우리 반 구글 시트 주소 (exec 로 끝나는 주소)</div>' +
+          '<input class="tz-input" id="tz-url" type="text" spellcheck="false" autocomplete="off" ' +
+            'placeholder="https://script.google.com/macros/s/.../exec">' +
+          '<div class="tz-row">' +
+            '<button type="button" class="tz-btn" id="tz-connect">연결하기</button>' +
+            '<button type="button" class="tz-btn tz-btn-sub" id="tz-disconnect">연결 끊기</button>' +
+          '</div>' +
+          '<div class="tz-msg" id="tz-msg"></div>' +
+          '<div class="tz-link-box" id="tz-link-box">' +
+            '<div class="tz-label">학생용 입장 주소</div>' +
+            '<div class="tz-link" id="tz-link"></div>' +
+            '<button type="button" class="tz-btn" id="tz-copy">복사</button>' +
+          '</div>' +
+        '</div>';
+      card.appendChild(zone);
 
-      // 시간이 남았으면 좌·우에서 추가 분사 (연속 효과)
-      if (Date.now() < endAt && Math.random() < 0.7) {
-        for (var s = 0; s < 8; s++) {
-          var fromLeft2 = s % 2 === 0;
-          TJA._confettiParticles.push({
-            x: fromLeft2 ? 0 : canvas.width,
-            y: canvas.height * (0.55 + Math.random() * 0.35),
-            vx: (fromLeft2 ? 1 : -1) * (5 + Math.random() * 5),
-            vy: -(6 + Math.random() * 6),
-            g: 0.22,
-            size: 6 + Math.random() * 6,
-            rot: Math.random() * Math.PI * 2,
-            vr: (Math.random() - 0.5) * 0.3,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            life: 1
+      const panel = document.getElementById('tz-panel');
+      const urlInput = document.getElementById('tz-url');
+      const msg = document.getElementById('tz-msg');
+
+      document.getElementById('tz-toggle').onclick = function () {
+        panel.classList.toggle('open');
+      };
+      document.getElementById('tz-connect').onclick = connectSheet;
+      document.getElementById('tz-disconnect').onclick = disconnectSheet;
+      document.getElementById('tz-copy').onclick = copyStudentLink;
+
+      if (SERVER_URL) {
+        urlInput.value = SERVER_URL;
+        showStudentLink();
+        msg.classList.remove('warn');
+        msg.innerText = '우리 반 시트에 연결되어 있어요.';
+      } else {
+        msg.classList.remove('warn');
+        msg.innerText = '아직 시트를 연결하지 않았어요. 지금은 체험 상태예요.';
+      }
+    }
+
+    function studentLinkUrl() {
+      return location.origin + location.pathname + '#c=' + encodeURIComponent(SERVER_URL);
+    }
+
+    function showStudentLink() {
+      const box = document.getElementById('tz-link-box');
+      const link = document.getElementById('tz-link');
+      if (!box || !link) return;
+      if (!SERVER_URL) { box.classList.remove('open'); return; }
+      link.innerText = studentLinkUrl();
+      box.classList.add('open');
+    }
+
+    function connectSheet() {
+      const input = document.getElementById('tz-url');
+      const msg = document.getElementById('tz-msg');
+      const value = (input.value || '').trim();
+
+      if (!value) {
+        msg.classList.add('warn');
+        msg.innerText = '시트 주소를 붙여 넣어 주세요.';
+        return;
+      }
+      if (!/^https:\/\/.+\/exec(\?.*)?$/.test(value)) {
+        msg.classList.add('warn');
+        msg.innerText = '주소가 exec 로 끝나야 해요. 배포할 때 나온 주소를 그대로 붙여 넣어 주세요.';
+        return;
+      }
+
+      try { localStorage.setItem(EXEC_STORAGE_KEY, value); } catch (e) { }
+      SERVER_URL = value;
+      IS_DEMO = false;
+      hideDemoBar();
+
+      msg.classList.remove('warn');
+      msg.innerText = '연결했어요. 우리 반 명단을 다시 불러옵니다.';
+      showStudentLink();
+
+      // 새로고침 없이 바로 연동 상태로 전환
+      if (currentUser) logout();
+      loadStudentList();
+    }
+
+    function disconnectSheet() {
+      try { localStorage.removeItem(EXEC_STORAGE_KEY); } catch (e) { }
+      location.reload();
+    }
+
+    function copyStudentLink() {
+      const text = studentLinkUrl();
+      const msg = document.getElementById('tz-msg');
+      function done() {
+        msg.classList.remove('warn');
+        msg.innerText = '학생용 주소를 복사했어요.';
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+
+      function fallback() {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); }
+        catch (e) {
+          msg.classList.add('warn');
+          msg.innerText = '복사가 안 됐어요. 위 주소를 길게 눌러 직접 복사해 주세요.';
+        }
+        document.body.removeChild(ta);
+      }
+    }
+
+    function hideDemoBar() {
+      const bar = document.getElementById('__demoBar');
+      document.body.classList.remove('has-demo-bar');
+      if (bar) { try { bar.remove(); } catch (e) { bar.style.display = 'none'; } }
+    }
+
+    // ===================================================== //
+    // 앱 시작                                                //
+    // ===================================================== //
+    function initApp() {
+      detectMode();
+      buildTeacherMenu();
+      renderKeyboard([]); // Clear map
+      loadStudentList();
+      window.addEventListener('resize', onWindowResize);
+    }
+
+    function loadStudentList() {
+      const select = document.getElementById('user-select');
+      if (select) select.innerHTML = '<option value="">명단을 불러오는 중... ⏳</option>';
+
+      callServer('getStudentList', [], students => {
+        if (!select) return;
+        if (!students || students.length === 0) {
+          select.innerHTML = '<option value="">앗! 학생명부 탭에 명단을 먼저 입력해주세요!</option>';
+        } else {
+          select.innerHTML = '<option value="">자신의 번호와 이름을 선택하세요 👇</option>';
+          students.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s.num + '|' + s.name;
+            opt.innerText = s.num + '번 ' + s.name;
+            select.appendChild(opt);
           });
         }
-      }
-
-      var next = [];
-      for (var p = 0; p < TJA._confettiParticles.length; p++) {
-        var pt = TJA._confettiParticles[p];
-        pt.vy += pt.g;
-        pt.x += pt.vx;
-        pt.y += pt.vy;
-        pt.rot += pt.vr;
-        if (pt.y > canvas.height + 20) continue;
-        ctx.save();
-        ctx.translate(pt.x, pt.y);
-        ctx.rotate(pt.rot);
-        ctx.fillStyle = pt.color;
-        ctx.fillRect(-pt.size / 2, -pt.size / 2, pt.size, pt.size * 0.6);
-        ctx.restore();
-        next.push(pt);
-      }
-      TJA._confettiParticles = next;
-
-      if (TJA._confettiParticles.length === 0 && Date.now() >= endAt) {
-        TJA._confettiActive = false;
-        canvas.style.display = 'none';
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        return;
-      }
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  };
-
-  </script>
-
-  <script>
-  // ===========================================================
-  // 메인 앱 로직 — 로그인 / 프로필 / 랭킹 / 자판 / 차트 / 대시보드
-  // ===========================================================
-
-  // ----- 상태 -----
-  var currentUser = null;
-  var rankingDataCache = null;
-  window.QBANK = { certPassages: [], words: [], shortSentences: [], longSentences: [] };
-
-  // ----- 키보드 자판 정의 -----
-  var kbdLayout = [
-    ['1','2','3','4','5','6','7','8','9','0'],
-    ['ㅂ','ㅈ','ㄷ','ㄱ','ㅅ','ㅛ','ㅕ','ㅑ','ㅐ','ㅔ'],
-    ['ㅁ','ㄴ','ㅇ','ㄹ','ㅎ','ㅗ','ㅓ','ㅏ','ㅣ'],
-    ['ㅋ','ㅌ','ㅊ','ㅍ','ㅠ','ㅜ','ㅡ']
-  ];
-  var specialMap = { 'ㅂ':'ㅃ','ㅈ':'ㅉ','ㄷ':'ㄸ','ㄱ':'ㄲ','ㅅ':'ㅆ' };
-  var numSpecialKeys = ['1','2','3','4','5','6','7','8','9','0','ㄲ','ㄸ','ㅃ','ㅆ','ㅉ'];
-
-  // ----- 결과 모달 -----
-  function showResultModal(message, isSuccess) {
-    var modal = document.getElementById('result-modal');
-    var titleEl = document.getElementById('result-title');
-    var msgEl = document.getElementById('result-message');
-    var iconEl = document.getElementById('result-icon');
-    msgEl.innerHTML = message;
-    if (isSuccess) {
-      titleEl.innerText = message.indexOf('갱신') >= 0 ? '기록 달성!' : '저장 성공!';
-      titleEl.style.color = 'var(--primary-dark)';
-      iconEl.innerText = message.indexOf('갱신') >= 0 ? '🏆' : '🎉';
-      iconEl.style.animation = 'popBounce 0.6s ease';
-    } else {
-      titleEl.innerText = '앗, 잠깐만요!';
-      titleEl.style.color = 'var(--accent-dark)';
-      iconEl.innerText = '😅';
-      iconEl.style.animation = 'none';
-    }
-    modal.classList.remove('hidden');
-  }
-  function closeResultModal() { document.getElementById('result-modal').classList.add('hidden'); }
-  function openGuide() { document.getElementById('guide-modal').classList.remove('hidden'); }
-  function closeGuide() { document.getElementById('guide-modal').classList.add('hidden'); }
-
-  // ----- 학생 명단 로드 -----
-  function loadStudentList() {
-    var select = document.getElementById('user-select');
-    select.innerHTML = '<option value="">명단을 불러오는 중...</option>';
-    TJA.callServer('getStudentList', {}, function(students) {
-      if (!students || students.length === 0) {
-        select.innerHTML = '<option value="">앗! 학급 시트 [학생명부] 탭에 명단을 먼저 입력해주세요!</option>';
-        return;
-      }
-      select.innerHTML = '<option value="">자신의 번호와 이름을 선택하세요 👇</option>';
-      for (var i = 0; i < students.length; i++) {
-        var s = students[i];
-        var opt = document.createElement('option');
-        opt.value = s.num + '|' + s.name;
-        opt.innerText = s.num + '번 ' + s.name;
-        select.appendChild(opt);
-      }
-    }, function(err) {
-      select.innerHTML = '<option value="">명단을 불러오지 못했어요. 선생님께 알려 주세요.</option>';
-    });
-  }
-
-  // ----- 문제은행 로드 -----
-  function loadQuestionBank() {
-    TJA.callServer('getQuestionBank', {}, function(qb) {
-      if (qb) {
-        // 비어 있어도 그대로 둠 (엔진이 기본값 폴백 사용)
-        window.QBANK = {
-          certPassages: (qb.certPassages || []),
-          words: (qb.words || []),
-          shortSentences: (qb.shortSentences || []),
-          longSentences: (qb.longSentences || [])
-        };
-      }
-    }, function() {});
-  }
-
-  // ----- 키보드 자판 렌더 -----
-  function renderKeyboard(unlockedList) {
-    unlockedList = unlockedList || [];
-    var container = document.getElementById('keyboard-map');
-    if (!container) return;
-    container.innerHTML = '';
-    for (var r = 0; r < kbdLayout.length; r++) {
-      var rowDiv = document.createElement('div');
-      rowDiv.className = 'keyboard-row';
-      var row = kbdLayout[r];
-      for (var c = 0; c < row.length; c++) {
-        var key = row[c];
-        var keyDiv = document.createElement('div');
-        keyDiv.className = 'key';
-        var displayKey = key;
-        if (specialMap[key]) {
-          displayKey += '<span style="font-size: 0.8rem; position: absolute; top: 4px; right: 5px; color:inherit;">' + specialMap[key] + '</span>';
-        }
-        keyDiv.innerHTML = displayKey;
-        var isUnlocked = unlockedList.indexOf(key) >= 0;
-        var isSpecial = numSpecialKeys.indexOf(key) >= 0 || (specialMap[key] && unlockedList.indexOf(specialMap[key]) >= 0);
-        if (isUnlocked || (isSpecial && unlockedList.indexOf('1') >= 0)) {
-          keyDiv.classList.add('unlocked');
-          if (isSpecial) keyDiv.classList.add('special');
-        }
-        rowDiv.appendChild(keyDiv);
-      }
-      container.appendChild(rowDiv);
-    }
-  }
-
-  // ----- 로그인 -----
-  function login() {
-    var selectVal = document.getElementById('user-select').value;
-    if (!selectVal) { showResultModal('앗! 용사의 이름을 먼저 선택해야 합니다! 🛡️'); return; }
-    var parts = selectVal.split('|');
-    currentUser = { num: parts[0], name: parts[1], grade: '', classNum: '' };
-
-    // 체험 모드면 이전 진행 재개 안내
-    if (TJA.mode === 'demo') {
-      var p = TJA.loadProgress(currentUser.name);
-      if (p && (p.bestWpm > 0 || (p.learn && p.learn.maxCleared >= 0))) {
-        TJA.toast(currentUser.name + ' 학생, 이어서 도전해요! (이 기기에 저장된 기록)', 'info', 2800);
-      }
+      }, err => {
+        console.error('student list error:', err);
+        if (select) select.innerHTML = '<option value="">명단을 불러오지 못했어요. 잠시 뒤 새로 고침 해 주세요. 😅</option>';
+      });
     }
 
-    document.getElementById('login-screen').classList.add('hidden');
-    document.getElementById('dashboard-container').classList.remove('hidden');
-    document.getElementById('d-grade-name').innerText = '마법서 탐색 중...';
-    updateProfileUI({ icon: '⏳', name: '마법서 탐색 중...', color: '#7f8c8d' }, 0, 0);
+    function renderKeyboard(unlockedList) {
+      const container = document.getElementById('keyboard-map');
+      container.innerHTML = '';
 
-    loadRankings();
-    loadChart(currentUser.num);
-    loadLearnProgressDash(currentUser.num);
+      kbdLayout.forEach(row => {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'keyboard-row';
+        row.forEach(key => {
+          const keyDiv = document.createElement('div');
+          keyDiv.className = 'key';
 
-    TJA.callServer('getUserData', { num: currentUser.num, name: currentUser.name }, function(res) {
-      if (res && res.found) {
-        currentUser.grade = res.gradeInfo.name;
-        currentUser.gradeRank = res.gradeInfo.rank;
-        currentUser.unlockedKeys = res.unlockedKeys || [];
-        currentUser.bestWpm = res.bestWpm || 0;
-        updateProfileUI(res.gradeInfo, res.bestWpm, (res.unlockedKeys || []).length, currentUser.num, currentUser.name);
-        renderKeyboard(res.unlockedKeys || []);
-      } else {
-        currentUser.grade = '아기용';
-        currentUser.gradeRank = 1;
-        currentUser.unlockedKeys = [];
-        currentUser.bestWpm = 0;
-        updateProfileUI({ icon: '🐣', name: '아기용', color: '#f39c12' }, 0, 0, currentUser.num, currentUser.name);
-        renderKeyboard([]);
-      }
-    }, function(err) {
-      updateProfileUI({ icon: '❌', name: '통신 오류', color: '#c0392b' }, 0, 0, currentUser.num, currentUser.name);
-      TJA.toast('내 정보를 불러오지 못했어요: ' + (err && err.message ? err.message : ''), 'err', 3200);
-    });
-  }
-
-  function logout() {
-    currentUser = null;
-    document.getElementById('user-select').value = '';
-    document.getElementById('dashboard-container').classList.add('hidden');
-    document.getElementById('login-screen').classList.remove('hidden');
-    document.getElementById('d-user-display').innerText = '불러오는 중...';
-    renderKeyboard([]);
-  }
-
-  function updateProfileUI(gradeInfo, wpm, unlockedCount, num, name) {
-    var finalNum  = num || (currentUser ? currentUser.num : '');
-    var finalName = name || (currentUser ? currentUser.name : '');
-    var disp = document.getElementById('d-user-display');
-    if (finalNum && finalName) disp.innerText = finalNum + '번 ' + finalName + ' 용사';
-    else disp.innerText = '탐험가 정보를 확인 중입니다...';
-    document.getElementById('d-grade-icon').innerText = gradeInfo.icon;
-    document.getElementById('d-grade-name').innerText = gradeInfo.name;
-    document.getElementById('d-grade-name').style.color = gradeInfo.color || '#2c3e50';
-    document.getElementById('d-best-wpm').innerText = (wpm || 0) + '타';
-    document.getElementById('d-unlocked-count').innerText = (unlockedCount || 0) + '개';
-  }
-
-  // ----- 랭킹 -----
-  function loadRankings() {
-    TJA.callServer('getRankingData', {}, function(data) {
-      rankingDataCache = data || { typingKing: [], improvementKing: [] };
-      showRanking('typing');
-    }, function() {
-      document.getElementById('ranking-container').innerHTML =
-        '<p style="text-align:center; color:#c0392b;">랭킹 데이터를 가져오지 못했습니다.</p>';
-    });
-  }
-
-  function showRanking(type) {
-    var container = document.getElementById('ranking-container');
-    var desc = document.getElementById('ranking-desc');
-    if (!rankingDataCache) return;
-
-    if (desc) {
-      if (type === 'typing') desc.innerHTML = '🥇 <strong>타자왕</strong>: 역대 가장 높은 <strong>최고 타수</strong>를 달성한 용사 Top 5 (전체 기간)';
-      else desc.innerHTML = '🔥 <strong>향상왕</strong>: 지난 주 대비 이번 주에 <strong>가장 타수가 많이 오른</strong> 용사 Top 5';
-    }
-
-    var html = '<ul class="ranking-list">';
-    var list = (type === 'typing') ? (rankingDataCache.typingKing || []) : (rankingDataCache.improvementKing || []);
-
-    if (list.length === 0) {
-      var msg = (TJA.mode === 'demo')
-        ? '🧪 체험 모드에서는 학급 랭킹이 표시되지 않아요.<br>선생님이 학급 시트를 연결하면 친구들과 함께 순위가 보여요!'
-        : '아직 대륙에 기록을 남긴 영웅이 없습니다.<br>첫 번째 전설이 되어보세요!';
-      html += '<p style="text-align:center; color:#888; font-family:\'Noto Sans KR\',sans-serif; padding:20px; line-height:1.6;">' + msg + '</p>';
-    } else {
-      for (var i = 0; i < list.length; i++) {
-        var u = list[i];
-        var isTypingKing = (type === 'typing');
-        var valStr = isTypingKing ? (u.wpm + '타') : ('+' + u.improvement + '타');
-        var icon = (u.gradeInfo && u.gradeInfo.icon) ? u.gradeInfo.icon : '🔥';
-        var badgeStyle = isTypingKing ? 'background:var(--primary);' : 'background:var(--accent);';
-        var rankText = u.rank;
-        if (u.rank === 1) rankText = '🥇';
-        else if (u.rank === 2) rankText = '🥈';
-        else if (u.rank === 3) rankText = '🥉';
-        html +=
-          '<li class="ranking-item rank-' + u.rank + '">' +
-            '<div style="display:flex; align-items:center; flex:1; min-width:0;">' +
-              '<span class="rank-badge" style="margin-right:8px; flex-shrink:0;">' + rankText + '</span>' +
-              '<span style="font-family:\'Noto Sans KR\',sans-serif; font-weight:bold; font-size:1.15rem; color:#2c3e50; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:flex; align-items:center;">' +
-                '<span style="font-size:1.3rem; margin-right:4px;">' + icon + '</span> ' + u.name +
-              '</span>' +
-            '</div>' +
-            '<div class="label-badge" style="' + badgeStyle + ' margin-left:8px; flex-shrink:0; white-space:nowrap;">' + valStr + (isTypingKing ? ' 달성' : ' 향상') + '</div>' +
-          '</li>';
-      }
-    }
-    html += '</ul>';
-    container.innerHTML = html;
-  }
-
-  // ----- 성장 차트 -----
-  function loadChart(num) {
-    var canvas = document.getElementById('growth-chart');
-    if (!canvas) return;
-    TJA.callServer('getMonthlyStatsForUser', { num: num, name: currentUser ? currentUser.name : '' }, function(data) {
-      // 캔버스 크기 보장 후 그리기
-      requestAnimationFrame(function() { TJA.renderGrowthChart(canvas, data || {}); });
-    }, function() {
-      TJA.renderGrowthChart(canvas, {});
-    });
-  }
-
-  // ----- 대시보드 학습 진도 -----
-  function loadLearnProgressDash(num) {
-    TJA.callServer('getLearnProgress', { num: num, name: currentUser ? currentUser.name : '' }, function(p) {
-      var maxC = (p && typeof p.maxCleared === 'number') ? p.maxCleared : -1;
-      var pips = document.getElementById('dash-pips');
-      if (!pips) return;
-      pips.innerHTML = '';
-      for (var i = 0; i < LEARN_STAGES.length; i++) {
-        var st = LEARN_STAGES[i];
-        var cleared = i <= maxC;
-        var cur = (i === maxC + 1);
-        var unlocked = i <= maxC + 1;
-        var d = document.createElement('div');
-        d.className = 'pg-pip' + (cleared ? ' done' : '') + (cur ? ' current' : '') + (unlocked ? '' : ' locked');
-        d.style.cursor = 'pointer';
-        var mark = cleared ? '✓ ' : (cur ? '● ' : (unlocked ? '' : '🔒 '));
-        d.innerHTML = mark + (i === 0 ? '준비' : i);
-        d.title = st.title;
-        d.onclick = function() { enterLearn(); };
-        pips.appendChild(d);
-      }
-      var pct = Math.round(((maxC + 1) / LEARN_STAGES.length) * 100);
-      var fill = document.getElementById('dash-fill');
-      if (fill) fill.style.width = pct + '%';
-      var txt = document.getElementById('dash-progress-text');
-      if (txt) {
-        if (maxC < 0) txt.innerHTML = '아직 시작 전이에요. 위쪽 <b>학습 시작하기</b>로 첫 단계에 도전! 📚';
-        else if (maxC >= LEARN_STAGES.length - 1) txt.innerHTML = '🎉 모든 단계를 마쳤어요! 이제 검정으로 기록을 남겨요.';
-        else txt.innerHTML = '다음은 <b>' + LEARN_STAGES[maxC + 1].title + '</b> 차례예요!';
-      }
-    }, function() {
-      var t = document.getElementById('dash-progress-text');
-      if (t) t.innerText = '진도를 불러오지 못했어요.';
-    });
-  }
-
-  </script>
-
-  <script>
-  // ===========================================================
-  // 학습 엔진 — 9단계 (준비 → 자리 → 받침 → 쌍자음/이중모음 → 낱말 → 짧은 글 → 긴 글)
-  // ===========================================================
-
-  // 두벌식 물리 키 매핑 (자리 단계: event.code 기반 — IME/한영 무관)
-  var KMAP = {
-    KeyQ:'ㅂ', KeyW:'ㅈ', KeyE:'ㄷ', KeyR:'ㄱ', KeyT:'ㅅ', KeyY:'ㅛ', KeyU:'ㅕ', KeyI:'ㅑ', KeyO:'ㅐ', KeyP:'ㅔ',
-    KeyA:'ㅁ', KeyS:'ㄴ', KeyD:'ㅇ', KeyF:'ㄹ', KeyG:'ㅎ', KeyH:'ㅗ', KeyJ:'ㅓ', KeyK:'ㅏ', KeyL:'ㅣ',
-    KeyZ:'ㅋ', KeyX:'ㅌ', KeyC:'ㅊ', KeyV:'ㅍ', KeyB:'ㅠ', KeyN:'ㅜ', KeyM:'ㅡ'
-  };
-  var FINGER = {
-    'ㅂ':'왼손 새끼','ㅁ':'왼손 새끼','ㅋ':'왼손 새끼',
-    'ㅈ':'왼손 약지','ㄴ':'왼손 약지','ㅌ':'왼손 약지',
-    'ㄷ':'왼손 중지','ㅇ':'왼손 중지','ㅊ':'왼손 중지',
-    'ㄱ':'왼손 검지','ㅅ':'왼손 검지','ㄹ':'왼손 검지','ㅎ':'왼손 검지','ㅍ':'왼손 검지','ㅠ':'왼손 검지',
-    'ㅛ':'오른손 검지','ㅕ':'오른손 검지','ㅗ':'오른손 검지','ㅓ':'오른손 검지','ㅜ':'오른손 검지','ㅡ':'오른손 검지',
-    'ㅑ':'오른손 중지','ㅏ':'오른손 중지',
-    'ㅐ':'오른손 약지','ㅣ':'오른손 약지',
-    'ㅔ':'오른손 새끼'
-  };
-  var KB_ROWS = [
-    ['ㅂ','ㅈ','ㄷ','ㄱ','ㅅ','ㅛ','ㅕ','ㅑ','ㅐ','ㅔ'],
-    ['ㅁ','ㄴ','ㅇ','ㄹ','ㅎ','ㅗ','ㅓ','ㅏ','ㅣ'],
-    ['ㅋ','ㅌ','ㅊ','ㅍ','ㅠ','ㅜ','ㅡ']
-  ];
-
-  // 자모 분해 (타/분 계산)
-  var CHO = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
-  var JUNG = ['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
-  var JONG = ['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
-  var TWO_STROKE = { 'ㄲ':1,'ㄸ':1,'ㅃ':1,'ㅆ':1,'ㅉ':1,'ㅒ':1,'ㅖ':1,'ㅘ':1,'ㅙ':1,'ㅚ':1,'ㅝ':1,'ㅞ':1,'ㅟ':1,'ㅢ':1,'ㄳ':1,'ㄵ':1,'ㄶ':1,'ㄺ':1,'ㄻ':1,'ㄼ':1,'ㄽ':1,'ㄾ':1,'ㄿ':1,'ㅀ':1,'ㅄ':1 };
-  function strokeOfJamo(j) { return TWO_STROKE[j] ? 2 : 1; }
-  function strokesOfText(str) {
-    var s = 0;
-    for (var i = 0; i < str.length; i++) {
-      var ch = str.charAt(i);
-      var code = ch.charCodeAt(0);
-      if (code >= 0xAC00 && code <= 0xD7A3) {
-        var idx = code - 0xAC00;
-        var cho = CHO[Math.floor(idx / 588)];
-        var jung = JUNG[Math.floor((idx % 588) / 28)];
-        var jong = JONG[idx % 28];
-        s += strokeOfJamo(cho) + strokeOfJamo(jung) + (jong ? strokeOfJamo(jong) : 0);
-      } else { s += 1; }
-    }
-    return s;
-  }
-
-  // 학습 단계 정의
-  var LEARN_STAGES = [
-    { type:'pose', title:'0단계 · 손 위치 익히기', icon:'✋',
-      guide:'여덟 손가락을 <b>기준 자리</b>에 살포시 얹어요.<br>왼손: ㅁ ㄴ ㅇ ㄹ &nbsp; 오른손: ㅏ ㅓ ㅗ ㅜ 줄.<br>등을 펴고 손목은 띄워요!',
-      modal:'먼저 바른 자세부터! 손가락을 기준 자리에 얹고 준비되면 시작해요.' },
-    { type:'keys', title:'1단계 · 가운뎃줄 자리', icon:'🏠',
-      keys:['ㅁ','ㄴ','ㅇ','ㄹ','ㅎ','ㅗ','ㅓ','ㅏ','ㅣ'], reps:16,
-      guide:'손가락이 가장 편한 <b>기준 줄</b>이에요. 손을 떼지 말고 또박또박!',
-      modal:'화면에 뜬 글자의 키를 눌러 보세요. 빛나는 키를 따라가면 돼요!' },
-    { type:'keys', title:'2단계 · 윗줄 자리', icon:'⬆️',
-      keys:['ㅂ','ㅈ','ㄷ','ㄱ','ㅅ','ㅛ','ㅕ','ㅑ','ㅐ','ㅔ'], reps:16,
-      guide:'기준 줄에서 손가락을 <b>위로</b> 살짝 올려 눌러요. 누른 뒤엔 다시 제자리!',
-      modal:'이번엔 윗줄이에요. 손가락을 위로 올렸다 제자리로 돌아오기!' },
-    { type:'keys', title:'3단계 · 아랫줄 자리', icon:'⬇️',
-      keys:['ㅋ','ㅌ','ㅊ','ㅍ','ㅠ','ㅜ','ㅡ'], reps:14,
-      guide:'기준 줄에서 손가락을 <b>아래로</b> 내려 눌러요. 천천히 정확하게!',
-      modal:'마지막 자리 줄, 아랫줄이에요. 내려서 누르고 제자리로!' },
-    { type:'text', title:'4단계 · 받침 익히기', icon:'🧱', kind:'syllable',
-      items:['강','산','밤','달','문','별','꽃','집','곰','눈'],
-      guide:'글자 아래에 <b>받침</b>을 더해요. 초성 → 모음 → 받침 순서로 또박또박!',
-      modal:'받침이 있는 글자예요. 자음 → 모음 → 받침 순서로 쳐 보아요.' },
-    { type:'text', title:'5단계 · 쌍자음·이중모음', icon:'✨', kind:'syllable',
-      items:['까','따','빵','쌀','짜','얘','예','의','와','워'],
-      guide:'<b>Shift</b>를 함께 누르면 쌍자음(ㄲ)이! 모음 두 개를 이으면 이중모음(ㅘ)이!',
-      modal:'Shift 키와 이중모음에 도전! 차근차근 눌러 보아요.' },
-    { type:'text', title:'6단계 · 낱말 연습', icon:'📝', kind:'word', bank:'words',
-      items:['나무','바다','구름','하늘','토끼','사람','학교','친구','마음','책상'],
-      guide:'이제 <b>낱말</b>을 통째로! 글자 사이를 멈추지 말고 이어서 쳐 보아요.',
-      modal:'낱말을 한 번에 쳐 보아요. 다 치면 다음 낱말로 넘어가요!' },
-    { type:'text', title:'7단계 · 짧은 글', icon:'💬', kind:'sentence', bank:'shortSentences',
-      items:['오늘도 좋은 하루예요.','나는 책 읽기를 좋아해요.','우리 모두 친구가 되어요.'],
-      guide:'문장에는 <b>띄어쓰기(스페이스)</b>가 있어요. 엄지로 가볍게 눌러요.',
-      modal:'한 문장을 끝까지! 띄어쓰기는 엄지손가락으로 스페이스 키를 눌러요.' },
-    { type:'text', title:'8단계 · 긴 글', icon:'📜', kind:'sentence', bank:'longSentences',
-      items:['바른 자세로 천천히 정확하게 치면 타자 실력이 쑥쑥 자랍니다. 손가락은 기준 자리에 두고 또박또박 연습해 보아요.'],
-      guide:'긴 글도 <b>침착하게</b>! 빨리보다 정확하게가 먼저예요.',
-      modal:'드디어 긴 글이에요. 속도보다 정확함을 먼저 생각하며 도전!' }
-  ];
-
-  // 학습 상태
-  var currentStage = 0;
-  var learnMax = -1;
-  var learnRecords = {};
-  var seq = [], seqIdx = 0;
-  var statCorrect = 0, statErr = 0, statStreak = 0, startedAt = 0;
-  var keyHandler = null, inputHandler = null, prevTypedLen = 0;
-  var statTotalStrokes = 0;
-
-  function shuffle(a) {
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
-  }
-
-  function getGradeClient(wpm) {
-    if (wpm >= 400) return { name:'타자 신', icon:'⚡' };
-    if (wpm >= 350) return { name:'대륙수호자', icon:'🏰' };
-    if (wpm >= 300) return { name:'드래곤라이더', icon:'🐉' };
-    if (wpm >= 250) return { name:'폭풍소환사', icon:'🌪️' };
-    if (wpm >= 200) return { name:'번개궁수', icon:'🏹' };
-    if (wpm >= 150) return { name:'강철기사', icon:'⚔️' };
-    if (wpm >= 100) return { name:'초보모험가', icon:'🗺️' };
-    if (wpm >= 50)  return { name:'견습마법사', icon:'🔮' };
-    return { name:'아기용', icon:'🐣' };
-  }
-  function getGradeClientFull(wpm) {
-    var base = TJA.computeGrade(wpm);
-    return { name: base.name, icon: base.icon, color: base.color, rank: base.rank };
-  }
-
-  function enterLearn() {
-    if (!currentUser) return;
-    document.body.classList.add('learn-active');
-    document.getElementById('learn-screen').classList.add('show');
-    document.getElementById('ls-who').innerText = currentUser.num + '번 ' + currentUser.name;
-    var g = getGradeClient(currentUser.bestWpm || 0);
-    document.getElementById('ls-badge').innerText = g.icon;
-    document.getElementById('ls-grade').innerText = g.name;
-
-    TJA.callServer('getLearnProgress', { num: currentUser.num, name: currentUser.name }, function(p) {
-      learnMax = (p && typeof p.maxCleared === 'number') ? p.maxCleared : -1;
-      learnRecords = (p && p.stageRecords) ? p.stageRecords : {};
-      var start = Math.min(learnMax + 1, LEARN_STAGES.length - 1);
-      if (start < 0) start = 0;
-      gotoStage(start);
-    }, function() {
-      learnMax = -1; learnRecords = {};
-      gotoStage(0);
-    });
-  }
-
-  function exitLearn(relogin) {
-    detachHandlers();
-    document.body.classList.remove('learn-active');
-    document.getElementById('learn-screen').classList.remove('show');
-    closeStageModal();
-    if (relogin) { logout(); }
-    else if (currentUser) { loadLearnProgressDash(currentUser.num); }
-  }
-
-  function detachHandlers() {
-    if (keyHandler) { document.removeEventListener('keydown', keyHandler); keyHandler = null; }
-    var inp = document.getElementById('lm-input');
-    if (inp && inputHandler) { inp.removeEventListener('input', inputHandler); inputHandler = null; }
-  }
-
-  function renderPips() {
-    var pips = document.getElementById('ls-pips');
-    if (!pips) return;
-    pips.innerHTML = '';
-    for (var i = 0; i < LEARN_STAGES.length; i++) {
-      (function(i) {
-        var cleared = i <= learnMax;
-        var unlocked = i <= learnMax + 1;
-        var isCur = (i === currentStage);
-        var pip = document.createElement('div');
-        pip.className = 'pg-pip' + (cleared ? ' done' : '') + (isCur ? ' current' : '') + (unlocked ? '' : ' locked');
-        var mark = cleared ? '✓' : (isCur ? '●' : (unlocked ? '' : '🔒'));
-        pip.innerHTML = (mark ? mark + ' ' : '') + (i === 0 ? '준비' : i);
-        pip.onclick = function() {
-          if (!unlocked) {
-            showStageModal({ icon:'🔒', title:'아직 잠겨 있어요', modal:'앞 단계를 정확도 90% 이상으로 먼저 통과해 주세요. 📓 틀린 부분은 공책에 적어 다시 풀어 보아요!' }, false, true);
-            return;
+          let displayKey = key;
+          if (specialMap[key]) {
+            displayKey += '<span style="font-size: 0.8rem; position: absolute; top: 4px; right: 5px; color:inherit;">' + specialMap[key] + '</span>';
           }
-          gotoStage(i);
-        };
-        pips.appendChild(pip);
-      })(i);
+          keyDiv.innerHTML = displayKey;
+
+          // Check unlock
+          let isUnlocked = unlockedList.includes(key);
+          // Numbers and double consonants
+          let isSpecial = numSpecialKeys.includes(key) || (specialMap[key] && unlockedList.includes(specialMap[key]));
+
+          if (isUnlocked || (isSpecial && unlockedList.includes('1'))) {
+            keyDiv.classList.add('unlocked');
+            if (isSpecial) keyDiv.classList.add('special');
+          }
+          rowDiv.appendChild(keyDiv);
+        });
+        container.appendChild(rowDiv);
+      });
     }
-    var pct = Math.round(((learnMax + 1) / LEARN_STAGES.length) * 100);
-    var fill = document.getElementById('ls-fill');
-    if (fill) fill.style.width = pct + '%';
-  }
 
-  function gotoStage(id) {
-    if (id < 0) id = 0;
-    if (id > LEARN_STAGES.length - 1) id = LEARN_STAGES.length - 1;
-    if (id > learnMax + 1) id = learnMax + 1;
-    currentStage = id;
-    startStage(id);
-  }
+    // ===== 폭죽/꽃가루 효과 (외부 라이브러리 없이 직접 그립니다) =====
+    let __popCanvas = null, __popItems = [], __popRaf = null;
+    const POP_COLORS = ['#ff9f43', '#4dade2', '#2ecc71', '#ff6b6b', '#f1c40f', '#a29bfe'];
 
-  function startStage(id) {
-    detachHandlers();
-    var st = LEARN_STAGES[id];
-    document.getElementById('ls-stage-name').innerText = st.title;
-    document.getElementById('ls-guide-title').innerText = st.icon + ' 이 단계는?';
-    document.getElementById('ls-guide-body').innerHTML =
-      st.guide + '<div class="tip">📓 틀린 글자는 공책에 적어 두고 다시 쳐 보면 더 빨리 늘어요!</div>';
-    var prevBtn = document.getElementById('ls-prev');
-    if (prevBtn) prevBtn.disabled = (id === 0);
-    renderPips();
-    statCorrect = 0; statErr = 0; statStreak = 0; startedAt = 0;
-    updateAchieve('-', '-', 0);
-    var skip = (id <= learnMax);
-    showStageModal(st, skip);
-  }
+    function ensurePopCanvas() {
+      if (__popCanvas) return __popCanvas;
+      const c = document.createElement('canvas');
+      c.style.cssText = 'position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:100;';
+      document.body.appendChild(c);
+      __popCanvas = c;
+      return c;
+    }
 
-  function showStageModal(st, skip, lockedView) {
-    var ov = document.getElementById('stage-modal');
-    document.getElementById('sm-icon').innerText = st.icon || '🧭';
-    document.getElementById('sm-title').innerText = st.title || '안내';
-    document.getElementById('sm-desc').innerHTML = st.modal || '';
-    if (skip) { ov.classList.remove('show'); if (!lockedView) renderStage(st); return; }
-    ov.classList.add('show');
-    var onKey = function(e) {
-      if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
-        e.preventDefault();
-        document.removeEventListener('keydown', onKey);
-        if (!lockedView) closeStageModal();
-        else ov.classList.remove('show');
+    function popConfetti(opts) {
+      try { launchPop(opts || {}); }
+      catch (e) { console.error('confetti error:', e); }
+    }
+
+    function launchPop(opts) {
+      const count = Math.max(10, Math.min(200, opts.particleCount || 80));
+      const spread = opts.spread || 70;
+      const ox = (opts.origin && typeof opts.origin.x === 'number') ? opts.origin.x : 0.5;
+      const oy = (opts.origin && typeof opts.origin.y === 'number') ? opts.origin.y : 0.5;
+
+      const canvas = ensurePopCanvas();
+      const w = window.innerWidth, h = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+
+      for (let i = 0; i < count; i++) {
+        const deg = -90 + (Math.random() - 0.5) * spread;
+        const rad = deg * Math.PI / 180;
+        const v = 7 + Math.random() * 7;
+        __popItems.push({
+          x: w * ox, y: h * oy,
+          vx: Math.cos(rad) * v, vy: Math.sin(rad) * v,
+          size: 5 + Math.random() * 6,
+          rot: Math.random() * Math.PI, spin: (Math.random() - 0.5) * 0.3,
+          color: POP_COLORS[Math.floor(Math.random() * POP_COLORS.length)],
+          life: 1
+        });
       }
-    };
-    ov._smKey = onKey;
-    document.addEventListener('keydown', onKey);
-    ov._lockedView = lockedView;
-  }
-
-  function closeStageModal() {
-    var ov = document.getElementById('stage-modal');
-    if (!ov) return;
-    ov.classList.remove('show');
-    if (ov._smKey) { document.removeEventListener('keydown', ov._smKey); ov._smKey = null; }
-    if (!ov._lockedView) renderStage(LEARN_STAGES[currentStage]);
-    ov._lockedView = false;
-  }
-
-  function renderStage(st) {
-    var main = document.getElementById('learn-main');
-    startedAt = Date.now();
-    if (st.type === 'pose') {
-      main.innerHTML =
-        '<div class="lm-target">✋🤚</div>' +
-        '<div class="lm-prompt">손가락을 기준 자리에 얹고, 준비되면 아래 버튼을 눌러요.</div>' +
-        '<button class="sm-go" id="lm-pose-go" style="width:auto;padding:14px 30px">준비 완료! 시작 ▶</button>';
-      var btn = document.getElementById('lm-pose-go');
-      if (btn) btn.addEventListener('click', function() { finishStage(100, 0); });
-      return;
+      if (!__popRaf) __popRaf = requestAnimationFrame(popFrame);
     }
-    if (st.type === 'keys') { renderKeyStage(st); return; }
-    if (st.type === 'text') { renderTextStage(st); return; }
-  }
 
-  function renderKeyStage(st) {
-    var main = document.getElementById('learn-main');
-    seq = []; var pool = [];
-    while (pool.length < st.reps) pool = pool.concat(shuffle(st.keys.slice()));
-    seq = pool.slice(0, st.reps); seqIdx = 0;
+    function popFrame() {
+      const canvas = __popCanvas;
+      if (!canvas) { __popRaf = null; return; }
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth, h = window.innerHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
 
-    main.innerHTML =
-      '<div class="lm-prompt">빛나는 키를 눌러요!</div>' +
-      '<div class="lm-target" id="lm-target">' + seq[0] + '</div>' +
-      '<div class="kb" id="lm-kb"></div>';
-    buildKeyboardGuide(st.keys, seq[0]);
+      __popItems = __popItems.filter(p => {
+        p.vy += 0.32; p.vx *= 0.99;
+        p.x += p.vx; p.y += p.vy;
+        p.rot += p.spin;
+        p.life -= 0.012;
+        if (p.life <= 0 || p.y > h + 40) return false;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life));
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+        ctx.restore();
+        return true;
+      });
 
-    keyHandler = function(e) {
-      var code = e.code;
-      if (!KMAP[code]) return;
-      e.preventDefault();
-      var pressed = KMAP[code];
-      var target = seq[seqIdx];
-      var keyEl = document.querySelector('.kb-key[data-k="' + pressed + '"]');
-      if (pressed === target) {
-        statCorrect++; statStreak++;
-        if (keyEl) { keyEl.classList.add('hit'); setTimeout(function(){ keyEl.classList.remove('hit'); }, 250); }
-        seqIdx++;
-        if (seqIdx >= seq.length) { finishKeyStage(st); return; }
-        document.getElementById('lm-target').innerText = seq[seqIdx];
-        buildKeyboardGuide(st.keys, seq[seqIdx]);
+      if (__popItems.length > 0) {
+        __popRaf = requestAnimationFrame(popFrame);
       } else {
-        statErr++; statStreak = 0;
-      }
-      var elapsed = (Date.now() - startedAt) / 1000;
-      var cpm = elapsed > 0 ? Math.round(statCorrect / elapsed * 60) : 0;
-      var acc = (statCorrect + statErr) > 0 ? Math.round(statCorrect / (statCorrect + statErr) * 100) : 100;
-      updateAchieve(acc + '%', cpm, statStreak);
-    };
-    document.addEventListener('keydown', keyHandler);
-  }
-
-  function buildKeyboardGuide(available, target) {
-    var kb = document.getElementById('lm-kb');
-    if (!kb) return;
-    kb.innerHTML = '';
-    for (var r = 0; r < KB_ROWS.length; r++) {
-      var rEl = document.createElement('div'); rEl.className = 'kb-row';
-      var row = KB_ROWS[r];
-      for (var c = 0; c < row.length; c++) {
-        var k = row[c];
-        var d = document.createElement('div');
-        d.className = 'kb-key';
-        d.setAttribute('data-k', k);
-        if (available.indexOf(k) >= 0) d.classList.add('active');
-        if (k === target) { d.classList.remove('active'); d.classList.add('next'); }
-        d.innerHTML = k + (k === target ? '<span class="fin">' + (FINGER[k] || '') + '</span>' : '');
-        rEl.appendChild(d);
-      }
-      kb.appendChild(rEl);
-    }
-  }
-
-  function finishKeyStage(st) {
-    var elapsed = (Date.now() - startedAt) / 1000;
-    var cpm = elapsed > 0 ? Math.round(statCorrect / elapsed * 60) : 0;
-    var acc = (statCorrect + statErr) > 0 ? Math.round(statCorrect / (statCorrect + statErr) * 100) : 100;
-    finishStage(acc, cpm);
-  }
-
-  function renderTextStage(st) {
-    var main = document.getElementById('learn-main');
-    var _items = st.items;
-    if (st.bank && window.QBANK && window.QBANK[st.bank] && window.QBANK[st.bank].length) _items = window.QBANK[st.bank];
-    seq = _items.slice(); seqIdx = 0;
-    main.innerHTML =
-      '<div class="lm-prompt" id="lm-prompt">' + (seqIdx + 1) + ' / ' + seq.length + '</div>' +
-      '<div class="lm-text-target" id="lm-tt"></div>' +
-      '<input class="lm-input" id="lm-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 똑같이 입력해요" />';
-    renderTargetText();
-    var inp = document.getElementById('lm-input');
-    prevTypedLen = 0;
-    inputHandler = function() { onTextInput(st); };
-    inp.addEventListener('input', inputHandler);
-    setTimeout(function() { inp.focus(); }, 50);
-  }
-
-  function renderTargetText() {
-    var target = seq[seqIdx];
-    var inp = document.getElementById('lm-input');
-    var typed = inp ? (inp.value || '') : '';
-    var html = '';
-    for (var i = 0; i < target.length; i++) {
-      var cls = '';
-      if (i < typed.length) cls = (typed[i] === target[i]) ? 'done' : 'wrong';
-      else if (i === typed.length) cls = 'cursor';
-      var ch = (target[i] === ' ') ? '&nbsp;' : target[i];
-      html += '<span class="' + cls + '">' + ch + '</span>';
-    }
-    document.getElementById('lm-tt').innerHTML = html;
-  }
-
-  function onTextInput(st) {
-    var inp = document.getElementById('lm-input');
-    var typed = inp.value;
-    var target = seq[seqIdx];
-    if (typed.length > prevTypedLen) {
-      for (var i = prevTypedLen; i < typed.length; i++) {
-        if (i < target.length && typed[i] !== target[i]) statErr++;
-        else if (i >= target.length) statErr++;
+        __popRaf = null;
+        try { canvas.remove(); } catch (e) { }
+        __popCanvas = null;
       }
     }
-    prevTypedLen = typed.length;
-    renderTargetText();
 
-    var correctCount = 0;
-    var L = Math.min(typed.length, target.length);
-    for (var j = 0; j < L; j++) if (typed[j] === target[j]) correctCount++;
-    var accNow = (correctCount + statErr) > 0 ? Math.round(correctCount / (correctCount + statErr) * 100) : 100;
-    updateAchieve(accNow + '%', '-', statStreak);
+    function login() {
+      const selectVal = document.getElementById('user-select').value;
+      if (!selectVal) return showResultModal("앗! 용사의 이름을 먼저 선택해야 합니다! 🛡️");
 
-    if (typed === target) {
-      statCorrect += target.length;
-      statStreak++;
-      statTotalStrokes = (statTotalStrokes || 0) + strokesOfText(target);
-      seqIdx++;
-      inp.value = ''; prevTypedLen = 0;
-      if (seqIdx >= seq.length) { finishTextStage(st); return; }
-      document.getElementById('lm-prompt').innerText = (seqIdx + 1) + ' / ' + seq.length;
-      renderTargetText();
-    }
-  }
+      const parts = selectVal.split('|');
+      currentUser = { num: parts[0], name: parts[1], grade: "", classNum: "" };
 
-  function finishTextStage(st) {
-    var elapsed = (Date.now() - startedAt) / 1000;
-    var totalStrokes = strokesOfText(seq.join(' '));
-    var cpm = elapsed > 0 ? Math.round(totalStrokes / elapsed * 60) : 0;
-    var acc = (statCorrect + statErr) > 0 ? Math.round(statCorrect / (statCorrect + statErr) * 100) : 100;
-    statTotalStrokes = 0;
-    finishStage(acc, cpm);
-  }
+      // UI 전환
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('dashboard-container').classList.remove('hidden');
 
-  function updateAchieve(acc, cpm, streak) {
-    document.getElementById('ls-acc').innerText = acc;
-    document.getElementById('ls-cpm').innerText = cpm;
-    document.getElementById('ls-streak').innerText = streak;
-  }
+      document.getElementById('d-grade-name').innerText = "마법서 탐색 중...";
 
-  function finishStage(acc, cpm) {
-    detachHandlers();
-    var passed = (acc >= 90);
-    if (currentUser) {
-      TJA.callServer('saveLearnProgress', {
-        num: currentUser.num, name: currentUser.name,
-        stageId: currentStage, acc: acc, cpm: cpm
-      }, function(res) {
-        if (res && res.success) { learnMax = res.maxCleared; learnRecords = res.stageRecords; }
-        renderPips();
-      }, function() { renderPips(); });
-    }
+      // 즉시 UI 업데이트: 번호와 이름을 먼저 띄워 "불러오는 중" 상태 해소
+      updateProfileUI({ icon: '⏳', name: '마법서 탐색 중...', color: '#7f8c8d' }, 0, 0);
 
-    var main = document.getElementById('learn-main');
-    if (passed) {
-      TJA.fireConfetti({ count: 70, duration: 1800 });
-      var last = (currentStage >= LEARN_STAGES.length - 1);
-      main.innerHTML =
-        '<div class="lm-target">🎉</div>' +
-        '<div class="lm-prompt" style="font-size:1.3rem;color:#16a085;font-weight:800">' +
-        '잘했어요! 정확도 ' + acc + '%' + (cpm ? ' · ' + cpm + '타/분' : '') + '</div>' +
-        '<div class="lm-prompt">' + (last ? '모든 단계를 마쳤어요! 이제 검정에 도전할 수 있어요. 🏅' : '다음 단계가 열렸어요!') + '</div>' +
-        '<div style="display:flex;gap:10px">' +
-          '<button class="sm-go" id="fin-redo" style="width:auto;padding:12px 22px;background:#95a5a6;border-bottom-color:#7f8c8d">다시 하기</button>' +
-          (last
-            ? '<button class="sm-go" id="fin-cert" style="width:auto;padding:12px 22px;background:#f1c40f;border-bottom-color:#d4ac0d;color:#7a5c00">🏅 검정 도전!</button>'
-            : '<button class="sm-go" id="fin-next" style="width:auto;padding:12px 22px">다음 단계 ▶</button>') +
-        '</div>';
-      var br = document.getElementById('fin-redo'); if (br) br.addEventListener('click', function(){ startStage(currentStage); });
-      var bn = document.getElementById('fin-next'); if (bn) bn.addEventListener('click', function(){ nextStage(); });
-      var bc = document.getElementById('fin-cert'); if (bc) bc.addEventListener('click', function(){ enterCertFromLearn(); });
-    } else {
-      main.innerHTML =
-        '<div class="lm-target">💪</div>' +
-        '<div class="lm-prompt" style="font-size:1.3rem;color:#e67e22;font-weight:800">거의 다 왔어요! 정확도 ' + acc + '%</div>' +
-        '<div class="lm-prompt">정확도 <b>90% 이상</b>이면 다음 단계가 열려요.<br>📓 틀린 글자를 공책에 적고 다시 도전해 보아요!</div>' +
-        '<button class="sm-go" id="fin-retry" style="width:auto;padding:14px 28px;background:#ff9f43;border-bottom-color:#e67e22">다시 도전! 🔁</button>';
-      var brr = document.getElementById('fin-retry'); if (brr) brr.addEventListener('click', function(){ startStage(currentStage); });
-      var redo = document.getElementById('ls-redo');
-      if (redo) { redo.style.animation = 'keyPulse 0.9s ease-in-out infinite'; setTimeout(function(){ redo.style.animation = ''; }, 4000); }
-    }
-  }
-
-  function nextStage() {
-    if (currentStage < learnMax + 1 && currentStage < LEARN_STAGES.length - 1) {
-      gotoStage(currentStage + 1);
-    }
-  }
-
-  </script>
-
-  <script>
-  // ===========================================================
-  // 검정 엔진 — 글 입력 → 자동 측정 → processRecord 기록
-  // ===========================================================
-
-  var CERT_PASSAGES = [
-    '맑은 가을 하늘 아래에서 친구들과 함께 운동장을 신나게 달렸다. 시원한 바람이 불어와 기분이 참 좋았다.',
-    '책을 읽으면 새로운 세상을 만난다. 글자 하나하나를 또박또박 읽다 보면 마음이 쑥쑥 자라난다.',
-    '바른 자세로 천천히 정확하게 치는 연습을 꾸준히 하면 누구나 타자를 잘할 수 있다. 오늘도 즐겁게 도전해 보자.'
-  ];
-
-  var certPassage = '';
-  var certStart = 0, certErr = 0, certPrevLen = 0, certTimer = null, certDone = false;
-
-  function enterCert() {
-    if (!currentUser) return;
-    document.body.classList.add('learn-active');
-    document.getElementById('learn-screen').classList.remove('show');
-    document.getElementById('cert-screen').classList.add('show');
-    var g = getGradeClient(currentUser.bestWpm || 0);
-    document.getElementById('ct-who').innerText = currentUser.num + '번 ' + currentUser.name;
-    document.getElementById('ct-badge').innerText = g.icon;
-    document.getElementById('ct-grade').innerText = g.name;
-    startCert();
-  }
-
-  function enterCertFromLearn() {
-    detachHandlers();
-    enterCert();
-  }
-
-  function exitCert() {
-    stopCertTimer();
-    var inp = document.getElementById('cert-input');
-    if (inp && inp._h) inp.removeEventListener('input', inp._h);
-    document.body.classList.remove('learn-active');
-    document.getElementById('cert-screen').classList.remove('show');
-    if (currentUser) {
-      updateProfileUI(getGradeClientFull(currentUser.bestWpm || 0), currentUser.bestWpm || 0,
-        (currentUser.unlockedKeys || []).length, currentUser.num, currentUser.name);
-      renderKeyboard(currentUser.unlockedKeys || []);
+      // 병렬 데이터 로딩 시작
       loadRankings();
       loadChart(currentUser.num);
-      loadLearnProgressDash(currentUser.num);
-    }
-  }
 
-  function startCert() {
-    certDone = false;
-    certErr = 0; certPrevLen = 0;
-    var bank = (window.QBANK && window.QBANK.certPassages && window.QBANK.certPassages.length) ? window.QBANK.certPassages : CERT_PASSAGES;
-    certPassage = bank[Math.floor(Math.random() * bank.length)];
-    document.getElementById('ct-submit').disabled = false;
-    document.getElementById('ct-acc').innerText = '100%';
-    document.getElementById('ct-cpm').innerText = '0';
-    document.getElementById('ct-time').innerText = '0:00';
-    document.getElementById('ct-prog').innerText = '0 / ' + certPassage.length + ' 글자';
-    document.getElementById('ct-fill').style.width = '0%';
-
-    var main = document.getElementById('cert-main');
-    main.innerHTML =
-      '<div class="lm-prompt">아래 글을 똑같이 입력하세요</div>' +
-      '<div class="lm-text-target" id="cert-tt"></div>' +
-      '<input class="lm-input" id="cert-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="여기에 입력해요" />';
-    renderCertText();
-    var inp = document.getElementById('cert-input');
-    certStart = 0;
-    var handler = onCertInput;
-    inp._h = handler;
-    inp.addEventListener('input', handler);
-    setTimeout(function() { inp.focus(); }, 50);
-  }
-
-  function renderCertText() {
-    var inp = document.getElementById('cert-input');
-    var typed = inp ? (inp.value || '') : '';
-    var html = '';
-    for (var i = 0; i < certPassage.length; i++) {
-      var cls = '';
-      if (i < typed.length) cls = (typed[i] === certPassage[i]) ? 'done' : 'wrong';
-      else if (i === typed.length) cls = 'cursor';
-      var ch = (certPassage[i] === ' ') ? '&nbsp;' : certPassage[i];
-      html += '<span class="' + cls + '">' + ch + '</span>';
-    }
-    document.getElementById('cert-tt').innerHTML = html;
-  }
-
-  function onCertInput() {
-    if (certDone) return;
-    var inp = document.getElementById('cert-input');
-    var typed = inp.value;
-    if (certStart === 0 && typed.length > 0) { certStart = Date.now(); startCertTimer(); }
-    if (typed.length > certPrevLen) {
-      for (var i = certPrevLen; i < typed.length; i++) {
-        if (i >= certPassage.length || typed[i] !== certPassage[i]) certErr++;
-      }
-    }
-    certPrevLen = typed.length;
-    renderCertText();
-    updateCertStats(typed);
-    if (typed === certPassage) finishCert(typed);
-  }
-
-  function updateCertStats(typed) {
-    var correct = 0, correctStr = '';
-    for (var i = 0; i < Math.min(typed.length, certPassage.length); i++) {
-      if (typed[i] === certPassage[i]) { correct++; correctStr += certPassage[i]; }
-    }
-    var acc = (correct + certErr) > 0 ? Math.round(correct / (correct + certErr) * 100) : 100;
-    var elapsed = certStart ? (Date.now() - certStart) / 1000 : 0;
-    var cpm = elapsed > 0 ? Math.round(strokesOfText(correctStr) / elapsed * 60) : 0;
-    document.getElementById('ct-acc').innerText = acc + '%';
-    document.getElementById('ct-cpm').innerText = cpm;
-    var pct = Math.round(typed.length / certPassage.length * 100);
-    document.getElementById('ct-prog').innerText = Math.min(typed.length, certPassage.length) + ' / ' + certPassage.length + ' 글자';
-    document.getElementById('ct-fill').style.width = Math.min(pct, 100) + '%';
-    return { acc: acc, cpm: cpm, correctStr: correctStr, correct: correct };
-  }
-
-  function startCertTimer() {
-    stopCertTimer();
-    certTimer = setInterval(function() {
-      var s = Math.floor((Date.now() - certStart) / 1000);
-      document.getElementById('ct-time').innerText = Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
-    }, 250);
-  }
-  function stopCertTimer() { if (certTimer) { clearInterval(certTimer); certTimer = null; } }
-
-  function submitCert() {
-    var inp = document.getElementById('cert-input');
-    if (!inp) return;
-    var typed = inp.value;
-    if (typed.length < certPassage.length * 0.9) {
-      showResultModal('검정은 글을 <b>끝까지</b> 입력해야 완료돼요. 조금만 더 힘내요! 💪');
-      return;
-    }
-    finishCert(typed);
-  }
-
-  function finishCert(typed) {
-    if (certDone) return;
-    certDone = true;
-    stopCertTimer();
-    var inp = document.getElementById('cert-input');
-    if (inp && inp._h) inp.removeEventListener('input', inp._h);
-    var stats = updateCertStats(typed);
-    var wpm = stats.cpm;
-    var acc = stats.acc;
-    document.getElementById('ct-submit').disabled = true;
-
-    var main = document.getElementById('cert-main');
-    if (acc < 90) {
-      main.innerHTML =
-        '<div class="lm-target">💪</div>' +
-        '<div class="lm-prompt" style="font-size:1.3rem;color:#e67e22;font-weight:800">정확도 ' + acc + '% · ' + wpm + '타/분</div>' +
-        '<div class="lm-prompt">검정은 <b>정확도 90% 이상</b>이어야 기록돼요.<br>📓 틀린 부분을 공책에 적고 다시 도전해 보아요!</div>' +
-        '<button class="cert-go" id="cert-retry" style="background:#ff9f43;border-bottom-color:#e67e22">다시 도전! 🔁</button>';
-      var br = document.getElementById('cert-retry'); if (br) br.addEventListener('click', startCert);
-      return;
+      // 사용자 상세 프로필 로딩 (자판 수집 및 칭호 등)
+      callServer('getUserData', [currentUser.num], res => {
+        if (res && res.found) {
+          currentUser.grade = res.gradeInfo.name;
+          currentUser.gradeRank = res.gradeInfo.rank;
+          currentUser.unlockedKeys = res.unlockedKeys || [];
+          currentUser.bestWpm = res.bestWpm || 0;
+          updateProfileUI(res.gradeInfo, res.bestWpm, (res.unlockedKeys || []).length, currentUser.num, currentUser.name);
+          renderKeyboard(res.unlockedKeys || []);
+        } else {
+          currentUser.grade = "아기용";
+          currentUser.gradeRank = 1;
+          currentUser.unlockedKeys = [];
+          currentUser.bestWpm = 0;
+          updateProfileUI({ icon: '🐣', name: '아기용', color: '#f39c12' }, 0, 0, currentUser.num, currentUser.name);
+          renderKeyboard([]);
+        }
+      }, err => {
+        console.error("User data error:", err);
+        showResultModal("오류가 발생했습니다: " + ((err && err.message) ? err.message : ''));
+        updateProfileUI({ icon: '❌', name: '통신 오류', color: '#c0392b' }, 0, 0);
+      });
     }
 
-    main.innerHTML = '<div class="lm-target">⏳</div><div class="lm-prompt">기록을 저장하고 칭호를 확인하고 있어요...</div>';
+    // ---------- 기록 외치고 보상받기 ----------
+    function submitRecord() {
+      if (!currentUser) return showResultModal("앗! 먼저 이름을 골라 원정을 시작해야 해요! 🛡️");
 
-    var oldRank = currentUser.gradeRank || 0;
-    var oldKeys = currentUser.unlockedKeys || [];
+      const wpmEl = document.getElementById('input-wpm');
+      const accEl = document.getElementById('input-acc');
+      const wpm = parseInt(wpmEl.value, 10);
+      const acc = parseInt(accEl.value, 10);
 
-    TJA.callServer('processRecord', {
-      num: currentUser.num, name: currentUser.name,
-      grade: currentUser.grade || '', classNum: currentUser.classNum || '',
-      wpm: wpm, acc: acc, testType: '타자검정'
-    }, function(res) {
-      if (!res || !res.success) {
-        main.innerHTML = '<div class="lm-target">😅</div><div class="lm-prompt">' +
-          ((res && res.message) ? res.message : '저장에 실패했어요. 다시 시도해 주세요.') + '</div>' +
-          '<button class="cert-go" id="cert-fail-retry">다시 도전 🔁</button>';
-        var b1 = document.getElementById('cert-fail-retry'); if (b1) b1.addEventListener('click', startCert);
-        return;
-      }
-      var newRank = res.grade.rank;
-      var isUp = newRank > oldRank;
-      var newKeys = res.unlockedKeys || [];
-      var gained = [];
-      for (var i = 0; i < newKeys.length; i++) if (oldKeys.indexOf(newKeys[i]) < 0) gained.push(newKeys[i]);
+      if (isNaN(wpm) || wpm <= 0) return showResultModal("타수를 숫자로 적어 주세요! ⌨️");
+      if (isNaN(acc) || acc < 0 || acc > 100) return showResultModal("정확도를 0에서 100 사이 숫자로 적어 주세요! 🎯");
+      if (acc < 90) return showResultModal("정확도 90% 이상만 기록됩니다. 더 정확하게 쳐보세요! 💪");
 
-      currentUser.grade = res.grade.name;
-      currentUser.gradeRank = res.grade.rank;
-      currentUser.unlockedKeys = newKeys;
-      currentUser.bestWpm = res.bestWpm || wpm;
+      const loading = document.getElementById('loading');
+      const btn = document.querySelector('#record-panel .btn-submit');
+      if (loading) loading.style.display = 'block';
+      if (btn) btn.disabled = true;
 
-      document.getElementById('ct-badge').innerText = res.grade.icon;
-      document.getElementById('ct-grade').innerText = res.grade.name;
+      const oldRank = currentUser.gradeRank || 0;
+      const oldKeys = currentUser.unlockedKeys || [];
 
-      if (isUp) TJA.fireConfetti({ count: 110, duration: 2800 });
-      else TJA.fireConfetti({ count: 70, duration: 1800 });
+      callServer('processRecord',
+        [currentUser.num, currentUser.name, currentUser.grade || '', currentUser.classNum || '', wpm, acc, '타자기록'],
+        res => {
+          if (loading) loading.style.display = 'none';
+          if (btn) btn.disabled = false;
 
-      var extra = '';
-      if (isUp) extra = '<div class="lm-prompt" style="color:#8e44ad;font-weight:800">🎊 새 칭호 [ ' + res.grade.name + ' ] 획득!</div>';
-      else if (gained.length > 0) extra = '<div class="lm-prompt" style="color:#16a085;font-weight:800">✨ 새 자판 해금: ' + gained.join(', ') + '</div>';
+          if (!res || !res.success) {
+            showResultModal((res && res.message) ? res.message : '저장에 실패했어요. 다시 시도해 주세요.');
+            return;
+          }
 
-      var demoNote = (TJA.mode === 'demo')
-        ? '<div class="lm-prompt" style="color:#7f8c8d;font-size:0.95rem;margin-top:6px">📌 이 기록은 이 기기에만 저장돼요. 선생님이 학급 시트를 연결하면 학급 단위로 함께 쌓여요.</div>'
-        : '';
+          const newRank = res.grade.rank;
+          const isUp = newRank > oldRank;
+          const newKeys = res.unlockedKeys || [];
+          const gained = newKeys.filter(k => !oldKeys.includes(k));
 
-      main.innerHTML =
-        '<div class="lm-target">' + res.grade.icon + '</div>' +
-        '<div class="lm-prompt" style="font-size:1.4rem;color:#16a085;font-weight:800">검정 통과! ' + wpm + '타/분 · 정확도 ' + acc + '%</div>' +
-        extra + demoNote +
-        '<div style="display:flex;gap:10px;margin-top:6px">' +
-          '<button class="cert-go" id="cert-again" style="background:#95a5a6;border-bottom-color:#7f8c8d">다시 검정</button>' +
-          '<button class="cert-go" id="cert-go-dash">내 기록 보기 ▶</button>' +
-        '</div>';
-      var b2 = document.getElementById('cert-again'); if (b2) b2.addEventListener('click', startCert);
-      var b3 = document.getElementById('cert-go-dash'); if (b3) b3.addEventListener('click', exitCert);
-    }, function(err) {
-      main.innerHTML = '<div class="lm-target">😱</div><div class="lm-prompt">통신에 문제가 생겼어요. 잠시 후 다시 시도해 주세요.<br><span style="font-size:0.85rem;color:#888">' +
-        (err && err.message ? err.message : '') + '</span></div>' +
-        '<button class="cert-go" id="cert-err-retry">다시 도전 🔁</button>';
-      var b4 = document.getElementById('cert-err-retry'); if (b4) b4.addEventListener('click', startCert);
-    });
-  }
+          currentUser.grade = res.grade.name;
+          currentUser.gradeRank = res.grade.rank;
+          currentUser.unlockedKeys = newKeys;
+          currentUser.bestWpm = res.bestWpm || wpm;
 
-  </script>
-
-  <script>
-  // ===========================================================
-  // 부팅 — 모드 감지 / 이벤트 바인딩 / 최초 데이터 로드
-  // ===========================================================
-  document.addEventListener('DOMContentLoaded', function() {
-    // 1) 모드 감지 (학생 링크면 즉시 선생님 전용 DOM 제거)
-    var mode = TJA.detectMode();
-    if (mode === 'student') TJA.stripTeacherOnly();
-    TJA.refreshConnChip();
-    TJA.showDemoBannerIfNeeded();
-
-    // 2) 키보드 자판 초기 렌더 (모두 회색)
-    renderKeyboard([]);
-
-    // 3) 학생 명단 + 문제은행 비동기 로드
-    loadStudentList();
-    loadQuestionBank();
-
-    // 4) 이벤트 핸들러 부착 (인라인 onclick 없음)
-    // 로비
-    addClick('login-btn', login);
-    addClick('open-guide-btn', openGuide);
-    addClick('guide-close-btn', closeGuide);
-    addClick('result-close-btn', closeResultModal);
-
-    // 선생님 설정 (학생 링크 모드에서는 DOM에서 제거되므로 안전)
-    addClick('open-teacher-btn', TJA.openTeacher);
-    addClick('teacher-close-btn', TJA.closeTeacher);
-    addClick('connect-btn', TJA.handleConnect);
-    addClick('disconnect-btn', TJA.handleDisconnect);
-    addClick('copy-link-btn', TJA.handleCopyLink);
-    addClick('open-link-btn', TJA.handleOpenLink);
-    addClick('ping-btn', TJA.handlePing);
-    addClick('roster-check-btn', TJA.handleRosterCheck);
-
-    // 대시보드
-    addClick('logout-btn', logout);
-    addClick('enter-learn-btn', enterLearn);
-    addClick('enter-cert-btn', enterCert);
-    addClick('enter-cert-btn-2', enterCert);
-    addClick('rank-typing-btn', function(){ showRanking('typing'); });
-    addClick('rank-imprv-btn', function(){ showRanking('imprv'); });
-
-    // 학습 화면
-    addClick('learn-exit-btn', function(){ exitLearn(false); });
-    addClick('learn-relogin-btn', function(){ exitLearn(true); });
-    addClick('ls-prev', function(){ gotoStage(currentStage - 1); });
-    addClick('ls-redo', function(){ startStage(currentStage); });
-    addClick('ls-next', function(){ nextStage(); });
-    addClick('sm-go-btn', function(){ closeStageModal(); });
-
-    // 검정 화면
-    addClick('cert-exit-btn', exitCert);
-    addClick('ct-redo', startCert);
-    addClick('ct-submit', submitCert);
-
-    // 모달 배경 클릭으로 닫기
-    var gm = document.getElementById('guide-modal');
-    if (gm) gm.addEventListener('click', function(e){ if (e.target === gm) closeGuide(); });
-    var tm = document.getElementById('teacher-modal');
-    if (tm) tm.addEventListener('click', function(e){ if (e.target === tm) TJA.closeTeacher(); });
-    var rm = document.getElementById('result-modal');
-    if (rm) rm.addEventListener('click', function(e){ if (e.target === rm) closeResultModal(); });
-
-    // ESC 키로 모달 닫기
-    document.addEventListener('keydown', function(e) {
-      if (e.key !== 'Escape') return;
-      if (gm && !gm.classList.contains('hidden')) closeGuide();
-      if (tm && !tm.classList.contains('hidden')) TJA.closeTeacher();
-      if (rm && !rm.classList.contains('hidden')) closeResultModal();
-    });
-
-    // 학생 셀렉트 엔터키로 로그인
-    var sel = document.getElementById('user-select');
-    if (sel) sel.addEventListener('keydown', function(e){ if (e.key === 'Enter') login(); });
-
-    // 창 크기 변경 시 차트 다시 그리기
-    window.addEventListener('resize', function() {
-      if (currentUser) {
-        var canvas = document.getElementById('growth-chart');
-        if (canvas && !document.getElementById('dashboard-container').classList.contains('hidden')) {
+          updateProfileUI(res.grade, res.bestWpm, newKeys.length, currentUser.num, currentUser.name);
+          renderKeyboard(newKeys);
+          loadRankings();
           loadChart(currentUser.num);
+
+          wpmEl.value = '';
+          accEl.value = '';
+
+          popConfetti({ particleCount: 110, spread: 75, origin: { y: 0.6 } });
+
+          let msg = res.message || ('기록 저장 완료! ' + res.grade.icon + ' ' + res.grade.name);
+          if (isUp) msg = '🎊 새 칭호 [ ' + res.grade.name + ' ] 획득! 축하해요!';
+          else if (gained.length > 0) msg = '✨ 새 자판 해금: ' + gained.join(', ');
+          if (res.demo) {
+            msg += '<br><span style="font-size:0.85rem;color:#7f8c8d">' +
+              (res.savedLocal
+                ? '이 기록은 이 기기에만 저장돼요. 선생님이 구글 시트를 연결하면 시트에 저장됩니다.'
+                : '이 기기에 저장하지 못했어요. 선생님이 구글 시트를 연결하면 시트에 저장됩니다.') +
+              '</span>';
+          }
+          showResultModal(msg, true);
+        },
+        err => {
+          if (loading) loading.style.display = 'none';
+          if (btn) btn.disabled = false;
+          console.error('record error:', err);
+          showResultModal('저장에 실패했어요. 다시 시도해 주세요.<br><span style="font-size:0.85rem;color:#888">' +
+            ((err && err.message) ? err.message : '') + '</span>');
+        });
+    }
+
+    function logout() {
+      currentUser = null;
+      document.getElementById('user-select').value = '';
+      document.getElementById('dashboard-container').classList.add('hidden');
+      document.getElementById('login-screen').classList.remove('hidden');
+      document.getElementById('d-user-display').innerText = "불러오는 중...";
+      const wEl = document.getElementById('input-wpm');
+      const aEl = document.getElementById('input-acc');
+      if (wEl) wEl.value = '';
+      if (aEl) aEl.value = '';
+      renderKeyboard([]);
+    }
+
+    function updateProfileUI(gradeInfo, wpm, unlockedCount, num, name) {
+      // 전달받은 값이 없으면 전역 currentUser 사용
+      const finalNum = num || (currentUser ? currentUser.num : "");
+      const finalName = name || (currentUser ? currentUser.name : "");
+
+      if (finalNum && finalName) {
+        document.getElementById('d-user-display').innerText = finalNum + "번 " + finalName + " 용사";
+      } else {
+        document.getElementById('d-user-display').innerText = "탐험가 정보를 확인 중입니다...";
+      }
+
+      document.getElementById('d-grade-icon').innerText = gradeInfo.icon;
+      document.getElementById('d-grade-name').innerText = gradeInfo.name;
+      document.getElementById('d-grade-name').style.color = gradeInfo.color;
+      document.getElementById('d-best-wpm').innerText = wpm + "타";
+      document.getElementById('d-unlocked-count').innerText = unlockedCount + "개";
+    }
+
+    let rankingDataCache = null;
+    function loadRankings() {
+      callServer('getRankingData', [], data => {
+        rankingDataCache = data || { typingKing: [], improvementKing: [] };
+        showRanking('typing');
+      }, err => {
+        console.error("Rankings error:", err);
+        document.getElementById('ranking-container').innerHTML = '<p style="text-align:center; color:#c0392b;">랭킹 데이터를 가져오지 못했습니다.</p>';
+      });
+    }
+
+    function showRanking(type) {
+      const container = document.getElementById('ranking-container');
+      const desc = document.getElementById('ranking-desc');
+      if (!rankingDataCache) return;
+
+      if (desc) {
+        if (type === 'typing') {
+          desc.innerHTML = '🥇 <strong>타자왕</strong>: 역대 가장 높은 <strong>최고 타수</strong>를 달성한 용사 Top 5 (전체 기간)';
+        } else {
+          desc.innerHTML = '🔥 <strong>향상왕</strong>: 지난 주 대비 이번 주에 <strong>가장 타수가 많이 오른</strong> 용사 Top 5';
         }
       }
-    });
-  });
 
-  function addClick(id, fn) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('click', fn);
-  }
+      let html = '<ul class="ranking-list">';
+      const list = (type === 'typing' ? rankingDataCache.typingKing : rankingDataCache.improvementKing) || [];
 
+      if (list.length === 0) {
+        html += '<p style="text-align:center; color:#888; font-family:\'Noto Sans KR\',sans-serif; padding:20px;">아직 대륙에 기록을 남긴 영웅이 없습니다.<br>첫 번째 전설이 되어보세요!</p>';
+      } else {
+        list.forEach(u => {
+          let isTypingKing = type === 'typing';
+          let valStr = isTypingKing ? `${u.wpm}타` : `+${u.improvement}타`;
+          let icon = u.gradeInfo ? u.gradeInfo.icon : '🔥';
+          let badgeStyle = isTypingKing ? `background:var(--primary);` : `background:var(--accent);`;
+
+          let rankText = u.rank;
+          if (u.rank === 1) rankText = '🥇';
+          else if (u.rank === 2) rankText = '🥈';
+          else if (u.rank === 3) rankText = '🥉';
+
+          html += `
+          <li class="ranking-item rank-${u.rank}">
+            <div style="display:flex; align-items:center; flex:1; min-width:0;">
+              <span class="rank-badge" style="margin-right:8px; flex-shrink:0;">${rankText}</span>
+              <span style="font-family:'Noto Sans KR',sans-serif; font-weight:bold; font-size:1.15rem; color:#2c3e50; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:flex; align-items:center;">
+                <span style="font-size:1.3rem; margin-right:4px;">${icon}</span> ${u.name}
+              </span>
+            </div>
+            <div class="label-badge" style="${badgeStyle} margin-left:8px; flex-shrink:0; white-space:nowrap;">${valStr}${isTypingKing ? ' 달성' : ' 향상'}</div>
+          </li>
+        `;
+        });
+      }
+      html += '</ul>';
+      container.innerHTML = html;
+    }
+
+    // ===== 성장 이야기 & 차트 =====
+    function isOutlier(d) { return d.wpm < 30 || d.acc < 90; }
+
+    // 칭호 존 (배경 밴드)
+    const GRADE_ZONES = [
+      { min: 0,   max: 50,   color: 'rgba(243,156,18,0.10)',  label: '🐣 아기용' },
+      { min: 50,  max: 100,  color: 'rgba(142,68,173,0.10)',  label: '🔮 견습마법사' },
+      { min: 100, max: 150,  color: 'rgba(230,126,34,0.10)',  label: '🗺️ 초보모험가' },
+      { min: 150, max: 200,  color: 'rgba(149,165,166,0.14)', label: '⚔️ 강철기사' },
+      { min: 200, max: 250,  color: 'rgba(46,204,113,0.10)',  label: '🏹 번개궁수' },
+      { min: 250, max: 300,  color: 'rgba(52,152,219,0.10)',  label: '🌪️ 폭풍소환사' },
+      { min: 300, max: 350,  color: 'rgba(231,76,60,0.10)',   label: '🐉 드래곤라이더' },
+      { min: 350, max: 400,  color: 'rgba(155,89,182,0.12)',  label: '🏰 대륙수호자' },
+      { min: 400, max: 9999, color: 'rgba(255,215,0,0.15)',   label: '⚡ 타자 신' }
+    ];
+    const GRADE_NEXT = [
+      { threshold: 50,  name: '견습마법사',   icon: '🔮' },
+      { threshold: 100, name: '초보모험가',   icon: '🗺️' },
+      { threshold: 150, name: '강철기사',     icon: '⚔️' },
+      { threshold: 200, name: '번개궁수',     icon: '🏹' },
+      { threshold: 250, name: '폭풍소환사',   icon: '🌪️' },
+      { threshold: 300, name: '드래곤라이더', icon: '🐉' },
+      { threshold: 350, name: '대륙수호자',   icon: '🏰' },
+      { threshold: 400, name: '타자 신',      icon: '⚡' }
+    ];
+
+    function switchChartView(view) {
+      currentChartView = view;
+      document.querySelectorAll('.cvt-btn').forEach(b => {
+        b.classList.toggle('on', b.dataset.view === view);
+      });
+      renderGrowthChart();
+    }
+
+    // 일별 최고값 집계 (이상치 제외)
+    function aggregateDailyBest(data) {
+      const groups = {};
+      const dailyAllCount = {};
+      data.forEach(d => { dailyAllCount[d.dateShort] = (dailyAllCount[d.dateShort] || 0) + 1; });
+      data.filter(d => !isOutlier(d)).forEach(d => {
+        const k = d.dateShort;
+        if (!groups[k] || d.wpm > groups[k].wpm) {
+          groups[k] = { label: k, wpm: d.wpm, acc: d.acc, ts: d.ts };
+        }
+      });
+      return Object.values(groups)
+        .sort((a, b) => a.ts - b.ts)
+        .map(g => Object.assign(g, { tries: dailyAllCount[g.label] || 1 }));
+    }
+
+    // ===== 성장 그래프: 데이터 로딩 · 렌더 · 스토리 (전체 / 최근 2주) =====
+    let currentChartView = 'recent';   // 'recent'(2주간) | 'all'(전체)
+    let growthDataCache = [];          // 원본 캐시
+    let chartRows = [];                // 그래프에 그릴 하루 최고값
+    let chartGeom = null;              // 점 좌표 (마우스 안내용)
+    let chartHover = -1;
+    let chartReady = false;
+    let resizeTimer = null;
+
+    // 로그인 뒤 호출됨 → 전체 기록을 한 번 받아 캐시하고 렌더
+    function loadChart(num) {
+      const storyEl = document.getElementById('growth-story');
+      if (storyEl) storyEl.innerHTML = '<div class="growth-loading">이야기를 만들고 있어요... ⏳</div>';
+      callServer('getGrowthChartData', [num], data => {
+        growthDataCache = (data instanceof Array) ? data : [];
+        renderGrowthChart();
+      }, err => {
+        console.error('growth chart error:', err);
+        growthDataCache = [];
+        if (storyEl) storyEl.innerHTML = '<div class="growth-empty">기록을 불러오지 못했어요. 잠시 후 다시 시도해 주세요. 😅</div>';
+        renderGrowthChart();
+      });
+    }
+
+    // 현재 뷰(전체/2주간)에 맞춰 하루 최고값 배열로 가공
+    function getChartRows() {
+      let data = growthDataCache.slice();
+      if (currentChartView === 'recent') {
+        const cutoff = Date.now() - 14 * 24 * 60 * 60 * 1000; // 최근 14일
+        data = data.filter(d => d.ts >= cutoff);
+      }
+      return aggregateDailyBest(data);
+    }
+
+    function renderGrowthChart() {
+      chartRows = getChartRows();
+      chartHover = -1;
+      buildGrowthStory(chartRows);
+      attachChartEvents();
+      drawGrowthChart();
+    }
+
+    function onWindowResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(drawGrowthChart, 150);
+    }
+
+    function attachChartEvents() {
+      if (chartReady) return;
+      const canvas = document.getElementById('growthChart');
+      if (!canvas) return;
+      chartReady = true;
+      canvas.addEventListener('mousemove', e => {
+        if (!chartGeom || !chartGeom.xs.length) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        let near = -1, bestGap = 24;
+        chartGeom.xs.forEach((px, i) => {
+          const gap = Math.abs(px - x);
+          if (gap < bestGap) { bestGap = gap; near = i; }
+        });
+        if (near !== chartHover) { chartHover = near; drawGrowthChart(); }
+      });
+      canvas.addEventListener('mouseleave', () => {
+        if (chartHover !== -1) { chartHover = -1; drawGrowthChart(); }
+      });
+    }
+
+    function drawGrowthChart() {
+      const canvas = document.getElementById('growthChart');
+      if (!canvas || !canvas.parentNode) return;
+      const box = canvas.parentNode;
+      const cssW = Math.max(240, box.clientWidth || 600);
+      const cssH = Math.max(160, box.clientHeight || 240);
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      canvas.style.width = cssW + 'px';
+      canvas.style.height = cssH + 'px';
+
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cssW, cssH);
+
+      const rows = chartRows;
+      if (!rows || rows.length === 0) {
+        chartGeom = null;
+        return; // 기록이 없으면 그래프 영역을 비워 둡니다.
+      }
+
+      const pad = { l: 46, r: 14, t: 34, b: 28 };
+      const plotL = pad.l, plotR = cssW - pad.r, plotT = pad.t, plotB = cssH - pad.b;
+      const plotW = Math.max(10, plotR - plotL), plotH = Math.max(10, plotB - plotT);
+
+      const wpms = rows.map(r => r.wpm);
+      const maxWpm = Math.max.apply(null, wpms);
+      const yMax = Math.max(50, Math.ceil((maxWpm + 20) / 50) * 50);
+      const yOf = v => plotB - (Math.max(0, Math.min(yMax, v)) / yMax) * plotH;
+      const xOf = i => rows.length === 1 ? (plotL + plotW / 2) : (plotL + (plotW * i) / (rows.length - 1));
+
+      // 칭호 존 배경 밴드
+      GRADE_ZONES.forEach(zone => {
+        if (zone.min >= yMax) return;
+        const top = yOf(Math.min(zone.max, yMax));
+        const bottom = yOf(Math.max(zone.min, 0));
+        ctx.fillStyle = zone.color;
+        ctx.fillRect(plotL, top, plotW, bottom - top);
+        if (bottom - top > 22) {
+          ctx.fillStyle = 'rgba(44,62,80,0.45)';
+          ctx.font = "bold 10px 'Jua', sans-serif";
+          ctx.textAlign = 'right';
+          ctx.textBaseline = 'top';
+          ctx.fillText(zone.label, plotR - 6, top + 3);
+        }
+      });
+
+      // 가로 눈금선 + y축 숫자
+      ctx.strokeStyle = 'rgba(0,0,0,0.05)';
+      ctx.lineWidth = 1;
+      ctx.fillStyle = '#7f8c8d';
+      ctx.font = "12px 'Jua', sans-serif";
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      for (let v = 0; v <= yMax; v += 50) {
+        const y = yOf(v);
+        ctx.beginPath();
+        ctx.moveTo(plotL, y); ctx.lineTo(plotR, y);
+        ctx.stroke();
+        ctx.fillText(String(v), plotL - 8, y);
+      }
+
+      const xs = rows.map((r, i) => xOf(i));
+      const ys = rows.map(r => yOf(r.wpm));
+
+      // 면 채우기
+      ctx.beginPath();
+      ctx.moveTo(xs[0], plotB);
+      for (let i = 0; i < xs.length; i++) ctx.lineTo(xs[i], ys[i]);
+      ctx.lineTo(xs[xs.length - 1], plotB);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(255,159,67,0.18)';
+      ctx.fill();
+
+      // 선
+      ctx.beginPath();
+      ctx.moveTo(xs[0], ys[0]);
+      for (let i = 1; i < xs.length; i++) ctx.lineTo(xs[i], ys[i]);
+      ctx.strokeStyle = '#ff9f43';
+      ctx.lineWidth = 3;
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+
+      // 점
+      for (let i = 0; i < xs.length; i++) {
+        const r = (i === chartHover) ? 7 : 5;
+        ctx.beginPath();
+        ctx.arc(xs[i], ys[i], r, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.strokeStyle = '#ff9f43';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      }
+
+      // x축 날짜
+      ctx.fillStyle = '#7f8c8d';
+      ctx.font = "12px 'Jua', sans-serif";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      const step = Math.max(1, Math.ceil(rows.length / 8));
+      for (let i = 0; i < rows.length; i++) {
+        if (i % step !== 0 && i !== rows.length - 1) continue;
+        ctx.fillText(rows[i].label, xs[i], plotB + 8);
+      }
+
+      // 범례
+      const legendText = (currentChartView === 'recent' ? '최근 2주 ' : '전체 기간 ') + '최고 타수 📈';
+      ctx.font = "14px 'Jua', sans-serif";
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      const tw = ctx.measureText(legendText).width;
+      const lx = Math.max(plotL, (cssW - tw - 30) / 2);
+      const ly = 16;
+      ctx.strokeStyle = '#ff9f43';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(lx, ly); ctx.lineTo(lx + 22, ly);
+      ctx.stroke();
+      ctx.fillStyle = '#2c3e50';
+      ctx.fillText(legendText, lx + 30, ly);
+
+      chartGeom = { xs: xs, ys: ys };
+
+      // 안내 상자
+      if (chartHover >= 0 && chartHover < rows.length) {
+        const r = rows[chartHover];
+        const text = r.wpm + '타 · 정확도 ' + r.acc + '% (' + r.tries + '회 도전)';
+        ctx.font = "12px 'Nanum Gothic', 'Noto Sans KR', sans-serif";
+        const boxW = ctx.measureText(text).width + 18;
+        const boxH = 26;
+        let bx = xs[chartHover] - boxW / 2;
+        bx = Math.max(plotL, Math.min(plotR - boxW, bx));
+        let by = ys[chartHover] - boxH - 12;
+        if (by < plotT) by = ys[chartHover] + 12;
+        ctx.fillStyle = 'rgba(44,62,80,0.92)';
+        ctx.beginPath();
+        if (ctx.roundRect) { ctx.roundRect(bx, by, boxW, boxH, 8); ctx.fill(); }
+        else { ctx.fillRect(bx, by, boxW, boxH); }
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, bx + boxW / 2, by + boxH / 2);
+      }
+    }
+
+    // "나의 성장 이야기" 카드 채우기
+    function buildGrowthStory(rows) {
+      const el = document.getElementById('growth-story');
+      if (!el) return;
+      if (!rows || rows.length === 0) {
+        el.innerHTML = '<div class="growth-empty">아직 기록이 없어요.<br>검정에 도전해서 첫 기록을 남겨 보아요! 🏅</div>';
+        return;
+      }
+      const first = rows[0];
+      const last  = rows[rows.length - 1];
+      const best  = rows.reduce((a, b) => (b.wpm > a.wpm ? b : a), rows[0]);
+      const diff  = last.wpm - first.wpm;
+      const gStart = getGradeClient(first.wpm);
+      const gNow   = getGradeClient(last.wpm);
+      const totalTries = rows.reduce((s, r) => s + (r.tries || 1), 0);
+      const periodTxt = (currentChartView === 'recent') ? '최근 2주' : '전체 기간';
+
+      let nextGoal = null;
+      for (const g of GRADE_NEXT) { if (last.wpm < g.threshold) { nextGoal = g; break; } }
+      const goalHtml = nextGoal
+        ? '<div class="gs-goal">다음 목표: <b>' + nextGoal.icon + ' ' + nextGoal.name + '</b> 까지 <b>' + (nextGoal.threshold - last.wpm) + '타</b> 남았어요! 💪</div>'
+        : '<div class="gs-goal">🎉 최고 칭호 <b>⚡ 타자 신</b>에 도달했어요! 정말 대단해요!</div>';
+
+      const arrow = diff > 0 ? '📈' : (diff < 0 ? '📉' : '➡️');
+      const arrowTxt = diff > 0 ? '성장했어요!' : (diff < 0 ? '다시 힘내요!' : '꾸준해요!');
+
+      el.innerHTML =
+        '<div class="gs-baa">' +
+          '<div class="gs-card start"><div class="gs-emoji">' + gStart.icon + '</div>' +
+            '<div class="gs-value">' + first.wpm + '<small>타</small></div>' +
+            '<div class="gs-date">' + first.label + ' (' + periodTxt + ' 시작)</div></div>' +
+          '<div class="gs-arrow">' + arrow +
+            '<b>' + (diff >= 0 ? '+' : '') + diff + '타</b>' +
+            '<small>' + arrowTxt + '</small></div>' +
+          '<div class="gs-card now"><div class="gs-emoji">' + gNow.icon + '</div>' +
+            '<div class="gs-value">' + last.wpm + '<small>타</small></div>' +
+            '<div class="gs-date">' + last.label + ' (현재)</div></div>' +
+        '</div>' +
+        '<div class="gs-facts">' +
+          '<div class="gs-fact">🏆 <span>최고 기록 <b>' + best.wpm + '타</b></span></div>' +
+          '<div class="gs-fact">📅 <span>기록한 날 <b>' + rows.length + '일</b></span></div>' +
+          '<div class="gs-fact">🔥 <span>총 도전 <b>' + totalTries + '회</b></span></div>' +
+          '<div class="gs-fact">⌨️ <span>현재 칭호 <b>' + gNow.name + '</b></span></div>' +
+        '</div>' +
+        goalHtml;
+    }
+
+    // 화면용 등급 계산 (서버 getGrade 미러)
+    function getGradeClient(wpm) {
+      if (wpm >= 400) return { name:'타자 신', icon:'⚡', color:'#FFD700', rank:9 };
+      if (wpm >= 350) return { name:'대륙수호자', icon:'🏰', color:'#9B59B6', rank:8 };
+      if (wpm >= 300) return { name:'드래곤라이더', icon:'🐉', color:'#E74C3C', rank:7 };
+      if (wpm >= 250) return { name:'폭풍소환사', icon:'🌪️', color:'#3498DB', rank:6 };
+      if (wpm >= 200) return { name:'번개궁수', icon:'🏹', color:'#2ECC71', rank:5 };
+      if (wpm >= 150) return { name:'강철기사', icon:'⚔️', color:'#95A5A6', rank:4 };
+      if (wpm >= 100) return { name:'초보모험가', icon:'🗺️', color:'#E67E22', rank:3 };
+      if (wpm >= 50)  return { name:'견습마법사', icon:'🔮', color:'#8E44AD', rank:2 };
+      return { name:'아기용', icon:'🐣', color:'#F39C12', rank:1 };
+    }
+
+    window.onload = initApp;
+
+    function showResultModal(message, isSuccess = false) {
+      const modal = document.getElementById('result-modal');
+      const titleEl = document.getElementById('result-title');
+      const msgEl = document.getElementById('result-message');
+      const iconEl = document.getElementById('result-icon');
+
+      msgEl.innerHTML = message;
+
+      if (isSuccess) {
+        titleEl.innerText = message.includes('갱신') ? "기록 달성!" : "저장 성공!";
+        titleEl.style.color = "var(--primary-dark)";
+        iconEl.innerText = message.includes('갱신') ? "🏆" : "🎉";
+        iconEl.style.animation = "popBounce 0.6s ease";
+      } else {
+        titleEl.innerText = "앗, 잠깐만요!";
+        titleEl.style.color = "var(--accent-dark)";
+        iconEl.innerText = "😅";
+        iconEl.style.animation = "none";
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeResultModal() {
+      document.getElementById('result-modal').classList.add('hidden');
+    }
+
+    function openGuide() {
+      document.getElementById('guide-modal').classList.remove('hidden');
+    }
+
+    function closeGuide() {
+      document.getElementById('guide-modal').classList.add('hidden');
+    }
   </script>
+
 <script>
 /* 체험 모드 안내 배너 (전 앱 일관) */
-(function(){
-  function isDemo(){
-    try{
-      if(/[#&]c=/.test(location.hash||'')) return false;
-      for(var j=0;j<localStorage.length;j++){ var k=localStorage.key(j)||''; if(/exec|gasurl|serverurl|sheet_api|gas_exec|appserverurl|endpoint/i.test(k) && localStorage.getItem(k)) return false; }
+(function () {
+  function isDemo() {
+    try {
+      if (/[#&]c=/.test(location.hash || '')) return false;
+      for (var j = 0; j < localStorage.length; j++) {
+        var k = localStorage.key(j) || '';
+        if (/exec|gasurl|serverurl|sheet_api|gas_exec|appserverurl|endpoint/i.test(k) && localStorage.getItem(k)) return false;
+      }
       return true;
-    }catch(e){ return true; }
+    } catch (e) { return true; }
   }
-  function show(){
-    if(document.getElementById('__demoBar')) return;
-    if(!isDemo()) return;
-    var bar=document.createElement('div'); bar.id='__demoBar';
-    bar.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#1f2937;color:#fff;font-size:13px;line-height:1.45;padding:9px 38px calc(9px + env(safe-area-inset-bottom)) 14px;text-align:center;font-family:sans-serif;box-shadow:0 -2px 10px rgba(0,0,0,0.25);';
-    bar.innerHTML='체험 모드예요 · 활동 기록은 이 기기에만 저장돼요(이어하기 가능). 선생님이 구글 시트를 연결하면 시트에 저장됩니다.';
-    var x=document.createElement('button'); x.type='button'; x.setAttribute('aria-label','닫기'); x.textContent='✕';
-    x.style.cssText='position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:16px;line-height:1;cursor:pointer;padding:6px;';
-    x.onclick=function(){ try{ bar.remove(); }catch(e){ bar.style.display='none'; } };
-    bar.appendChild(x); document.body.appendChild(bar);
+  function show() {
+    if (document.getElementById('__demoBar')) return;
+    if (!isDemo()) return;
+    var bar = document.createElement('div');
+    bar.id = '__demoBar';
+    bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#1f2937;color:#fff;font-size:13px;line-height:1.45;padding:9px 38px calc(9px + env(safe-area-inset-bottom)) 14px;text-align:center;font-family:sans-serif;box-shadow:0 -2px 10px rgba(0,0,0,0.25);';
+    bar.innerHTML = '체험 모드예요 · 활동 기록은 이 기기에만 저장돼요(이어하기 가능). 선생님이 구글 시트를 연결하면 시트에 저장됩니다.';
+    var x = document.createElement('button');
+    x.type = 'button'; x.setAttribute('aria-label', '닫기'); x.textContent = '\u2715';
+    x.style.cssText = 'position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:16px;line-height:1;cursor:pointer;padding:6px;';
+    x.onclick = function () { document.body.classList.remove('has-demo-bar'); try { bar.remove(); } catch (e) { bar.style.display = 'none'; } };
+    bar.appendChild(x);
+    document.body.appendChild(bar);
+    document.body.classList.add('has-demo-bar');
   }
-  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', show); } else { show(); }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', show); } else { show(); }
 })();
 </script>
+
 </body>
+
 </html>
